@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Dige-App-2025",
+    "slug": "Dige-App-2025",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./Assets/Image/Logo.png",
+    "scheme": "digeapp2025",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./Assets/Image/Logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./Assets/Image/Logo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./Assets/Image/Logo.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
