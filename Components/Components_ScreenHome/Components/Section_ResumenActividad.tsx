@@ -7,7 +7,7 @@ import Feather from '@expo/vector-icons/Feather';
 
 export default function Section_ResumenActividad() {
   return (
-    <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
+    <View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
       <Text style={{ fontSize: 20, fontWeight: "600" }}>
         Resumen de tu actividad
       </Text>
