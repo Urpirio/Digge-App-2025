@@ -3,7 +3,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Section_header() {
   return (
-    <View style={{flexDirection:'row',backgroundColor:'#0F539C',paddingBottom:10,paddingHorizontal:20,justifyContent:'space-between',alignItems:'center'}}>
+    <View style={{flexDirection:'row',backgroundColor:'#0F539C',paddingBottom:10,paddingHorizontal:10,justifyContent:'space-between',alignItems:'center'}}>
         <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
            <Image
           style={{height:50,width:50,borderRadius:80}}
