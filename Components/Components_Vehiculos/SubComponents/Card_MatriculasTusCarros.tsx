@@ -6,6 +6,7 @@ export default function Card_MatriculasTusCarros() {
   const Cards = Data_CardMatriculasCarros.map((D) => {
         return (
           <View
+          key={D.Matricula}
             style={{
               borderWidth: 1,
               width: "48%",
