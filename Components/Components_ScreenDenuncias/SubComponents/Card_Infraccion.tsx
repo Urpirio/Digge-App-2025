@@ -10,6 +10,7 @@ export default function Card_Infraccion() {
   const Cards = Data_Infraccion.map((D) => {
     return (
       <View
+        key={D.matricula}
         style={{
           borderWidth: 1,
           padding: 10,
