@@ -20,12 +20,14 @@ export default function index(){
                 <View style={{alignItems:'center',width:'100%',gap:20}}>
 
                     <TouchableOpacity
-                    onPress={()=>router.navigate('/Screens/AScreenHome')}
+                    onPress={()=>router.navigate('/ScreenL/ScreenLogin')}
                      style={{backgroundColor:'#0F539C',width:'80%',padding:10,borderRadius:10}}>
                         <Text style={{textAlign:'center',fontSize:18,color:'white'}}>Iniciar sesion</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{borderWidth:1,borderColor:'#0F539C',width:'80%',padding:10,borderRadius:10,backgroundColor:'white'}}>
+                    <TouchableOpacity 
+                    onPress={()=>router.navigate('/ScreenL/ScreenRegistrar')}
+                    style={{borderWidth:1,borderColor:'#0F539C',width:'80%',padding:10,borderRadius:10,backgroundColor:'white'}}>
                         <Text style={{color:'#1271d6ff',textAlign:'center',fontSize:18}}>Registrarse</Text>
                     </TouchableOpacity>
 
