@@ -4,6 +4,7 @@ import Section_ResumenActividad from "@/Components/Components_ScreenHome/Compone
 import Section_User from "@/Components/Components_ScreenHome/Components/Section_User";
 import { ScrollView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "react-native";
 
 export default function ScreenHome() {
   return (
@@ -14,6 +15,7 @@ export default function ScreenHome() {
         <Section_AccionesRapidas />
         <Section_ActividadReciente/>
       </ScrollView>
+      {/* <StatusBar barStyle={'default'}/> */}
     </SafeAreaProvider>
   );
 }
