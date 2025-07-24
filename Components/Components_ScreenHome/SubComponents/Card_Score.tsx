@@ -46,11 +46,13 @@ export default function Card_Score() {
         <Text style={{color:'#d7d7d7ff'}}>Infracciones</Text>
       </View>
 
-      <View style={{ paddingHorizontal: 20, alignItems: "center", gap: 5, flexGrow: 1 }}>
+      <View style={{ paddingHorizontal: 20, alignItems: "center", gap: 5, flexGrow: 1,justifyContent:'center' }}>
         <View style={{ flexDirection: "row", gap: 5 }}>
-          <Fontisto name="star" size={24} color="#8BC8FE" />
-          <Fontisto name="star" size={24} color="#8BC8FE" />
-          <Fontisto name="star" size={24} color="#8BC8FE" />
+          <Fontisto name="star" size={10} color="#8BC8FE" />
+          <Fontisto name="star" size={10} color="#8BC8FE" />
+          <Fontisto name="star" size={10} color="#8BC8FE" />
+          <Fontisto name="star" size={10} color="#8BC8FE" />
+          <Fontisto name="star" size={10} color="#8BC8FE" />
         </View>
         <Text style={{color:'#d7d7d7ff'}}>Conductor</Text>
       </View>
