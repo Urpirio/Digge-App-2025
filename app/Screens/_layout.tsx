@@ -28,7 +28,7 @@ export default function _layout() {
         name="AScreenHome"
         options={{
           header: () => {
-            return <View />;
+            return <View style={{height:30,backgroundColor:'#0F539C'}}/>
           },
           tabBarButton: () => {
             return (
@@ -89,11 +89,17 @@ export default function _layout() {
               </TouchableOpacity>
             );
           },
+          header:()=>{
+            return <View style={{height:30,backgroundColor:'#0F539C'}}/>
+          }
         }}
       />
       <Tabs.Screen
         name="DScreenDenuncias"
         options={{
+          header:()=>{
+             return <View style={{height:30,backgroundColor:'#0F539C'}}/>
+          },
           tabBarLabel: "",
           tabBarButton: () => {
             return (
