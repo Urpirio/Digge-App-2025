@@ -16,7 +16,7 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
           flexDirection: "row",
           backgroundColor: "#0F539C",
           paddingBottom: 10,
-          paddingHorizontal: 20,
+          paddingHorizontal: 10,
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -48,7 +48,7 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
         style={{
           backgroundColor: "#0F539C",
           paddingBottom: 10,
-          paddingHorizontal: 20,
+          paddingHorizontal: 10,
           justifyContent: "space-between",
           alignItems: "flex-start",
           gap: 10,
