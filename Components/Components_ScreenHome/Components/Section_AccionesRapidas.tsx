@@ -6,7 +6,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Section_AccionesRapidas() {
   return (
-    <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
+    <View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
         <Text style={{ fontSize: 20, fontWeight: "600" }}>Acciones Rapidas</Text>
         <View style={{paddingTop:10 }}>
 
