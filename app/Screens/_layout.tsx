@@ -16,11 +16,12 @@ export default function _layout() {
       screenOptions={{
         tabBarStyle: {
           marginBottom: 20,
-          marginHorizontal: 5,
+          marginHorizontal: 10,
           position: "absolute",
           borderRadius: 50,
-          backgroundColor: "#e9ecef",
+          backgroundColor: "#ffffffff",
           paddingBottom: 0,
+          // filter:"blur(10px)"
         },
       }}
     >
@@ -51,7 +52,7 @@ export default function _layout() {
                     alignItems: "center",
                   }}
                 >
-                  <Ionicons size={25} name="home" color={Pathname === '/Screens/AScreenHome' ? "white" : "gray"} />
+                  <Ionicons size={25} name="home" color={Pathname === '/Screens/AScreenHome' ? "white" : "#2095f4b1"} />
                 </View>
               </TouchableOpacity>
             );
@@ -84,7 +85,7 @@ export default function _layout() {
                     alignItems: "center",
                   }}
                 >
-                  <Ionicons size={25} name="car-outline" color={Pathname === '/Screens/BScreenVehiculos' ? "white" :"gray"} />
+                  <Ionicons size={25} name="car-outline" color={Pathname === '/Screens/BScreenVehiculos' ? "white" :"#2095f4b1"} />
                 </View>
               </TouchableOpacity>
             );
@@ -115,14 +116,14 @@ export default function _layout() {
                 <View
                   style={{
                     borderRadius: Pathname === '/Screens/DScreenDenuncias' ? '100%' : '',
-                    backgroundColor: Pathname === '/Screens/DScreenDenuncias' ? BgColor_Btn : '',
+                    backgroundColor: Pathname === '/Screens/DScreenDenuncias' ? '#FF9900' : '',
                     height: 50,
                     width: 50,
                     justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
-                  <Ionicons size={25} name="warning-outline" color={Pathname === '/Screens/DScreenDenuncias' ? "white" : "gray"} />
+                  <Ionicons size={25} name="warning-outline" color={Pathname === '/Screens/DScreenDenuncias' ? "white" : '#FF9900'} />
                 </View>
               </TouchableOpacity>
             );
@@ -132,6 +133,9 @@ export default function _layout() {
       <Tabs.Screen
         name="PScreenPagos"
         options={{
+          header:()=>{
+             return <View style={{height:30,backgroundColor:'#0F539C'}}/>
+          },
           tabBarButton: () => {
             return (
               <TouchableOpacity
@@ -153,7 +157,7 @@ export default function _layout() {
                     alignItems: "center",
                   }}
                 >
-                  <Ionicons size={25} name="card" color={Pathname === '/Screens/PScreenPagos' ? "white" : "gray"} />
+                  <Ionicons size={25} name="card" color={Pathname === '/Screens/PScreenPagos' ? "white" : "#2095f4b1"} />
                 </View>
               </TouchableOpacity>
             );
@@ -164,6 +168,9 @@ export default function _layout() {
       <Tabs.Screen
         name="ScreenEmergencia"
         options={{
+          header:()=>{
+             return <View style={{height:30,backgroundColor:'#0F539C'}}/>
+          },
           tabBarButton: () => {
             return (
               <TouchableOpacity
@@ -178,7 +185,7 @@ export default function _layout() {
                 <View
                   style={{
                     borderRadius: Pathname === '/Screens/ScreenEmergencia' ? '100%' : '',
-                    backgroundColor: Pathname === '/Screens/ScreenEmergencia' ? BgColor_Btn : '',
+                    backgroundColor: Pathname === '/Screens/ScreenEmergencia' ? '#EE2A24' : '',
                     height: 50,
                     width: 50,
                     justifyContent: "center",
@@ -188,7 +195,7 @@ export default function _layout() {
                   <MaterialCommunityIcons
                     name="information-outline"
                     size={25}
-                    color={Pathname === '/Screens/ScreenEmergencia' ? "white" : "gray"}
+                    color={Pathname === '/Screens/ScreenEmergencia' ? "white" : '#EE2A24'}
                   />
                 </View>
               </TouchableOpacity>
