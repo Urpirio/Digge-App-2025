@@ -4,18 +4,13 @@ import Card_Score from "../SubComponents/Card_Score";
 
 export default function Section_User() {
   return (
-    <View>
-        <View
+    <View style={{ paddingBottom: 20 ,backgroundColor: "#0F539C", borderBottomRightRadius: 30,
+          borderBottomLeftRadius: 30,}}>
+      <View
         style={{
-          paddingTop: 30,
-          paddingBottom:20,
           paddingHorizontal: 20,
           justifyContent: "flex-end",
-          borderBottomRightRadius:30,
-          borderBottomLeftRadius:30,
-          backgroundColor:'#0F539C',
-          gap:20,
-          
+          gap: 20,
         }}
       >
         <View
@@ -29,18 +24,21 @@ export default function Section_User() {
           </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
           <Image
-          style={{height:60,width:60,borderRadius:80}}
-          source={{uri:'https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg'}}/>
+            style={{ height: 60, width: 60, borderRadius: 80 }}
+            source={{
+              uri: "https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg",
+            }}
+          />
           <View>
-            <Text style={{fontSize:24,color:'white'}}>Hola, Juan!</Text>
-            <Text style={{color:'#ffffffa2'}}>Ciudadano</Text>
+            <Text style={{ fontSize: 24, color: "white" }}>Hola, Juan!</Text>
+            <Text style={{ color: "#ffffffa2" }}>Ciudadano</Text>
           </View>
         </View>
 
-        <Card_Score/>
+        <Card_Score />
       </View>
     </View>
-  )
+  );
 }
