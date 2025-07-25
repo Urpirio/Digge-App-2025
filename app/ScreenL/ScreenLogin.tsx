@@ -1,14 +1,21 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Image, View, Text, TextInput, TouchableOpacity, StatusBar } from "react-native";
-import { router } from "expo-router";
+import {
+  Image,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
+import { Link, router } from "expo-router";
 import { useEnviarDatos } from "@/Components/Components_Login/hooks/useEnviarDatos";
 import { useStyleLogin } from "@/Components/Components_Login/hooks/useStyleLogin";
-import { useEffect } from "react";
 
 export default function ScreenLogin() {
   const { InputEmail, setInputEmail, InputPass, setInputPass } =
     useEnviarDatos();
   const { IconPass, setIconPass, BtnIconPass } = useStyleLogin();
+
 
   return (
     <SafeAreaProvider>
@@ -43,30 +50,34 @@ export default function ScreenLogin() {
           </Text>
         </View>
         <View style={{ gap: 10 }}>
-          <TextInput
-            value={InputEmail}
-            onChangeText={setInputEmail}
-            placeholder="Correo electrónico "
-            placeholderTextColor={"#adb5bd"}
-            style={{
-              borderWidth: 1,
-              backgroundColor: "#f5f3f3ff",
-              fontSize: 16,
+          <View style={{
+              backgroundColor: "#e9e9e97e",
+              flexDirection: "row",
+              justifyContent: "space-between",
               borderRadius: 10,
-              borderColor: "#e9ecef",
-              height: 50,
-            }}
-          />
+              alignItems: "center",
+              padding: 5,
+            }}>
+            <TextInput
+              value={InputEmail}
+              onChangeText={setInputEmail}
+              placeholder="Correo electrónico "
+              placeholderTextColor={"#adb5bd"}
+              style={{
+                fontSize: 16,
+                 width: "90%",
+                color:'gray'
+              }}
+            />
+          </View>
           <View
             style={{
-              borderWidth: 1,
-              backgroundColor: "#f5f3f3ff",
+              backgroundColor: "#e9e9e97e",
               flexDirection: "row",
-              justifyContent:'space-between',
+              justifyContent: "space-between",
               borderRadius: 10,
-              borderColor: "#e9ecef",
-              alignItems:'center',
-              padding:5
+              alignItems: "center",
+              padding: 5,
             }}
           >
             <TextInput
@@ -76,9 +87,9 @@ export default function ScreenLogin() {
               secureTextEntry={IconPass}
               placeholder="Contraseña"
               placeholderTextColor={"#adb5bd"}
-              style={{ fontSize: 16,width:'90%' }}
+              style={{ fontSize: 16, width: "90%",color:'gray' }}
             />
-            <TouchableOpacity onPress={()=>setIconPass(!IconPass)}>
+            <TouchableOpacity onPress={() => setIconPass(!IconPass)}>
               <BtnIconPass />
             </TouchableOpacity>
           </View>
@@ -91,8 +102,11 @@ export default function ScreenLogin() {
             Iniciar sesion
           </Text>
         </TouchableOpacity>
+        <Link style={{textAlign:'center',fontSize:15,fontWeight:'600',color:"#0F539C"}} href={'/'}>
+        Olvide mi Contraseña
+        </Link>
       </View>
-      <StatusBar barStyle={'dark-content'}/>
+      <StatusBar barStyle={"dark-content"} />
     </SafeAreaProvider>
   );
 }
