@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function index(){
@@ -33,6 +33,7 @@ export default function index(){
 
                 </View>
             </View>
+            <StatusBar barStyle={'dark-content'}/>
         </SafeAreaProvider>
     )
 }
