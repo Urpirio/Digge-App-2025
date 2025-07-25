@@ -1,5 +1,12 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { View, Image, Text, TextInput, TouchableOpacity, StatusBar } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import { router } from "expo-router";
 import { useStyleRegistro } from "@/Components/Components_Registro/hooks/useStyleRegitro";
 import { useEnviarDatosR } from "@/Components/Components_Registro/hooks/useEnviarDatosR";
@@ -58,43 +65,55 @@ export default function ScreenRegistrar() {
           </Text>
         </View>
         <View style={{ justifyContent: "center", gap: 10 }}>
-          <TextInput
-          value={InputEmail}
-          onChangeText={setInputEmail}
-            placeholder="Correo electrónico "
-            placeholderTextColor={"#adb5bd"}
-            style={{
-              borderWidth: 1,
-              backgroundColor: "#f5f3f3ff",
-              fontSize: 16,
-              borderRadius: 10,
-              borderColor: "#e9ecef",
-              height: 50,
-            }}
-          />
-          <TextInput
-          value={Inputcedula}
-          onChangeText={setInputcedula}
-            placeholder="Cedula"
-            placeholderTextColor={"#adb5bd"}
-            style={{
-              borderWidth: 1,
-              backgroundColor: "#f5f3f3ff",
-              fontSize: 16,
-              borderRadius: 10,
-              borderColor: "#e9ecef",
-              height: 50,
-            }}
-          />
           <View
             style={{
-              borderWidth: 1,
-              backgroundColor: "#f5f3f3ff",
+              backgroundColor: "#e9e9e97e",
               flexDirection: "row",
               justifyContent: "space-between",
-              borderRadius: 10,
-              borderColor: "#e9ecef",
               alignItems: "center",
+              borderRadius: 10,
+              padding: 5,
+            }}
+          >
+            <TextInput
+              value={InputEmail}
+              onChangeText={setInputEmail}
+              placeholder="Correo electrónico "
+              placeholderTextColor={"#adb5bd"}
+              style={{
+                fontSize: 16,
+                width: "90%",
+              }}
+            />
+          </View>
+          <View
+            style={{
+              backgroundColor: "#e9e9e97e",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderRadius: 10,
+              padding: 5,
+            }}
+          >
+            <TextInput
+              value={Inputcedula}
+              onChangeText={setInputcedula}
+              placeholder="Cedula"
+              placeholderTextColor={"#adb5bd"}
+              style={{
+                fontSize: 16,
+                width: "90%",
+              }}
+            />
+          </View>
+          <View
+            style={{
+              backgroundColor: "#e9e9e97e",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderRadius: 10,
               padding: 5,
             }}
           >
@@ -113,12 +132,10 @@ export default function ScreenRegistrar() {
           </View>
           <View
             style={{
-              borderWidth: 1,
-              backgroundColor: "#f5f3f3ff",
+              backgroundColor: "#e9e9e97e",
               flexDirection: "row",
               justifyContent: "space-between",
               borderRadius: 10,
-              borderColor: "#e9ecef",
               alignItems: "center",
               padding: 5,
             }}
@@ -136,7 +153,9 @@ export default function ScreenRegistrar() {
               <BtnPass_B />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity
+         
+        </View>
+         <TouchableOpacity
             onPress={() => router.navigate("/Screens/AScreenHome")}
             style={{
               padding: 12,
@@ -148,9 +167,8 @@ export default function ScreenRegistrar() {
               Registrarte
             </Text>
           </TouchableOpacity>
-        </View>
       </View>
-      <StatusBar barStyle={'dark-content'}/>
+      <StatusBar barStyle={"dark-content"} />
     </SafeAreaProvider>
   );
 }
