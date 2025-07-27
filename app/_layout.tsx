@@ -1,14 +1,14 @@
 import { Stack } from "expo-router";
-
+import { View } from "react-native";
 
 export default function _layout() {
   return (
-    <Stack screenOptions={{headerShown:false}}>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="index"
         options={{
           animation: "simple_push",
-          headerShown:false
+          headerShown: false,
         }}
       />
 
@@ -17,7 +17,7 @@ export default function _layout() {
         options={{
           animation: "fade",
           presentation: "formSheet",
-          headerShown:false
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -25,7 +25,13 @@ export default function _layout() {
         options={{
           animation: "fade",
           presentation: "formSheet",
-          headerShown:false
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SubScreens/ChatBotSoporte"
+        options={{
+          
         }}
       />
     </Stack>
