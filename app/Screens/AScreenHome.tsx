@@ -15,7 +15,7 @@ export default function ScreenHome() {
         <Section_AccionesRapidas />
         <Section_ActividadReciente/>
       </ScrollView>
-      {/* <StatusBar barStyle={'default'}/> */}
+     <StatusBar barStyle={'light-content'}/>
     </SafeAreaProvider>
   );
 }
