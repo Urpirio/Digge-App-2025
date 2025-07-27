@@ -4,6 +4,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+
 export default function Section_AccionesRapidas() {
   return (
     <View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
@@ -50,7 +51,7 @@ export default function Section_AccionesRapidas() {
           Titulo={"Chat Atención"}
           bgIconColor={"0FB9CB"}
           subTitulo={"Soporte DIGESSET"}
-          Link={"/SubScreens/ScreeenChatBotSoporte"}
+          Link={"/SubScreens/ScreenChatBotSoporte"}
         />
       </View>
     </View>
