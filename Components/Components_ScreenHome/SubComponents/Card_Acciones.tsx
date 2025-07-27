@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { router } from "expo-router";
 
 
 interface Content{
@@ -7,11 +8,13 @@ interface Content{
   Icon:any;
   Titulo: String;
   subTitulo:String;
+  Link: any,
 }
 
-export default function Card_Acciones({bgIconColor,Icon,Titulo,subTitulo}:Content) {
+export default function Card_Acciones({bgIconColor,Icon,Titulo,subTitulo,Link}:Content) {
   return (
     <TouchableOpacity
+      onPress={()=>router.navigate(Link)}
       style={{
         flexDirection: "row",
         borderWidth: 1,
