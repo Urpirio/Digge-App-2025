@@ -1,9 +1,11 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import Octicons from "@expo/vector-icons/Octicons";
+import { router } from "expo-router";
 
 export default function Card_AgregarCarros() {
   return (
     <TouchableOpacity
+      onPress={()=>router.navigate('/SubScreens/ScreenAgregarVehiculos')}
       style={{
         borderWidth: 1,
         width: "48%",
