@@ -22,7 +22,12 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.urpiriodev.DigeApp2025"
+      "package": "com.urpiriodev.DigeApp2025",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBUsVkX1m_0feaWe6aL-rcmx4mySEyuUus"
+        }
+      }
     },
     "web": {
       "bundler": "metro",
@@ -30,7 +35,24 @@
       "favicon": "./Assets/Image/Logo.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-maps",
+        {
+          "requestLocationPermission": true,
+          "locationPermission": "Allow $(PRODUCT_NAME) to use your location"
+        }
+      ],
+      "expo-localization",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ],
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true
