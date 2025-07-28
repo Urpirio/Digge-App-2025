@@ -14,7 +14,7 @@ export default function Section_TusCarros() {
         }}
       >
         <Card_MatriculasTusCarros />
-        <Card_AgregarCarros/>
+        {/* <Card_AgregarCarros/> */}
       </View>
 
     </View>
