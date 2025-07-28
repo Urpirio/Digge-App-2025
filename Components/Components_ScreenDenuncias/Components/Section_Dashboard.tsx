@@ -14,6 +14,7 @@ export default function Section_Dashboard() {
         Titulo={"Denunciar Conductor"}
         subTitulo={"Reporta un conductor"}
         bgIconColor={"FF9700"}
+        Link=""
       />
 
       <Card_Varibles
@@ -21,6 +22,7 @@ export default function Section_Dashboard() {
         Titulo={"Reportar Avería"}
         subTitulo={"Daños en vías"}
         bgIconColor={"4A739C"}
+        Link="SubScreens/ScreenReportarAveria"
       />
     </View>
   );
