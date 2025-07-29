@@ -1,4 +1,5 @@
-import { View, Text } from "react-native";
+import { router } from "expo-router";
+import { View, Text, TouchableOpacity } from "react-native";
 
 
 interface ContentCard {
@@ -7,10 +8,10 @@ interface ContentCard {
   Icon: any;
   Color: String;
   Titulo: String;
-  borderColor:String;
+  borderColor: String;
   bgColor: String;
-  TextColor:String;
-
+  TextColor: String;
+  Link: any;
 }
 
 export default function Card_Actividad({
@@ -21,10 +22,12 @@ export default function Card_Actividad({
   Titulo,
   borderColor,
   bgColor,
-  TextColor
+  TextColor,
+  Link
 }: ContentCard) {
   return (
-    <View
+    <TouchableOpacity 
+      onPress={()=>router.navigate(Link)}
       style={{
         borderWidth: 1,
         borderColor: `#dee2e653`,
@@ -34,13 +37,23 @@ export default function Card_Actividad({
         gap: 10,
         backgroundColor: `#${bgColor}`,
         marginRight: 10,
-        boxShadow: '0px 0px 3px 0px #dee2e653'
+        boxShadow: "0px 0px 3px 0px #dee2e653",
       }}
     >
-      <View style={{ flexDirection: "row", justifyContent: "space-between",alignItems:'flex-start' }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+        }}
+      >
         <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
           <View
-            style={{ padding: 4, borderRadius: 5, backgroundColor: `#${Color}` }}
+            style={{
+              padding: 4,
+              borderRadius: 5,
+              backgroundColor: `#${Color}`,
+            }}
           >
             {Icon}
           </View>
@@ -53,7 +66,7 @@ export default function Card_Actividad({
             alignItems: "center",
             backgroundColor: "white",
             paddingHorizontal: 10,
-            paddingVertical:5
+            paddingVertical: 5,
           }}
         >
           <Text style={{ color: `#${TextColor}`, fontSize: 12 }}>
@@ -62,8 +75,8 @@ export default function Card_Actividad({
         </View>
       </View>
       <View>
-        <Text style={{ color:`#${TextColor}`}}>{Titulo}</Text>
+        <Text style={{ color: `#${TextColor}` }}>{Titulo}</Text>
       </View>
-    </View>
+    </TouchableOpacity >
   );
 }
