@@ -47,9 +47,10 @@ export default function Section_Formulario() {
               style={{
                 borderWidth: 1,
                 borderColor: "#D1D0D0",
+                backgroundColor: "#efeded44",
                 justifyContent: "center",
                 borderRadius: 10,
-                backgroundColor: "#efeded44",
+                
               }}
             >
               <Picker
