@@ -15,21 +15,6 @@ export const useFormulario = () => {
     "Ubicación actaul (GPS)"
   );
 
-  const LocationUser = async () => {
-    // Revisar mas adelante, esto es para la geolocalizacion del usuario
-    await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-    );
-    let DataLocalizacion = await Location.requestBackgroundPermissionsAsync();
-    console.log(DataLocalizacion);
-
-   
-    
-
-
-    
-  };
-
   return {
     DropDownValue,
     setDropDownValue,
@@ -43,6 +28,5 @@ export const useFormulario = () => {
     setVideos,
     Localizacion,
     setLocalizacion,
-    LocationUser,
   };
 };
