@@ -6,8 +6,15 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFormulario } from "../Hooks/useFormulario";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
+import { useState } from "react";
+
+export let setDataDeFotos: any;
+export let DataDeFotos: any;
+export let DataLocalizacion: any;
+export let setDataLocalizacion: any;
 
 export default function Section_Formulario() {
+
   const {
     InputColor,
     InputDescripcion,
@@ -20,6 +27,13 @@ export default function Section_Formulario() {
     DropDownInfraccion,
     DropDownVehiculos,
   } = useFormulario();
+
+  const [Dlocalizacion, setDlocalizacion] = useState<any | null>([]);
+  setDataLocalizacion = setDlocalizacion;
+  DataLocalizacion = Dlocalizacion;
+  const [DataFotos, setDataFotos] = useState<any | null>([]);
+  setDataDeFotos = setDataFotos;
+  DataDeFotos = DataFotos;
 
   return (
     <View style={{ paddingHorizontal: 10, paddingBottom: 80 }}>
@@ -153,6 +167,7 @@ export default function Section_Formulario() {
       <View style={{ gap: 5 }}>
         <Text>Ubicación</Text>
         <TouchableOpacity
+          onPress={() => router.navigate("/Mod/Modal_MapDenuncias")}
           style={{
             borderWidth: 1,
             flexDirection: "row",
