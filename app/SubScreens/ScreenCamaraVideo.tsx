@@ -5,6 +5,7 @@ import { useCallback, useRef } from "react";
 import { View, Text, TouchableOpacity, StatusBar, Image } from "react-native";
 import { useState } from "react";
 import { useVideoPlayer, VideoView } from "expo-video";
+import Feather from "@expo/vector-icons/Feather";
 
 export default function ScreenCamaraVideo() {
   const [permiso, pedirPermiso] = useCameraPermissions();
@@ -86,11 +87,23 @@ export default function ScreenCamaraVideo() {
           position: "absolute",
           width: "100%",
           height: "100%",
-          justifyContent: "flex-end",
+          justifyContent: "space-between",
           alignItems: "center",
           padding: 20,
         }}
       >
+        <View style={{ width: "100%", alignItems: "flex-start" }}>
+          <TouchableOpacity
+            onPress={()=>router.back()}
+            style={{
+              padding: 10,
+              borderRadius: 30,
+              backgroundColor: "#0F539C",
+            }}
+          >
+            <Feather name="arrow-left" size={28} color="white" />
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity
           onPress={() => GrabarVideo()}
           style={{
