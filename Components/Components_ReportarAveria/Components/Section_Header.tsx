@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, Text, BackHandler } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
-import { useVolverAtras } from "../Hook/useVolverAtras";
+import { useVolverAtras } from "../../Components_Globales/hooks/useVolverAtras";
 import { useEffect } from "react";
 
 export default function Section_Header() {
@@ -8,7 +8,7 @@ export default function Section_Header() {
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", () => {
       AlertVolver();
-      return false;
+      return true;
     });
   }, []);
   return (
