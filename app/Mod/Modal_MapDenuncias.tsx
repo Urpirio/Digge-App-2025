@@ -11,7 +11,6 @@ export default function Modal_MapDenuncias() {
     ConseguirUbicacion,
     AgregarMarker,
     GeoMarker,
-    setGeoMarker,
     EliminarMarker,
   } = useLocalizacion();
 
