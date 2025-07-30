@@ -6,9 +6,9 @@ import { useFormulario } from "../Hook/useFormulario";
 import { router } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
-import Buttons_Evidencias from "../SubComponents/Buttons_Evidencias";
-import Contenedor_Evidencias from "../SubComponents/Contenedor_Evidencias";
-import Buttons_EvidenciasMini from "../SubComponents/Buttons_EvidenciasMini";
+import Buttons_Evidencias from "../../Components_Globales/SubComponents/Buttons_Evidencias";
+import Contenedor_Evidencias from "@/Components/Components_Globales/SubComponents/Contenedor_Evidencias";
+import Buttons_EvidenciasMini from "../../Components_Globales/SubComponents/Buttons_EvidenciasMini";
 
 export let setDataDeFotos: any;
 export let DataDeFotos: any;
@@ -183,11 +183,11 @@ export default function Section_Formulario() {
               <Text style={{ fontWeight: "500" }}>Evidencia</Text>
               <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
-            {DataFotos.length > 0 ? <Buttons_EvidenciasMini /> : <View />}
+            {DataFotos.length > 0 ? <Buttons_EvidenciasMini Status={2} /> : <View />}
           </View>
-          {DataFotos.length > 0 ? <View /> : <Buttons_Evidencias />}
+          {DataFotos.length > 0 ? <View /> : <Buttons_Evidencias Status={2} />}
           {DataFotos.length > 0 ? (
-            <Contenedor_Evidencias Data={DataFotos} />
+            <Contenedor_Evidencias Data={DataFotos} Status={2} />
           ) : (
             <View />
           )}
