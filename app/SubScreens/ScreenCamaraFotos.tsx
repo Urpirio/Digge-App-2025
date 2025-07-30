@@ -1,11 +1,18 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { router, useFocusEffect } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { useCallback, useRef } from "react";
 import { View, Text, TouchableOpacity, StatusBar, Image } from "react-native";
 import { useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
-import { setDataDeFotos,DataDeFotos } from "@/Components/Components_ReportarAveria/Components/Section_Formulario";
+import {
+  setDataDeFotos,
+  DataDeFotos,
+} from "@/Components/Components_ReportarAveria/Components/Section_Formulario";
+import {
+  setDataDeFotos1,
+  DataDeFotos1,
+} from "@/Components/Components_DenunciarConductor/Components/Section_Formulario";
 
 export default function ScreenCamaraFotos() {
   const [permiso, pedirPermiso] = useCameraPermissions();
@@ -13,9 +20,31 @@ export default function ScreenCamaraFotos() {
   const camara = useRef<CameraView>(null);
   const [ImageTrirada, setImageTrirada] = useState<any | null>(null);
 
+  const DataLocal = useLocalSearchParams();
+
   const TomarFoto = async () => {
     const Photo = await camara.current?.takePictureAsync();
     setImageTrirada(Photo?.uri);
+  };
+
+  const GuardarFotos = () => {
+    if (DataLocal?.Status == "2") {
+      setDataDeFotos([
+        ...DataDeFotos,
+        {
+          ImageTrirada: ImageTrirada,
+        },
+      ]);
+      setImageTrirada(null);
+    } else if (DataLocal?.Status == "1") {
+      setDataDeFotos1([
+        ...DataDeFotos,
+        {
+          ImageTrirada: ImageTrirada,
+        },
+      ]);
+      setImageTrirada(null);
+    }
   };
 
   if (!permiso?.granted) {
@@ -110,12 +139,7 @@ export default function ScreenCamaraFotos() {
           }}
         >
           <TouchableOpacity
-            onPress={()=>{
-              setDataDeFotos([...DataDeFotos,{
-                ImageTrirada: ImageTrirada,
-              }]);
-              setImageTrirada(null)
-            }}
+            onPress={() => GuardarFotos()}
             style={{
               padding: 10,
               width: "100%",
