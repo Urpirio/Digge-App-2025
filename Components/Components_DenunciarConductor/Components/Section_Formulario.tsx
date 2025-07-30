@@ -1,20 +1,23 @@
 import { Picker } from "@react-native-picker/picker";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import Entypo from "@expo/vector-icons/Entypo";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFormulario } from "../Hooks/useFormulario";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
 import { useState } from "react";
+import Buttons_Evidencias from "@/Components/Components_Globales/SubComponents/Buttons_Evidencias";
+import Buttons_EvidenciasMini from "@/Components/Components_Globales/SubComponents/Buttons_EvidenciasMini";
+import Contenedor_Evidencias from "@/Components/Components_Globales/SubComponents/Contenedor_Evidencias";
 
-export let setDataDeFotos: any;
-export let DataDeFotos: any;
+
+
+export let setDataDeFotos1: any;
+export let DataDeFotos1: any;
 export let DataLocalizacion: any;
 export let setDataLocalizacion: any;
 
 export default function Section_Formulario() {
-
+  
   const {
     InputColor,
     InputDescripcion,
@@ -32,12 +35,12 @@ export default function Section_Formulario() {
   setDataLocalizacion = setDlocalizacion;
   DataLocalizacion = Dlocalizacion;
   const [DataFotos, setDataFotos] = useState<any | null>([]);
-  setDataDeFotos = setDataFotos;
-  DataDeFotos = DataFotos;
+  setDataDeFotos1 = setDataFotos;
+  DataDeFotos1 = DataFotos;
 
   return (
-    <View style={{ paddingHorizontal: 10, paddingBottom: 80 }}>
-      <View style={{ gap: 10 }}>
+    <View style={{ paddingHorizontal: 10, paddingBottom: 80,gap:10 }}>
+      <View style={{ gap: 5 }}>
         <Text style={{ fontSize: 20, fontWeight: "500" }}>
           Datos del Vehículo
         </Text>
@@ -57,68 +60,69 @@ export default function Section_Formulario() {
             }}
           />
         </View>
-        <View style={{ gap: 5 }}>
-          <Text>Tipo de Vehículo</Text>
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              borderColor: "#D1D0D0",
-              backgroundColor: "#efeded44",
-            }}
+      </View>
+      <View style={{ gap: 5 }}>
+        <Text>Tipo de Vehículo</Text>
+        <View
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            borderColor: "#D1D0D0",
+            backgroundColor: "#efeded44",
+          }}
+        >
+          <Picker
+            selectedValue={DropDownVehiculos}
+            onValueChange={setDropDownVehiculos}
           >
-            <Picker
-              selectedValue={DropDownVehiculos}
-              onValueChange={setDropDownVehiculos}
-            >
-              <Picker.Item
-                style={{
-                  color: DropDownVehiculos === "Prueba 1" ? "#0F539C" : "gray",
-                }}
-                value={"Prueba 1"}
-                label="Prueba 1"
-              />
-              <Picker.Item
-                style={{
-                  color: DropDownVehiculos === "Prueba 2" ? "#0F539C" : "gray",
-                }}
-                value={"Prueba 2"}
-                label="Prueba 2"
-              />
-              <Picker.Item
-                style={{
-                  color: DropDownVehiculos === "Prueba 3" ? "#0F539C" : "gray",
-                }}
-                value={"Prueba 3"}
-                label="Prueba 3"
-              />
-              <Picker.Item
-                style={{
-                  color: DropDownVehiculos === "Prueba 4" ? "#0F539C" : "gray",
-                }}
-                value={"Prueba 4"}
-                label="Prueba 4"
-              />
-            </Picker>
-          </View>
-        </View>
-        <View style={{ gap: 5 }}>
-          <Text>Color del Vehículo *</Text>
-          <TextInput
-            placeholder="Ej: Blanco, Azul, Rojo"
-            value={InputColor}
-            onChangeText={setInputColor}
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              height: 55,
-              fontSize: 16,
-              borderColor: "#D1D0D0",
-              backgroundColor: "#efeded44",
-            }}
-          />
+            <Picker.Item
+              style={{
+                color: DropDownVehiculos === "Prueba 1" ? "#0F539C" : "gray",
+              }}
+              value={"Prueba 1"}
+              label="Prueba 1"
+            />
+            <Picker.Item
+              style={{
+                color: DropDownVehiculos === "Prueba 2" ? "#0F539C" : "gray",
+              }}
+              value={"Prueba 2"}
+              label="Prueba 2"
+            />
+            <Picker.Item
+              style={{
+                color: DropDownVehiculos === "Prueba 3" ? "#0F539C" : "gray",
+              }}
+              value={"Prueba 3"}
+              label="Prueba 3"
+            />
+            <Picker.Item
+              style={{
+                color: DropDownVehiculos === "Prueba 4" ? "#0F539C" : "gray",
+              }}
+              value={"Prueba 4"}
+              label="Prueba 4"
+            />
+          </Picker>
         </View>
       </View>
+      <View style={{ gap: 5 }}>
+        <Text>Color del Vehículo *</Text>
+        <TextInput
+          placeholder="Ej: Blanco, Azul, Rojo"
+          value={InputColor}
+          onChangeText={setInputColor}
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            height: 55,
+            fontSize: 16,
+            borderColor: "#D1D0D0",
+            backgroundColor: "#efeded44",
+          }}
+        />
+      </View>
+
       <View style={{ gap: 5 }}>
         <Text>Tipo de Infracción</Text>
         <View
@@ -164,6 +168,7 @@ export default function Section_Formulario() {
           </Picker>
         </View>
       </View>
+
       <View style={{ gap: 5 }}>
         <Text>Ubicación</Text>
         <TouchableOpacity
@@ -181,9 +186,14 @@ export default function Section_Formulario() {
           }}
         >
           <FontAwesome6 name="location-dot" size={18} color="#0F539C" />
-          <Text>Ubicación actaul (GPS)</Text>
+          <Text style={{ color: "gray" }}>
+            {DataLocalizacion.length > 0
+              ? "Ubicacion seleccionada"
+              : "Selecciona la ubicacion (GPS)"}
+          </Text>
         </TouchableOpacity>
       </View>
+
       <View style={{ gap: 5 }}>
         <Text>Descripción del Incidente *</Text>
         <TextInput
@@ -201,54 +211,29 @@ export default function Section_Formulario() {
           }}
         />
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          paddingVertical: 20,
-        }}
-      >
-        <TouchableOpacity
-          onPress={() => router.navigate("/SubScreens/ScreenCamaraFotos")}
+
+      <View style={{ gap: 5, width: "100%" }}>
+        <View
           style={{
-            justifyContent: "center",
+            flexDirection: "row",
+            justifyContent: "space-between",
             alignItems: "center",
-            paddingVertical: 15,
-            borderWidth: 1,
-            width: "48%",
-            borderRadius: 10,
-            gap: 5,
-            backgroundColor: "white",
-            borderColor: "#7877773f",
-            boxShadow: "0px 0px 10px 0px #78777710",
           }}
         >
-          <Entypo name="camera" size={24} color="#0F539C" />
-          <Text style={{ color: "#0F539C", fontWeight: "500" }}>
-            Tomar Foto
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => router.navigate("/SubScreens/ScreenCamaraVideo")}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            paddingVertical: 15,
-            borderWidth: 1,
-            width: "48%",
-            borderRadius: 10,
-            gap: 5,
-            backgroundColor: "white",
-            borderColor: "#7877773f",
-            boxShadow: "0px 0px 10px 0px #78777711",
-          }}
-        >
-          <FontAwesome name="video-camera" size={24} color="#0F539C" />
-          <Text style={{ color: "#0F539C", fontWeight: "500" }}>
-            Grabar video
-          </Text>
-        </TouchableOpacity>
+          <View style={{ flexDirection: "row", gap: 5 }}>
+            <Text style={{ fontWeight: "500" }}>Evidencia</Text>
+            <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
+          </View>
+          {DataFotos.length > 0 ? <Buttons_EvidenciasMini Status={1} /> : <View />}
+        </View>
+        {DataFotos.length > 0 ? <View /> : <Buttons_Evidencias Status={1} />}
+        {DataFotos.length > 0 ? (
+          <Contenedor_Evidencias Data={DataFotos} Status={1} />
+        ) : (
+          <View />
+        )}
       </View>
+
       <View>
         <TouchableOpacity
           style={{
