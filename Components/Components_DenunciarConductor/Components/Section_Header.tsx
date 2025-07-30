@@ -1,8 +1,20 @@
-import { View,TouchableOpacity,Text } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
-import { router } from "expo-router";
+import { useVolverAtras } from "@/Components/Components_Globales/hooks/useVolverAtras";
+import { useCallback } from "react";
+import { BackHandler } from "react-native";
+import { useFocusEffect } from "expo-router";
 
 export default function Section_Header() {
+  const { AlertVolver } = useVolverAtras();
+  useFocusEffect(
+    useCallback(() => {
+      BackHandler.addEventListener("hardwareBackPress", () => {
+        AlertVolver();
+        return true;
+      });
+    }, [])
+  );
   return (
     <View
       style={{
@@ -13,7 +25,7 @@ export default function Section_Header() {
       }}
     >
       <TouchableOpacity
-        onPress={() => router.back()}
+        onPress={() => AlertVolver()}
         style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
       >
         <Feather name="arrow-left" size={28} color="#f8f9faa7" />
