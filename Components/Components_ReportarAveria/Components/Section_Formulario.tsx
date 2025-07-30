@@ -1,11 +1,19 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Entypo from "@expo/vector-icons/Entypo";
 import { Picker } from "@react-native-picker/picker";
 import { useFormulario } from "../Hook/useFormulario";
 import { router } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
+import { useState } from "react";
+import Buttons_Evidencias from "../SubComponents/Buttons_Evidencias";
+import Contenedor_Evidencias from "../SubComponents/Contenedor_Evidencias";
+import Buttons_EvidenciasMini from "../SubComponents/Buttons_EvidenciasMini";
+
+export let setDataDeFotos: any;
+export let DataDeFotos: any;
+export let DataLocalizacion: any;
+export let setDataLocalizacion: any;
 
 export default function Section_Formulario() {
   const {
@@ -15,10 +23,16 @@ export default function Section_Formulario() {
     setInputCarriles,
     TextTareaDescripcion,
     setTextTareaDescripcion,
-    setLocalizacion,
-    Localizacion,
-    LocationUser,
   } = useFormulario();
+
+  const [Dlocalizacion, setDlocalizacion] = useState<any | null>([]);
+  setDataLocalizacion = setDlocalizacion;
+  DataLocalizacion = Dlocalizacion;
+  const [DataFotos, setDataFotos] = useState<any | null>([]);
+  setDataDeFotos = setDataFotos;
+  DataDeFotos = DataFotos;
+
+  const DataLocal = useLocalSearchParams();
 
   return (
     <View style={{ paddingHorizontal: 10, paddingBottom: 50 }}>
@@ -41,7 +55,7 @@ export default function Section_Formulario() {
           <View style={{ gap: 5 }}>
             <View style={{ flexDirection: "row", gap: 5 }}>
               <Text>Tipo de Daño</Text>
-              <Text style={{ color: "red",fontWeight:'500'  }}>*</Text>
+              <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
             <View
               style={{
@@ -50,7 +64,6 @@ export default function Section_Formulario() {
                 backgroundColor: "#efeded44",
                 justifyContent: "center",
                 borderRadius: 10,
-                
               }}
             >
               <Picker
@@ -89,13 +102,14 @@ export default function Section_Formulario() {
               </Picker>
             </View>
           </View>
+
           <View style={{ gap: 5 }}>
             <View style={{ flexDirection: "row", gap: 5 }}>
               <Text>Ubicación</Text>
-              <Text style={{ color: "red" ,fontWeight:'500' }}>*</Text>
+              <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
             <TouchableOpacity
-              onPress={() => LocationUser()}
+              onPress={() => router.navigate("/Mod/Modal_MapReportesAverias")}
               style={{
                 borderWidth: 1,
                 borderColor: "#D1D0D0",
@@ -108,13 +122,18 @@ export default function Section_Formulario() {
               }}
             >
               <FontAwesome6 name="location-dot" size={24} color="#0F539C" />
-              <Text style={{ color: "gray" }}>{Localizacion}</Text>
+              <Text style={{ color: "gray" }}>
+                {DataLocalizacion.length > 0
+                  ? "Ubicacion seleccionada"
+                  : "Selecciona la ubicacion (GPS)"}
+              </Text>
             </TouchableOpacity>
           </View>
+
           <View style={{ gap: 5 }}>
             <View style={{ flexDirection: "row", gap: 5 }}>
               <Text>Carriles Afectados</Text>
-              <Text style={{ color: "red",fontWeight:'500'  }}>*</Text>
+              <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
             <TextInput
               value={InputCarriles}
@@ -134,7 +153,7 @@ export default function Section_Formulario() {
           <View style={{ gap: 5 }}>
             <View style={{ flexDirection: "row", gap: 5 }}>
               <Text>Descripción Detallada</Text>
-              <Text style={{ color: "red",fontWeight:'500'  }}>*</Text>
+              <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
 
             <TextInput
@@ -153,56 +172,25 @@ export default function Section_Formulario() {
         </View>
 
         <View style={{ gap: 5, width: "100%" }}>
-          <View style={{ flexDirection: "row", gap: 5 }}>
-            <Text>Evidencia</Text>
-            <Text style={{ color: "red",fontWeight:'500' }}>*</Text>
-          </View>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              width: "100%",
+              alignItems: "center",
             }}
           >
-            <TouchableOpacity
-              onPress={() => router.navigate("/SubScreens/ScreenCamaraFotos")}
-              style={{
-                borderWidth: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                width: "48%",
-                padding: 10,
-                gap: 5,
-                borderRadius: 10,
-                borderColor: "#D1D0D0",
-                backgroundColor: "white",
-              }}
-            >
-              <Entypo name="camera" size={24} color="#0F539C" />
-              <Text style={{ color: "#0F539C", fontWeight: "500" }}>
-                Tomar Foto
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => router.navigate("/SubScreens/ScreenCamaraVideo")}
-              style={{
-                borderWidth: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                width: "48%",
-                padding: 10,
-                gap: 5,
-                borderRadius: 10,
-                borderColor: "#D1D0D0",
-                backgroundColor: "white",
-              }}
-            >
-              <FontAwesome name="video-camera" size={24} color="#0F539C" />
-              <Text style={{ color: "#0F539C", fontWeight: "500" }}>
-                Grabar video
-              </Text>
-            </TouchableOpacity>
+            <View style={{ flexDirection: "row", gap: 5 }}>
+              <Text style={{ fontWeight: "500" }}>Evidencia</Text>
+              <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
+            </View>
+            {DataFotos.length > 0 ? <Buttons_EvidenciasMini /> : <View />}
           </View>
+          {DataFotos.length > 0 ? <View /> : <Buttons_Evidencias />}
+          {DataFotos.length > 0 ? (
+            <Contenedor_Evidencias Data={DataFotos} />
+          ) : (
+            <View />
+          )}
         </View>
 
         <View style={{ paddingTop: 10 }}>
