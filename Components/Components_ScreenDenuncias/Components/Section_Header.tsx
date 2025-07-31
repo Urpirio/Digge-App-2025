@@ -1,17 +1,20 @@
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { router } from "expo-router";
 
-
-interface Content{
-    setStateSelect: any;
-    StateSelect: boolean;
+interface Content {
+  setStateSelect: any;
+  StateSelect: boolean;
 }
 
-export default function Section_Header({setStateSelect,StateSelect}:Content) {
+export default function Section_Header({
+  setStateSelect,
+  StateSelect,
+}: Content) {
   return (
     <View>
-        <View
+      <View
         style={{
           flexDirection: "row",
           backgroundColor: "#0F539C",
@@ -38,7 +41,9 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
           <TouchableOpacity>
             <Ionicons name="search-outline" size={30} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => router.navigate("/SubScreens/ScreenNotificaciones")}
+          >
             <Ionicons name="notifications-outline" size={30} color="white" />
           </TouchableOpacity>
         </View>
@@ -65,7 +70,7 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
           }}
         >
           <TouchableOpacity
-          onPress={()=>setStateSelect(false)}
+            onPress={() => setStateSelect(false)}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -74,14 +79,25 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
               borderRadius: 10,
               gap: 5,
               justifyContent: "center",
-              backgroundColor:StateSelect ? '#0F539C' : 'white'
+              backgroundColor: StateSelect ? "#0F539C" : "white",
             }}
           >
-            <Ionicons name="wallet-outline" size={16} color={StateSelect ? 'white' : '#0F539C'} />
-            <Text style={{ color: StateSelect ? 'white' : '#0F539C', fontWeight: "500" }}>Dashboard</Text>
+            <Ionicons
+              name="wallet-outline"
+              size={16}
+              color={StateSelect ? "white" : "#0F539C"}
+            />
+            <Text
+              style={{
+                color: StateSelect ? "white" : "#0F539C",
+                fontWeight: "500",
+              }}
+            >
+              Dashboard
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
-          onPress={()=>setStateSelect(true)}
+            onPress={() => setStateSelect(true)}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -90,14 +106,25 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
               borderRadius: 10,
               gap: 5,
               justifyContent: "center",
-              backgroundColor: StateSelect ? 'white' : '#0F539C'
+              backgroundColor: StateSelect ? "white" : "#0F539C",
             }}
           >
-            <MaterialIcons name="access-time" size={16} color={StateSelect ? '#0F539C' :'white' } />
-            <Text style={{ color: StateSelect ? '#0F539C' : 'white', fontWeight: "500" }}>Historial</Text>
+            <MaterialIcons
+              name="access-time"
+              size={16}
+              color={StateSelect ? "#0F539C" : "white"}
+            />
+            <Text
+              style={{
+                color: StateSelect ? "#0F539C" : "white",
+                fontWeight: "500",
+              }}
+            >
+              Historial
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
     </View>
-  )
+  );
 }
