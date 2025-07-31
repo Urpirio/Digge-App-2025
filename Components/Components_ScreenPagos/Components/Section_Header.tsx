@@ -1,6 +1,7 @@
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { router } from "expo-router";
 
 
 interface Content{
@@ -38,7 +39,7 @@ export default function Section_Header({setStateSelect,StateSelect}:Content) {
           <TouchableOpacity>
             <Ionicons name="search-outline" size={30} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>router.navigate('/SubScreens/ScreenNotificaciones')}>
             <Ionicons name="notifications-outline" size={30} color="white" />
           </TouchableOpacity>
         </View>
