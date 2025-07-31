@@ -101,7 +101,7 @@ export default function SectionContenedorChat() {
                   color: "white",
                   borderTopLeftRadius: 10,
                   borderTopRightRadius: 10,
-                  borderBottomRightRadius: 10,
+                  borderBottomLeftRadius: 10,
                   fontSize: 16,
                 }}
               >
@@ -115,7 +115,7 @@ export default function SectionContenedorChat() {
                     height: 30,
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
-                    borderBottomLeftRadius: 10,
+                    borderBottomRightRadius: 10,
                   }}
                 />
               </View>
@@ -136,7 +136,7 @@ export default function SectionContenedorChat() {
                   color: "white",
                   borderTopLeftRadius: 10,
                   borderTopRightRadius: 10,
-                  borderBottomRightRadius: 10,
+                  borderBottomLeftRadius:10,
                   fontSize: 16,
                 }}
               >
