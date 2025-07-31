@@ -44,6 +44,10 @@ export default function _layout() {
         name="ScreenTraffiPuntos"
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="ScreenNotificaciones"
+        options={{ headerShown: false }}
+      />
       
     </Stack>
   );
