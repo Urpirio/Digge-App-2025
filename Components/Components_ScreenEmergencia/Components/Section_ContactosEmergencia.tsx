@@ -1,8 +1,8 @@
 import { View, Text } from "react-native";
 import Card_Emergencias from "../SubComponents/Card_Emergencias";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function Section_ContactosEmergencia() {
   return (
@@ -20,21 +20,24 @@ export default function Section_ContactosEmergencia() {
             />
           }
           bgIconColor={"EE2A24"}
+          Link="tel:911"
         />
         <Card_Emergencias
           Titulo={"Cruz roja"}
           subTitulo={"Emergencias medicas"}
           Icon={<FontAwesome name="plus" size={28} color="white" />}
           bgIconColor={"EE2A24"}
+          Link="tel:8093344545"
         />
         <Card_Emergencias
           Titulo={"Bomberos"}
           subTitulo={"Emergencias de fuego"}
           Icon={<MaterialIcons name="fire-truck" size={24} color="white" />}
           bgIconColor={"FF9900"}
+          Link="tel:8096822000"
         />
         <Card_Emergencias
-          Titulo={"DIGESSET"}
+          Titulo={"Asitencia Vial"}
           subTitulo={"Autoridades de transito"}
           Icon={
             <MaterialCommunityIcons
@@ -44,6 +47,7 @@ export default function Section_ContactosEmergencia() {
             />
           }
           bgIconColor={"2096F4"}
+          Link="tel:8296881000"
         />
       </View>
     </View>
