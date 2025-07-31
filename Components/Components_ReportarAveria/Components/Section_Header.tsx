@@ -7,7 +7,6 @@ export default function Section_Header() {
   const { AlertVolver } = useVolverAtras();
   useEffect(() => {
     BackHandler.addEventListener("hardwareBackPress", () => {
-      AlertVolver();
       return true;
     });
   }, []);
