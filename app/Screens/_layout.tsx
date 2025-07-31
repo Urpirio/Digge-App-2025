@@ -22,6 +22,9 @@ export default function _layout() {
       }}
     >
       <Tabs.Protected guard={true}>
+
+
+
         <Tabs.Screen
           name="AScreenHome"
           options={{
@@ -70,6 +73,10 @@ export default function _layout() {
             animation:"fade",
           }}
         />
+
+
+
+        
         <Tabs.Screen
           name="BScreenVehiculos"
           options={{
