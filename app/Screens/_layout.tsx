@@ -277,6 +277,7 @@ export default function _layout() {
 
 
       </Tabs.Protected>
+
     </Tabs>
   );
 }
