@@ -24,14 +24,15 @@ export default function Card_Acciones({bgIconColor,Icon,Titulo,subTitulo,Link}:C
         backgroundColor:"#fcfcfcff",
         borderRadius:10,
         borderColor:'#dee2e651',
-        marginBottom:10
+        marginBottom:10,
+        height:80
       }}
     >
       <View style={{flexDirection:'row',gap:10,alignItems:'center'}}>
         <View style={{padding:15,borderRadius:10,backgroundColor:`#${bgIconColor}`}}>
           {Icon}
         </View>
-        <View>
+        <View >
           <Text style={{fontSize:18}}>{Titulo}</Text>
           <Text style={{fontSize:14,color:'#4A739C'}}>{subTitulo}</Text>
         </View>
