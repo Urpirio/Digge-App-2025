@@ -1,16 +1,21 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Linking } from "react-native";
 
 interface Content {
-  bgIconColor: String;
-  Icon: any;
-  Titulo: String;
-  subTitulo: String;
-}
+  bgIconColor: String,
+  Icon: any,
+  Titulo: String,
+  subTitulo: String,
+  Link: string,
+};
 
-export default function Card_Emergencias({bgIconColor,Icon,Titulo,subTitulo}:Content) {
+export default function Card_Emergencias({bgIconColor,Icon,Titulo,subTitulo,Link}:Content) {
   return (
     <TouchableOpacity
+      onPress={async ()=>{
+        await Linking.openURL(Link)
+      }}
       style={{
         flexDirection: "row",
         borderWidth: 1,
