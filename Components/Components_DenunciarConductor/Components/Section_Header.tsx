@@ -10,7 +10,6 @@ export default function Section_Header() {
   useFocusEffect(
     useCallback(() => {
       BackHandler.addEventListener("hardwareBackPress", () => {
-        AlertVolver();
         return true;
       });
     }, [])
