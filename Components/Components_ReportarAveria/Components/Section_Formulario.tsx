@@ -109,7 +109,7 @@ export default function Section_Formulario() {
               <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
             <TouchableOpacity
-              onPress={() => router.navigate("/Mod/Modal_MapReportesAverias")}
+              onPress={() => router.navigate("/ScreensMap/ScreenMap_ReportesAverias")}
               style={{
                 borderWidth: 1,
                 borderColor: "#D1D0D0",
