@@ -172,7 +172,7 @@ export default function Section_Formulario() {
       <View style={{ gap: 5 }}>
         <Text>Ubicación</Text>
         <TouchableOpacity
-          onPress={() => router.navigate("/Mod/Modal_MapDenuncias")}
+          onPress={() => router.navigate("/ScreensMap/ScreenMap_Denuncias")}
           style={{
             borderWidth: 1,
             flexDirection: "row",
