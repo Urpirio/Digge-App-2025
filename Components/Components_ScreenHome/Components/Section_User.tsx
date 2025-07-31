@@ -1,6 +1,7 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Card_Score from "../SubComponents/Card_Score";
+import { router } from "expo-router";
 
 export default function Section_User() {
   return (
@@ -19,7 +20,7 @@ export default function Section_User() {
           <TouchableOpacity>
             <Ionicons name="search-outline" size={30} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>router.navigate('/SubScreens/ScreenNotificaciones')} >
             <Ionicons name="notifications-outline" size={30} color="white" />
           </TouchableOpacity>
         </View>
