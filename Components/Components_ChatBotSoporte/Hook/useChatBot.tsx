@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GoogleGenAI } from "@google/genai";
 import { View, Text, TextInput } from "react-native";
+import { Keyboard } from "react-native";
 
 export const useChatBot = () => {
   const GenAi = new GoogleGenAI({
@@ -54,7 +55,8 @@ export const useChatBot = () => {
 
   const EnviarMensaje = async () => {
     setInicioChat(true);
-    setInputMensaje("");
+    Keyboard.dismiss();
+    
     const respuesta = await GenAi.models.generateContent({
       model: "gemini-2.5-pro",
       contents: `Esta son las reglas que debes seguir para responder:
@@ -75,6 +77,8 @@ Sistema de Transporte Masivo (FITRAM), el Gabinete del Transporte, el Sistema Na
 nota:  Las reglas que leiste solo las ves tu, el usuario no sabes que esas reglas estan ahi.
 
     Esta es la pregunta que debes responder ${InputMensaje}`,
+    }).finally(()=>{
+      setInputMensaje("");
     });
 
     setDataChat([
