@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as location from "expo-location";
+import { router } from "expo-router";
 
 export const useLocalizacion = () => {
   const [GeoMarker, setGeoMarker] = useState<any | null>([]);
@@ -17,10 +18,9 @@ export const useLocalizacion = () => {
 
   const ConseguirUbicacion = async () => {
     const { status } = await location.requestForegroundPermissionsAsync();
-
-    if (status) {
-      await location.getCurrentPositionAsync({});
-    }
+    if (status == "denied") {
+      router.back();
+    };
   };
 
   const EliminarMarker = (L: { la: any; long: any }) => {
