@@ -3,7 +3,7 @@ import Card_Acciones from "../SubComponents/Card_Acciones";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
+import Fontisto from "@expo/vector-icons/Fontisto";
 
 export default function Section_AccionesRapidas() {
   return (
@@ -15,7 +15,7 @@ export default function Section_AccionesRapidas() {
           Titulo={"Emergencias"}
           bgIconColor={"EE2A24"}
           subTitulo={"Asistencia inmediata"}
-          Link={"/"}
+          Link={"/Screens/ScreenEmergencia"}
         />
 
         <Card_Acciones
@@ -29,17 +29,15 @@ export default function Section_AccionesRapidas() {
           Titulo={"Nueva Denuncia"}
           bgIconColor={"FF9700"}
           subTitulo={"Reporta un incidente"}
-          Link={"/"}
+          Link={"/SubScreens/ScreenDenunciarConductor"}
         />
-
-        <Card_Acciones
-          Icon={<Ionicons size={25} name="car-outline" color={"white"} />}
-          Titulo={"Agregar Vehículo"}
-          bgIconColor={"4A739C"}
-          subTitulo={"Gestionar Vehículos"}
-          Link={"/"}
+         <Card_Acciones
+          Icon={<Fontisto name="map" size={24} color="white" />}
+          Titulo={"Digge-Map"}
+          bgIconColor={"008000"}
+          subTitulo={"mapa de navegacion"}
+          Link={"ScreensMap/ScreenMap_Navegacion"}
         />
-
         <Card_Acciones
           Icon={
             <MaterialCommunityIcons
@@ -53,6 +51,7 @@ export default function Section_AccionesRapidas() {
           subTitulo={"Soporte DIGESSET"}
           Link={"/SubScreens/ScreenChatBotSoporte"}
         />
+       
       </View>
     </View>
   );
