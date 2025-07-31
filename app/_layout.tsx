@@ -38,7 +38,22 @@ export default function _layout() {
         presentation:'transparentModal',
         animation:'slide_from_bottom'
       }}/>
-
+      <Stack.Screen name="Mod/Modal_EnviarUbicacion" options={{
+        presentation: 'transparentModal',
+        animation:'slide_from_bottom'
+      }}/>
+      <Stack.Screen name="Mod/Modal_MapReportes" options={{
+        presentation:'transparentModal',
+        animation:'slide_from_bottom',
+        animationDuration:300
+      }} />
+      <Stack.Screen name="Mod/Modal_InfoReporte" options={{
+        animation:'slide_from_bottom',
+        presentation:'containedTransparentModal',
+        // sheetAllowedDetents:'fitToContents',
+        sheetExpandsWhenScrolledToEdge:true,
+        sheetGrabberVisible:true
+      }}/>
     </Stack>
   );
 }
