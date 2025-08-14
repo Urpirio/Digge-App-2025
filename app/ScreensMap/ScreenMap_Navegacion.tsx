@@ -1,10 +1,11 @@
-import MapView, { Marker, Polyline } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useLocalizacion } from "@/Components/Components_Globales/hooks/useLocalizacion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useFocusEffect } from "expo-router";
-import { TouchableOpacity, View, Image } from "react-native";
+import { TouchableOpacity, View, Image, TextInput } from "react-native";
 import { router } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
@@ -13,6 +14,7 @@ import Feather from "@expo/vector-icons/Feather";
 
 export default function Modal_MapNavegacion() {
   const { ConseguirUbicacion } = useLocalizacion();
+  const [ZoomState, setZoomState] = useState<number>();
   const {
     CategoriaMarker,
     StatusNav,
@@ -52,24 +54,113 @@ export default function Modal_MapNavegacion() {
             borderRadius: 10,
           }}
         ></View>
+
+        <View
+          style={{
+            position: "absolute",
+            width: "100%",
+            paddingLeft: 10,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              transform: "translate(0px,60px)",
+              zIndex: 20,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                router.back();
+              }}
+              style={{
+                height: 55,
+                width: 55,
+                borderRadius: "100%",
+                backgroundColor: "white",
+                justifyContent: "center",
+                alignItems: "center",
+                borderColor: "#dee2e6",
+                boxShadow: "0px 0px 10px 0px #acacac37 ",
+              }}
+            >
+              <View
+                style={{
+                  borderRadius: "100%",
+                  padding: 5,
+                  backgroundColor: "#0F539C",
+                }}
+              >
+                <Feather name="arrow-left" size={28} color="#f8f9faa7" />
+              </View>
+            </TouchableOpacity>
+            <View
+              style={{
+                backgroundColor: "white",
+                width: "80%",
+                borderWidth: 1,
+                borderColor: "#ced4da",
+                paddingHorizontal: 10,
+                paddingVertical: 3,
+                borderRadius: 20,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Ionicons name="search-outline" size={24} color="#ced4da" />
+              <TextInput
+                placeholder="A donde te diriges hoy?"
+                style={{
+                  backgroundColor: "white",
+                  width: "75%",
+                }}
+              />
+              <TouchableOpacity onPress={()=>router.navigate("/Mod/Modal_Ruta")}>
+                <Ionicons name="filter-outline" size={20} color="#0F539C" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
       </View>
       <MapView
+        // followsUserLocation={true}
+        initialRegion={{
+          latitude: 18.46034470392088,
+          latitudeDelta: 18.46034470392088,
+          longitude: -69.94002951309085,
+          longitudeDelta: -69.94002951309085,
+        }}
+        // liteMode={true}
+        // moveOnMarkerPress={true}
         onMarkerSelect={(D) => {
-          console.log(D);
+          const { position } = D.nativeEvent;
+          // console.log(position);
         }}
         onKmlReady={(event) => {
           const {} = event.nativeEvent;
         }}
+        // onMagicTap={() => {}}
+        onRegionChange={(event) => {
+          const { longitude, longitudeDelta, latitude, latitudeDelta } = event;
+          // console.log(longitude + " " + latitude);
+        }}
+        cameraZoomRange={{}}
         onPoiClick={(event) => {
           const { coordinate, name, placeId, position } = event.nativeEvent;
-          console.log(coordinate);
+          // console.log(coordinate);
           console.log(name);
-          console.log(placeId);
-          console.log(position);
+          // console.log(placeId);
+          // console.log(position);
         }}
         showsBuildings={true}
-        showsMyLocationButton={true}
+        showsMyLocationButton={false}
         showsUserLocation={true}
+        // userInterfaceStyle="dark"
+        userLocationPriority="high"
         showsTraffic={true}
         style={{ height: "94%", width: "100%" }}
       >
@@ -110,34 +201,9 @@ export default function Modal_MapNavegacion() {
           alignItems: "center",
           width: "100%",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
-        <TouchableOpacity
-          onPress={() => {
-            router.back();
-          }}
-          style={{
-            height: 55,
-            width: 55,
-            borderRadius: "100%",
-            backgroundColor: "white",
-            justifyContent: "center",
-            alignItems: "center",
-            borderColor: "#dee2e6",
-            boxShadow: "0px 0px 10px 0px #acacac37 ",
-          }}
-        >
-          <View
-            style={{
-              borderRadius: "100%",
-              padding: 5,
-              backgroundColor: "#0F539C",
-            }}
-          >
-            <Feather name="arrow-left" size={28} color="#f8f9faa7" />
-          </View>
-        </TouchableOpacity>
         <View
           style={{
             backgroundColor: "white",
