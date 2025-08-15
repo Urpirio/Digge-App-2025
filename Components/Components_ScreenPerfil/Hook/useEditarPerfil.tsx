@@ -60,5 +60,6 @@ export const useEditarPerfil = () =>{
         setInput_NumeroT_secundario,
         EstadoGuardar,
         bgStatus,
+        setbgStatus,
     }
 }
