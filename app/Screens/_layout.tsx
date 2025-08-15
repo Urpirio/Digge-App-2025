@@ -3,6 +3,7 @@ import { TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { usePathname } from "expo-router";
+import Feather from "@expo/vector-icons/Feather";
 
 export default function _layout() {
   const BgColor_Btn = "#0F539C";
@@ -22,9 +23,6 @@ export default function _layout() {
       }}
     >
       <Tabs.Protected guard={true}>
-
-
-
         <Tabs.Screen
           name="AScreenHome"
           options={{
@@ -42,14 +40,17 @@ export default function _layout() {
                     height: "100%",
                     justifyContent: "center",
                     alignItems: "center",
+                    marginLeft:5
                   }}
                 >
                   <View
                     style={{
-                      borderRadius:
-                        Pathname === "/Screens/AScreenHome" ? "100%" : "",
-                      backgroundColor:
-                        Pathname === "/Screens/AScreenHome" ? BgColor_Btn : "",
+                      borderRadius: Pathname.includes("AScreenHome")
+                        ? "100%"
+                        : "",
+                      backgroundColor: Pathname.includes("AScreenHome")
+                        ? BgColor_Btn
+                        : "",
                       height: 50,
                       width: 50,
                       justifyContent: "center",
@@ -60,9 +61,7 @@ export default function _layout() {
                       size={25}
                       name="home"
                       color={
-                        Pathname === "/Screens/AScreenHome"
-                          ? "white"
-                          : "#2095f4b1"
+                        Pathname.includes("AScreenHome") ? "white" : "#2095f4b1"
                       }
                     />
                   </View>
@@ -70,13 +69,10 @@ export default function _layout() {
               );
             },
             tabBarLabel: "",
-            animation:"fade",
+            animation: "fade",
           }}
         />
 
-
-
-        
         <Tabs.Screen
           name="BScreenVehiculos"
           options={{
@@ -94,12 +90,12 @@ export default function _layout() {
                 >
                   <View
                     style={{
-                      borderRadius:
-                        Pathname === "/Screens/BScreenVehiculos" ? "100%" : "",
-                      backgroundColor:
-                        Pathname === "/Screens/BScreenVehiculos"
-                          ? BgColor_Btn
-                          : "",
+                      borderRadius: Pathname.includes("BScreenVehiculos")
+                        ? "100%"
+                        : "",
+                      backgroundColor: Pathname.includes("BScreenVehiculos")
+                        ? BgColor_Btn
+                        : "",
                       height: 50,
                       width: 50,
                       justifyContent: "center",
@@ -110,7 +106,7 @@ export default function _layout() {
                       size={25}
                       name="car-outline"
                       color={
-                        Pathname === "/Screens/BScreenVehiculos"
+                        Pathname.includes("BScreenVehiculos")
                           ? "white"
                           : "#2095f4b1"
                       }
@@ -124,10 +120,9 @@ export default function _layout() {
                 <View style={{ height: 30, backgroundColor: "#0F539C" }} />
               );
             },
-            animation:"fade",
+            animation: "fade",
           }}
         />
-
 
         <Tabs.Screen
           name="DScreenDenuncias"
@@ -151,12 +146,12 @@ export default function _layout() {
                 >
                   <View
                     style={{
-                      borderRadius:
-                        Pathname === "/Screens/DScreenDenuncias" ? "100%" : "",
-                      backgroundColor:
-                        Pathname === "/Screens/DScreenDenuncias"
-                          ? "#FF9900"
-                          : "",
+                      borderRadius: Pathname.includes("DScreenDenuncias")
+                        ? "100%"
+                        : "",
+                      backgroundColor: Pathname.includes("DScreenDenuncias")
+                        ? "#FF9900"
+                        : "",
                       height: 50,
                       width: 50,
                       justifyContent: "center",
@@ -167,7 +162,7 @@ export default function _layout() {
                       size={25}
                       name="warning-outline"
                       color={
-                        Pathname === "/Screens/DScreenDenuncias"
+                        Pathname.includes("DScreenDenuncias")
                           ? "white"
                           : "#FF9900"
                       }
@@ -176,10 +171,9 @@ export default function _layout() {
                 </TouchableOpacity>
               );
             },
-            animation:"fade",
+            animation: "fade",
           }}
         />
-
 
         <Tabs.Screen
           name="PScreenPagos"
@@ -202,10 +196,12 @@ export default function _layout() {
                 >
                   <View
                     style={{
-                      borderRadius:
-                        Pathname === "/Screens/PScreenPagos" ? "100%" : "",
-                      backgroundColor:
-                        Pathname === "/Screens/PScreenPagos" ? BgColor_Btn : "",
+                      borderRadius: Pathname.includes("PScreenPagos")
+                        ? "100%"
+                        : "",
+                      backgroundColor: Pathname.includes("PScreenPagos")
+                        ? BgColor_Btn
+                        : "",
                       height: 50,
                       width: 50,
                       justifyContent: "center",
@@ -216,7 +212,7 @@ export default function _layout() {
                       size={25}
                       name="card"
                       color={
-                        Pathname === "/Screens/PScreenPagos"
+                        Pathname.includes("PScreenPagos")
                           ? "white"
                           : "#2095f4b1"
                       }
@@ -226,10 +222,9 @@ export default function _layout() {
               );
             },
             tabBarLabel: "",
-            animation:"fade",
+            animation: "fade",
           }}
         />
-
 
         <Tabs.Screen
           name="ScreenEmergencia"
@@ -252,12 +247,12 @@ export default function _layout() {
                 >
                   <View
                     style={{
-                      borderRadius:
-                        Pathname === "/Screens/ScreenEmergencia" ? "100%" : "",
-                      backgroundColor:
-                        Pathname === "/Screens/ScreenEmergencia"
-                          ? "#EE2A24"
-                          : "",
+                      borderRadius: Pathname.includes("ScreenEmergencia")
+                        ? "100%"
+                        : "",
+                      backgroundColor: Pathname.includes("ScreenEmergencia")
+                        ? "#EE2A24"
+                        : "",
                       height: 50,
                       width: 50,
                       justifyContent: "center",
@@ -268,7 +263,7 @@ export default function _layout() {
                       name="information-outline"
                       size={25}
                       color={
-                        Pathname === "/Screens/ScreenEmergencia"
+                        Pathname.includes("ScreenEmergencia")
                           ? "white"
                           : "#EE2A24"
                       }
@@ -278,13 +273,61 @@ export default function _layout() {
               );
             },
             tabBarLabel: "",
-            animation:"fade",
+            animation: "fade",
           }}
         />
-
-
+        <Tabs.Screen
+          name="ScreenPerfil"
+          options={{
+            header: () => {
+              return (
+                <View style={{ height: 30, backgroundColor: "#0F539C" }} />
+              );
+            },
+            tabBarButton: () => {
+              return (
+                <TouchableOpacity
+                  onPress={() => router.navigate("/Screens/ScreenPerfil")}
+                  style={{
+                    backgroundColor: "",
+                    height: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginRight:5
+                  }}
+                >
+                  <View
+                    style={{
+                      borderRadius: Pathname.includes("ScreenPerfil")
+                        ? "100%"
+                        : "",
+                      backgroundColor: Pathname.includes("ScreenPerfil")
+                        ? "#0F539C"
+                        : "",
+                      height: 50,
+                      width: 50,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Feather
+                      name="user"
+                      size={24}
+                      color={
+                        Pathname.includes("ScreenPerfil")
+                          ? "white"
+                          : "#2095f4b1"
+                      }
+                    />
+                  </View>
+                </TouchableOpacity>
+              );
+            },
+            tabBarLabel: "",
+            animation: "fade",
+          }}
+        />
       </Tabs.Protected>
-
     </Tabs>
   );
 }
