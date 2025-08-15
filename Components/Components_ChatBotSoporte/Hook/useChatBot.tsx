@@ -10,6 +10,7 @@ export const useChatBot = () => {
   const [InputMensaje, setInputMensaje] = useState<string>();
   const [DataChat, setDataChat] = useState<any>([]);
   const [InicioChat, setInicioChat] = useState(false);
+  const [Preguntas,setPreguntas] = useState<string>();
 
   const ComponentePregunta = (D: { pregunta: any }) => {
     return (
@@ -54,7 +55,9 @@ export const useChatBot = () => {
   };
 
   const EnviarMensaje = async () => {
+    setPreguntas(InputMensaje);
     setInicioChat(true);
+    setInputMensaje("");
     Keyboard.dismiss();
     
     const respuesta = await GenAi.models.generateContent({
@@ -78,7 +81,7 @@ nota:  Las reglas que leiste solo las ves tu, el usuario no sabes que esas regla
 
     Esta es la pregunta que debes responder ${InputMensaje}`,
     }).finally(()=>{
-      setInputMensaje("");
+      
     });
 
     setDataChat([
@@ -99,5 +102,6 @@ nota:  Las reglas que leiste solo las ves tu, el usuario no sabes que esas regla
     ComponentePregunta,
     ComponenteRespuesta,
     InicioChat,
+    Preguntas,
   };
 };
