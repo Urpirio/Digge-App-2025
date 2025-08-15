@@ -2,11 +2,18 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Card_Score from "../SubComponents/Card_Score";
 import { router } from "expo-router";
+import { Link } from "expo-router";
 
 export default function Section_User() {
   return (
-    <View style={{ paddingBottom: 20 ,backgroundColor: "#0F539C", borderBottomRightRadius: 30,
-          borderBottomLeftRadius: 30,}}>
+    <View
+      style={{
+        paddingBottom: 20,
+        backgroundColor: "#0F539C",
+        borderBottomRightRadius: 30,
+        borderBottomLeftRadius: 30,
+      }}
+    >
       <View
         style={{
           paddingHorizontal: 20,
@@ -20,23 +27,28 @@ export default function Section_User() {
           <TouchableOpacity>
             <Ionicons name="search-outline" size={30} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>router.navigate('/SubScreens/ScreenNotificaciones')} >
+          <TouchableOpacity
+            onPress={() => router.navigate("/SubScreens/ScreenNotificaciones")}
+          >
             <Ionicons name="notifications-outline" size={30} color="white" />
           </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+        <TouchableOpacity
+          onPress={()=>router.navigate('/Screens/ScreenPerfil')}
+          style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
+        >
           <Image
             style={{ height: 60, width: 60, borderRadius: 80 }}
             source={{
               uri: "https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg",
             }}
           />
-          <View>
+          <View style={{paddingHorizontal:10}}>
             <Text style={{ fontSize: 24, color: "white" }}>Hola, Juan!</Text>
             <Text style={{ color: "#ffffffa2" }}>Ciudadano</Text>
           </View>
-        </View>
+        </TouchableOpacity>
 
         <Card_Score />
       </View>
