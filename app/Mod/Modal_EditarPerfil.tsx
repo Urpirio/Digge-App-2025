@@ -17,13 +17,17 @@ export default function ScreenEditarPerfil() {
     Input_NumeroT_secundario,
     bgStatus,
     EstadoGuardar,
+    setbgStatus,
   } = useEditarPerfil();
 
   return (
     <SafeAreaProvider style={{ justifyContent: "flex-end" }}>
       <BlurView intensity={bgStatus} tint="dark">
         <TouchableOpacity
-          onPress={() => router.back()}
+          onPress={() => {
+            setbgStatus(0);
+            router.back();
+          }}
           style={{ height: "100%", width: "100%" }}
         ></TouchableOpacity>
       </BlurView>
@@ -57,6 +61,7 @@ export default function ScreenEditarPerfil() {
             value={Input_Email}
             onChangeText={setInput_Email}
             placeholder="Email"
+            placeholderTextColor={"gray"}
             style={{
               borderWidth: 1,
               borderRadius: 10,
@@ -70,6 +75,7 @@ export default function ScreenEditarPerfil() {
             onChangeText={setInput_NumeroT_primario}
             keyboardType="numeric"
             placeholder="Numero Telefonico"
+            placeholderTextColor={"gray"}
             style={{
               borderWidth: 1,
               borderRadius: 10,
@@ -82,6 +88,7 @@ export default function ScreenEditarPerfil() {
             value={Input_NumeroT_secundario}
             onChangeText={setInput_NumeroT_secundario}
             placeholder="Numero Secundario"
+            placeholderTextColor={"gray"}
             keyboardType="numeric"
             style={{
               borderWidth: 1,
@@ -95,6 +102,7 @@ export default function ScreenEditarPerfil() {
             value={Input_Direccion_Vivienda}
             onChangeText={setInput_Direccion_Vivienda}
             placeholder="Direccion de vivienda"
+            placeholderTextColor={"gray"}
             style={{
               borderWidth: 1,
               borderRadius: 10,
