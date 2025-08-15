@@ -19,7 +19,6 @@ export default function ScreenRecuperarP() {
           height: "100%",
           width: "100%",
           paddingHorizontal: 20,
-          //   paddingTop: 150,
           alignItems: "center",
           gap: 20,
         }}
@@ -48,15 +47,15 @@ export default function ScreenRecuperarP() {
         <View
           style={{
             backgroundColor: "#e9e9e97e",
-            flexDirection: "row",
-            justifyContent: "space-between",
             borderRadius: 10,
             alignItems: "center",
             padding: 5,
+            width:'100%'
           }}
         >
           <TextInput
             placeholder="Correo Electronico"
+            placeholderTextColor={"#adb5bd"}
             style={{
               fontSize: 16,
               width: "100%",
