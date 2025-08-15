@@ -16,8 +16,8 @@ export default function _layout() {
           },
         }}
       />
-      <Stack.Screen 
-        name="ScreenCamaraVideo" 
+      <Stack.Screen
+        name="ScreenCamaraVideo"
         options={{
           header: () => {
             return <View style={{ height: 30, backgroundColor: "#0F539C" }} />;
@@ -46,7 +46,9 @@ export default function _layout() {
       />
       <Stack.Screen
         name="ScreenNotificaciones"
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
       
     </Stack>
