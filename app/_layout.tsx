@@ -13,16 +13,12 @@ export default function _layout() {
       <Stack.Screen
         name="ScreenL/ScreenLogin"
         options={{
-          // animation: "fade",
-          // presentation: "formSheet",
           headerShown: false,
         }}
       />
       <Stack.Screen
         name="ScreenL/ScreenRegistrar"
         options={{
-          // animation: "fade",
-          // presentation: "formSheet",
           headerShown: false,
         }}
       />
@@ -76,6 +72,23 @@ export default function _layout() {
           presentation: "containedTransparentModal",
         }}
       />
+      <Stack.Screen
+        name="Mod/Modal_EditarPerfil"
+        options={{
+          headerShown: false,
+          presentation: "transparentModal",
+          animation: "slide_from_bottom",
+        }}
+      />
+      <Stack.Screen
+        name="Mod/Modal_CerrarSession"
+        options={{
+          headerShown: false,
+          presentation: "transparentModal",
+          animation: "slide_from_bottom",
+        }}
+      />
+      
     </Stack>
   );
 }
