@@ -7,7 +7,7 @@ import Feather from "@expo/vector-icons/Feather";
 export default function Section_Dashboard() {
   return (
     <View style={{ paddingHorizontal: 10, paddingVertical: 10, gap: 10 }}>
-      <Card_CrearDenuncia />
+      {/* <Card_CrearDenuncia /> */}
 
       <Card_Varibles
         Icon={<Ionicons size={25} name="car-outline" color={"white"} />}
