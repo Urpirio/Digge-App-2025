@@ -23,7 +23,9 @@ export default function SectionContenedorChat() {
     ComponentePregunta,
     ComponenteRespuesta,
     InicioChat,
+    Preguntas
   } = useChatBot();
+
 
   return (
     <KeyboardAvoidingView
@@ -105,7 +107,7 @@ export default function SectionContenedorChat() {
                   fontSize: 16,
                 }}
               >
-                {InputMensaje}
+                {Preguntas}
               </Text>
               </View>
               <View style={{ width: "100%", flexDirection: "row" }}>
