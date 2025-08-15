@@ -5,17 +5,27 @@ import Section_User from "@/Components/Components_ScreenHome/Components/Section_
 import { ScrollView } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
+import { useFocusEffect } from "expo-router";
+import { useCallback } from "react";
+import { BackHandler } from "react-native";
 
 export default function ScreenHome() {
+  useFocusEffect(
+    useCallback(() => {
+      BackHandler.addEventListener("hardwareBackPress", () => {
+        return true;
+      });
+    }, [])
+  );
   return (
-    <SafeAreaProvider style={{backgroundColor:'white'}}>
+    <SafeAreaProvider style={{ backgroundColor: "white" }}>
       <Section_User />
       <ScrollView>
         <Section_ResumenActividad />
         <Section_AccionesRapidas />
-        <Section_ActividadReciente/>
+        <Section_ActividadReciente />
       </ScrollView>
-     <StatusBar barStyle={'light-content'}/>
+      <StatusBar barStyle={"light-content"} />
     </SafeAreaProvider>
   );
 }
