@@ -2,6 +2,7 @@ import { Image, View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
+import { Link } from "expo-router";
 
 interface Content {
   setStateSelect: any;
@@ -24,7 +25,10 @@ export default function Section_Header({
           alignItems: "center",
         }}
       >
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+        <TouchableOpacity
+          onPress={()=>router.navigate('/Screens/ScreenPerfil')}
+          style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
+        >
           <Image
             style={{ height: 50, width: 50, borderRadius: 80 }}
             source={{
@@ -34,7 +38,7 @@ export default function Section_Header({
           <Text style={{ fontSize: 18, fontWeight: "500", color: "white" }}>
             Juan Marte
           </Text>
-        </View>
+        </TouchableOpacity>
         <View
           style={{ flexDirection: "row", justifyContent: "flex-end", gap: 10 }}
         >
