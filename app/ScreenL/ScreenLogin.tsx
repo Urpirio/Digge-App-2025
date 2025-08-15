@@ -11,11 +11,21 @@ import { Link, router } from "expo-router";
 import { useEnviarDatos } from "@/Components/Components_Login/hooks/useEnviarDatos";
 import { useStyleLogin } from "@/Components/Components_Login/hooks/useStyleLogin";
 import Feather from "@expo/vector-icons/Feather";
+import * as LocalAuthentication from "expo-local-authentication";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function ScreenLogin() {
   const { InputEmail, setInputEmail, InputPass, setInputPass } =
     useEnviarDatos();
   const { IconPass, setIconPass, BtnIconPass } = useStyleLogin();
+
+  const ValidarDatosBiometricos = async () => {
+    LocalAuthentication.authenticateAsync().then((Tools) => {
+      if (Tools.success) {
+        router.navigate("/Screens/AScreenHome");
+      }
+    });
+  };
 
   return (
     <SafeAreaProvider>
@@ -33,10 +43,16 @@ export default function ScreenLogin() {
           gap: 20,
         }}
       >
-        <View style={{width:'100%',alignItems:'flex-start'}}>
+        <View style={{ width: "100%", alignItems: "flex-start" }}>
           <TouchableOpacity
             onPress={() => router.back()}
-            style={{ flexDirection: "row", alignItems: "center",borderRadius:'100%',padding:5,backgroundColor:'#0F539C'}}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              borderRadius: "100%",
+              padding: 5,
+              backgroundColor: "#0F539C",
+            }}
           >
             <Feather name="arrow-left" size={28} color="white" />
           </TouchableOpacity>
@@ -130,14 +146,39 @@ export default function ScreenLogin() {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={() => router.navigate("/Screens/AScreenHome")}
-          style={{ padding: 12, backgroundColor: "#0F539C", borderRadius: 10 }}
+        <View
+          style={{
+            flexDirection: "row-reverse",
+            width: "100%",
+            gap: 5,
+            justifyContent: "space-between",
+          }}
         >
-          <Text style={{ textAlign: "center", color: "white", fontSize: 18 }}>
-            Iniciar sesion
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => router.navigate("/Screens/AScreenHome")}
+            style={{
+              padding: 12,
+              backgroundColor: "#0F539C",
+              borderRadius: 10,
+              width: "83%",
+            }}
+          >
+            <Text style={{ textAlign: "center", color: "white", fontSize: 18 }}>
+              Iniciar sesion
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => ValidarDatosBiometricos()}
+            style={{
+              padding: 12,
+              backgroundColor: "#0F539C",
+              borderRadius: 10,
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name="finger-print-outline" size={24} color="white" />
+          </TouchableOpacity>
+        </View>
         <Link
           style={{
             textAlign: "center",
