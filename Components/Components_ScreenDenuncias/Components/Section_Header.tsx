@@ -72,8 +72,8 @@ export default function Section_Header({
             onPress={() => setStateSelect(true)}
             style={
               StateSelect
-                ? Style_SectionHeader.BtnDash_Historial_IN
-                : Style_SectionHeader.BtnDash_Historial_OUT
+                ? Style_SectionHeader.BtnDash_Historial_OUT
+                : Style_SectionHeader.BtnDash_Historial_IN
             }
           >
             <MaterialIcons

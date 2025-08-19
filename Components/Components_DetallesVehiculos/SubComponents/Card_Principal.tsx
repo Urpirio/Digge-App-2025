@@ -21,7 +21,7 @@ export default function Card_Principal() {
 
   return (
     <View style={Style_CardPrincipal.Card}>
-      <Text style={Style_CardPrincipal.container_icon}>
+      <Text style={Style_CardPrincipal.Text_Matricula}>
         {DetallesCarro[0]?.Matricula}
       </Text>
       <Text style={{ fontSize: 16, color: "white" }}>
