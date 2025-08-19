@@ -1,19 +1,19 @@
-import { View ,Text} from "react-native";
+import { View, Text } from "react-native";
+import { Style_Card_InformacionBasica } from "../Style/Style_Card_InformacionBasica";
 
-interface Detalles{
-  Titulo:string,
-  Subtitulo:any,
-  Icono: any,
-};
-
-export default function Card_informacionBasica({Titulo,Subtitulo,Icono}:Detalles) {
+export default function Card_informacionBasica(Tools: {
+  Titulo: string;
+  Subtitulo: any;
+  Icono: any;
+}) {
+  const { Titulo, Subtitulo, Icono } = Tools;
   return (
-    <View style={{borderWidth:1,width:'100%',paddingHorizontal:10,paddingVertical:15,borderRadius:10,borderColor:'#e9ecef',boxShadow:'0px 0px 10px 0px #9a9a9a1d ',gap:10}}>
-        <View style={{flexDirection:'row',alignItems:'center',gap:5}}>
-          {Icono}
-          <Text style={{fontWeight:'300',color:'gray',fontSize:18}}>{Titulo}</Text>
-        </View>
-        <Text>{Subtitulo}</Text>
+    <View style={Style_Card_InformacionBasica.Card}>
+      <View style={Style_Card_InformacionBasica.SubContainerCard}>
+        {Icono}
+        <Text style={Style_Card_InformacionBasica.Text_Titulo}>{Titulo}</Text>
+      </View>
+      <Text>{Subtitulo}</Text>
     </View>
-  )
-};
+  );
+}
