@@ -8,8 +8,7 @@ import { useState } from "react";
 import Buttons_Evidencias from "@/Components/Components_Globales/SubComponents/Buttons_Evidencias";
 import Buttons_EvidenciasMini from "@/Components/Components_Globales/SubComponents/Buttons_EvidenciasMini";
 import Contenedor_Evidencias from "@/Components/Components_Globales/SubComponents/Contenedor_Evidencias";
-
-
+import { Style_SectionFormulario } from "../Style/Style_SectionFormulario";
 
 export let setDataDeFotos1: any;
 export let DataDeFotos1: any;
@@ -17,7 +16,6 @@ export let DataLocalizacion: any;
 export let setDataLocalizacion: any;
 
 export default function Section_Formulario() {
-  
   const {
     InputColor,
     InputDescripcion,
@@ -39,7 +37,7 @@ export default function Section_Formulario() {
   DataDeFotos1 = DataFotos;
 
   return (
-    <View style={{ paddingHorizontal: 10, paddingBottom: 80,gap:10 }}>
+    <View style={{ paddingHorizontal: 10, paddingBottom: 80, gap: 10 }}>
       <View style={{ gap: 5 }}>
         <Text style={{ fontSize: 20, fontWeight: "500" }}>
           Datos del Vehículo
@@ -50,27 +48,15 @@ export default function Section_Formulario() {
             placeholder="Ej: A123456"
             value={InputPlaca}
             onChangeText={setInputPlaca}
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              height: 55,
-              fontSize: 16,
-              borderColor: "#D1D0D0",
-              backgroundColor: "#efeded44",
-            }}
+            style={Style_SectionFormulario.Text_Input}
           />
         </View>
       </View>
+
+      {/* Tipo de vehiculo -> Picker */}
       <View style={{ gap: 5 }}>
         <Text>Tipo de Vehículo</Text>
-        <View
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: "#D1D0D0",
-            backgroundColor: "#efeded44",
-          }}
-        >
+        <View style={Style_SectionFormulario.Container_Pickers}>
           <Picker
             selectedValue={DropDownVehiculos}
             onValueChange={setDropDownVehiculos}
@@ -106,33 +92,22 @@ export default function Section_Formulario() {
           </Picker>
         </View>
       </View>
-      <View style={{ gap: 5 }}>
+
+      {/* No lo veo necesario ya que eso podria ir en la descripcion del incidente */}
+      {/* <View style={{ gap: 5 }}>
         <Text>Color del Vehículo *</Text>
         <TextInput
           placeholder="Ej: Blanco, Azul, Rojo"
           value={InputColor}
           onChangeText={setInputColor}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            height: 55,
-            fontSize: 16,
-            borderColor: "#D1D0D0",
-            backgroundColor: "#efeded44",
-          }}
+          style={Style_SectionFormulario.Text_Input}
         />
-      </View>
+      </View> */}
 
+      {/* Tipo de Infraccion -> Picke */}
       <View style={{ gap: 5 }}>
         <Text>Tipo de Infracción</Text>
-        <View
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: "#D1D0D0",
-            backgroundColor: "#efeded44",
-          }}
-        >
+        <View style={Style_SectionFormulario.Container_Pickers}>
           <Picker
             selectedValue={DropDownInfraccion}
             onValueChange={setDropDownInfraccion}
@@ -169,21 +144,12 @@ export default function Section_Formulario() {
         </View>
       </View>
 
+      {/* Nota: Agregar El nombre o calla seleccionada dentro del texto para que se mas comparativo y se puede entender mejor */}
       <View style={{ gap: 5 }}>
         <Text>Ubicación</Text>
         <TouchableOpacity
           onPress={() => router.navigate("/ScreensMap/ScreenMap_Denuncias")}
-          style={{
-            borderWidth: 1,
-            flexDirection: "row",
-            alignItems: "center",
-            paddingVertical: 20,
-            paddingHorizontal: 15,
-            gap: 5,
-            borderRadius: 10,
-            borderColor: "#D1D0D0",
-            backgroundColor: "#efeded44",
-          }}
+          style={Style_SectionFormulario.Btn_AgregarUbicacion}
         >
           <FontAwesome6 name="location-dot" size={18} color="#0F539C" />
           <Text style={{ color: "gray" }}>
@@ -201,14 +167,7 @@ export default function Section_Formulario() {
           onChangeText={setInputDescripcion}
           placeholder="Describe detalladamente lo que observaste..."
           multiline={true}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-            height: 55,
-            fontSize: 16,
-            borderColor: "#D1D0D0",
-            backgroundColor: "#efeded44",
-          }}
+          style={Style_SectionFormulario.Text_Input}
         />
       </View>
 
@@ -224,7 +183,11 @@ export default function Section_Formulario() {
             <Text style={{ fontWeight: "500" }}>Evidencia</Text>
             <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
           </View>
-          {DataFotos.length > 0 ? <Buttons_EvidenciasMini Status={1} /> : <View />}
+          {DataFotos.length > 0 ? (
+            <Buttons_EvidenciasMini Status={1} />
+          ) : (
+            <View />
+          )}
         </View>
         {DataFotos.length > 0 ? <View /> : <Buttons_Evidencias Status={1} />}
         {DataFotos.length > 0 ? (
@@ -235,17 +198,7 @@ export default function Section_Formulario() {
       </View>
 
       <View>
-        <TouchableOpacity
-          style={{
-            padding: 15,
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: 10,
-            backgroundColor: "#0F539C",
-            flexDirection: "row",
-            gap: 5,
-          }}
-        >
+        <TouchableOpacity style={Style_SectionFormulario.Btn_EnviarDenuncia}>
           <Ionicons name="warning-outline" size={20} color="white" />
           <Text style={{ fontSize: 16, color: "white", fontWeight: "500" }}>
             Enviar denuncia
