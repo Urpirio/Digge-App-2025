@@ -8,7 +8,7 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-
+import { Style_ContenedorChat } from "../Style/Style_ContenedorChat";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useChatBot } from "../Hook/useChatBot";
 import { Data_PreguntasFrecuentes } from "../Data/Data_PreguntasFrecuentes";
@@ -23,9 +23,8 @@ export default function SectionContenedorChat() {
     ComponentePregunta,
     ComponenteRespuesta,
     InicioChat,
-    Preguntas
+    Preguntas,
   } = useChatBot();
-
 
   return (
     <KeyboardAvoidingView
@@ -33,38 +32,19 @@ export default function SectionContenedorChat() {
       style={{ flex: 1, flexDirection: "column", justifyContent: "flex-end" }}
     >
       {InputMensaje == undefined ? (
-        <View
-          style={{
-            flex: 1,
-            width: "100%",
-            alignItems: "center",
-            paddingVertical: 10,
-            gap: 5,
-          }}
-        >
+        <View style={Style_ContenedorChat.Container_PreguntasFrecuentes}>
           <Image
             style={{ objectFit: "contain" }}
             source={require("../../../Assets/Image/LogoChat.png")}
           />
-          <View
-            style={{
-              width: "100%",
-              paddingHorizontal: 10,
-              gap: 10,
-              paddingVertical: 5,
-            }}
-          >
+          <View style={Style_ContenedorChat.Container_BtnPreguntasFrecuentes}>
             {Data_PreguntasFrecuentes.map((D) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
                     setInputMensaje(D.Pregunta);
                   }}
-                  style={{
-                    padding: 10,
-                    borderRadius: 10,
-                    backgroundColor: "#ECEBEB",
-                  }}
+                  style={Style_ContenedorChat.BtnPreguntasFrecuentes}
                 >
                   <Text style={{ color: "#1569C0", fontWeight: "500" }}>
                     {D.Pregunta}
@@ -75,9 +55,7 @@ export default function SectionContenedorChat() {
           </View>
         </View>
       ) : (
-        <ScrollView
-          style={{ paddingTop: 5, paddingHorizontal: 5 }}
-        >
+        <ScrollView style={{ paddingTop: 5, paddingHorizontal: 5 }}>
           {DataChat.map((D: { pregunta: string; respuesta: string }) => {
             return (
               <View style={{ width: "100%", marginVertical: 10, gap: 5 }}>
@@ -88,60 +66,21 @@ export default function SectionContenedorChat() {
           })}
 
           {InicioChat ? (
-            <View style={{ gap: 5,paddingBottom:20 }}>
-              <View
-                style={{
-                  width: "100%",
-                  flexDirection: "row",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <Text
-                style={{
-                  backgroundColor: "#0F539C",
-                  padding: 5,
-                  color: "white",
-                  borderTopLeftRadius: 10,
-                  borderTopRightRadius: 10,
-                  borderBottomLeftRadius: 10,
-                  fontSize: 16,
-                }}
-              >
-                {Preguntas}
-              </Text>
+            <View style={{ gap: 5, paddingBottom: 20 }}>
+              <View style={Style_ContenedorChat.Container_TextPregunta}>
+                <Text style={Style_ContenedorChat.Text_Pregunta}>
+                  {Preguntas}
+                </Text>
               </View>
               <View style={{ width: "100%", flexDirection: "row" }}>
                 <Skeleton
-                  style={{
-                    width: "50%",
-                    height: 30,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                    borderBottomRightRadius: 10,
-                  }}
+                  style={Style_ContenedorChat.Skeleton_CargandoRespuesta}
                 />
               </View>
             </View>
           ) : (
-            <View
-              style={{
-                width: "100%",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                paddingBottom:20
-              }}
-            >
-              <Text
-                style={{
-                  backgroundColor: "#0F539C",
-                  padding: 5,
-                  color: "white",
-                  borderTopLeftRadius: 10,
-                  borderTopRightRadius: 10,
-                  borderBottomLeftRadius:10,
-                  fontSize: 16,
-                }}
-              >
+            <View style={Style_ContenedorChat.Container_TextPregunta2}>
+              <Text style={Style_ContenedorChat.Text_Pregunta}>
                 {InputMensaje}
               </Text>
             </View>
@@ -149,33 +88,14 @@ export default function SectionContenedorChat() {
         </ScrollView>
       )}
 
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingTop: 10,
-          paddingBottom: 15,
-          paddingHorizontal: 10,
-          borderTopWidth: 1,
-          borderColor: "#E6E6E6",
-          backgroundColor: "white",
-        }}
-      >
+      <View style={Style_ContenedorChat.Container_EntradaMensaje}>
         <TextInput
           onSubmitEditing={EnviarMensaje}
           value={InputMensaje}
-          onChangeText={InicioChat ? ()=>{} : setInputMensaje}
+          onChangeText={InicioChat ? () => {} : setInputMensaje}
           placeholderTextColor={"#717171"}
           placeholder="Pregunta lo que necesitas..."
-          style={{
-            width: "85%",
-            borderWidth: 1,
-            borderRadius: 10,
-            borderColor: "#E6E6E6",
-            backgroundColor: "#E6E6E6",
-            color: "#717171",
-          }}
+          style={Style_ContenedorChat.Input_Mensaje}
         />
 
         <TouchableOpacity
