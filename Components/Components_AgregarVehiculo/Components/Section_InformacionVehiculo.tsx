@@ -2,11 +2,12 @@ import { View, Text, ScrollView } from "react-native";
 import Form_Part1 from "../SubComponents/Form_Part1";
 import Form_Part2 from "../SubComponents/Form_Part2";
 import Form_Part3 from "../SubComponents/Form_Part3";
+import { Style_SectionInfoVehiculo } from "../Style/Style_SectionInfoVehiculo";
 
 export default function Section_InformacionVehiculo() {
   return (
-    <ScrollView style={{ paddingHorizontal: 10, paddingTop: 10}}>
-      <View style={{gap:10,paddingBottom:50 }}>
+    <ScrollView style={Style_SectionInfoVehiculo.Contenedor_ScrollView}>
+      <View style={Style_SectionInfoVehiculo.Contanerdor_Formulario}>
         <Text style={{ fontSize: 20, fontWeight: "600" }}>
           Información del vehiculo{" "}
         </Text>
