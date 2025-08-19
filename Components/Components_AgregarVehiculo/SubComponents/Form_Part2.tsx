@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { Data_BtnTipoCombustible } from "../Data/Data_BtnTipoCombustible";
 import { Data_BtnIconos } from "../Data/Data_BtnIconos";
+import { Style_FormPart2 } from "../Style/Style_FormPart2";
 
 export default function Form_Part2() {
   const [TipoCombustible, setTipoCombustible] = useState<string>();
@@ -9,21 +10,16 @@ export default function Form_Part2() {
 
   return (
     <View style={{ gap: 10 }}>
-      <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
-        <Text style={{ fontWeight: "500" }}>Tipo de Combustible</Text>
-        <Text style={{ color: "red", fontWeight: "600", fontSize: 18 }}>*</Text>
+      <View style={Style_FormPart2.Labels_Container}>
+        <Text style={Style_FormPart2.Labels}>Tipo de Combustible</Text>
+        <Text style={Style_FormPart2.Label_Ate}>*</Text>
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: 10,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+
+      {/* Btn para cambiar el tipo de combustible del vehiculo */}
+      <View style={Style_FormPart2.Container_TipoCombustible}>
         {Data_BtnTipoCombustible.map((D) => {
           return (
+            // No lo cambie lo agregue al documento de estilos porque lo vi innecesario
             <TouchableOpacity
               onPress={() => setTipoCombustible(D.titulo)}
               style={{
@@ -50,15 +46,18 @@ export default function Form_Part2() {
           );
         })}
       </View>
-      <View style={{gap:10}}>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 5 }}>
-          <Text style={{ fontWeight: "500" }}>Icono del Vehículo</Text>
+
+      {/* Iconos refrentes al vehiculo */}
+
+      <View style={{ gap: 10 }}>
+        <View style={Style_FormPart2.Labels_Container}>
+          <Text style={Style_FormPart2.Labels}>Icono del Vehículo</Text>
         </View>
-        <View style={{ flexDirection: "row", gap: 10 }}>
+        <View style={Style_FormPart2.Container_BtnIcon}>
           {Data_BtnIconos.map((D) => {
             return (
               <TouchableOpacity
-                onPress={()=>setTipoIcono(D.titulo)}
+                onPress={() => setTipoIcono(D.titulo)}
                 style={{
                   borderWidth: 1,
                   padding: 5,
@@ -67,11 +66,12 @@ export default function Form_Part2() {
                   width: 50,
                   justifyContent: "center",
                   alignItems: "center",
-                  borderColor: D.titulo == TipoIcono ? '#0F539C' : '#EAECEE',
-                  backgroundColor: D.titulo == TipoIcono ? '#0F539C' : '#EAECEE',
+                  borderColor: D.titulo == TipoIcono ? "#0F539C" : "#EAECEE",
+                  backgroundColor:
+                    D.titulo == TipoIcono ? "#0F539C" : "#EAECEE",
                 }}
               >
-               {D.Icon({Color:D.titulo == TipoIcono ? 'white' : 'black'})}
+                {D.Icon({ Color: D.titulo == TipoIcono ? "white" : "black" })}
               </TouchableOpacity>
             );
           })}
