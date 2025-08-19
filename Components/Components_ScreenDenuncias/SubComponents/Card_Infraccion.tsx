@@ -3,31 +3,15 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useInfraccion } from "../hooks/useInfraccion";
 import { Data_Infraccion } from "../Data/Data_Infraccion";
+import { Style_CardInfracciones } from "../Style/Style_CardInfracciones";
 
 export default function Card_Infraccion() {
   const { Status } = useInfraccion();
 
   const Cards = Data_Infraccion.map((D) => {
     return (
-      <View
-        key={D.matricula}
-        style={{
-          borderWidth: 1,
-          padding: 10,
-          borderRadius: 10,
-          backgroundColor: "white",
-          gap: 10,
-          borderColor: "#9999992f",
-          marginBottom:10
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+      <View key={D.matricula} style={Style_CardInfracciones.Card}>
+        <View style={Style_CardInfracciones.Container_infracciones}>
           <Text style={{ fontWeight: "600" }}>{D.num_infraccion}</Text>
           <Status Status={D.status} />
         </View>
@@ -35,31 +19,31 @@ export default function Card_Infraccion() {
           <Text style={{ fontWeight: "500", color: "#0F539C" }}>
             {D.titulo}
           </Text>
-          <Text style={{ color: "#999999ff", fontSize: 16, fontWeight: "300" }}>
+          <Text style={Style_CardInfracciones.Text_Subtitulo}>
             {D.subtitulo}
           </Text>
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 2 }}>
+          <View style={Style_CardInfracciones.subContainer_general}>
             <Ionicons size={16} name="car-outline" color={"#999999ff"} />
-            <Text style={{ fontSize: 14, color: "#999999ff" }}>
+            <Text style={Style_CardInfracciones.Text_General}>
               {D.matricula}
             </Text>
           </View>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 2 }}>
+          <View style={Style_CardInfracciones.subContainer_general}>
             <Ionicons name="location-outline" size={16} color="#999999ff" />
-            <Text style={{ fontSize: 14, color: "#999999ff" }}>
+            <Text style={Style_CardInfracciones.Text_General}>
               {D.ubicacion}
             </Text>
           </View>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 2 }}>
+          <View style={Style_CardInfracciones.subContainer_general}>
             <MaterialIcons name="access-time" size={16} color="#999999ff" />
-            <Text style={{ fontSize: 14, color: "#999999ff" }}>{D.hora}</Text>
+            <Text style={Style_CardInfracciones.Text_General}>{D.hora}</Text>
           </View>
         </View>
         <View style={{ alignItems: "flex-end" }}>
           <TouchableOpacity>
-            <Text style={{ color: "#0F539C", fontSize: 14, fontWeight: "500" }}>
+            <Text style={Style_CardInfracciones.Text_btnDetalles}>
               Ver detalles
             </Text>
           </TouchableOpacity>

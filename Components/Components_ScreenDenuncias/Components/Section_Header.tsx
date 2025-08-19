@@ -2,7 +2,8 @@ import { Image, View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
-import { Link } from "expo-router";
+import { Style_SectionHeader } from "../Style/Style_SectionHeader";
+// import { Link } from "expo-router";
 
 interface Content {
   setStateSelect: any;
@@ -15,18 +16,9 @@ export default function Section_Header({
 }: Content) {
   return (
     <View>
-      <View
-        style={{
-          flexDirection: "row",
-          backgroundColor: "#0F539C",
-          paddingBottom: 10,
-          paddingHorizontal: 10,
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <View style={Style_SectionHeader.ConatinerTop_header}>
         <TouchableOpacity
-          onPress={()=>router.navigate('/Screens/ScreenPerfil')}
+          onPress={() => router.navigate("/Screens/ScreenPerfil")}
           style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
         >
           <Image
@@ -35,13 +27,9 @@ export default function Section_Header({
               uri: "https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg",
             }}
           />
-          <Text style={{ fontSize: 18, fontWeight: "500", color: "white" }}>
-            Juan Marte
-          </Text>
+          <Text style={Style_SectionHeader.Text_NombreUsuario}>Juan Marte</Text>
         </TouchableOpacity>
-        <View
-          style={{ flexDirection: "row", justifyContent: "flex-end", gap: 10 }}
-        >
+        <View style={Style_SectionHeader.Container_BtnNoti_Search}>
           <TouchableOpacity>
             <Ionicons name="search-outline" size={30} color="white" />
           </TouchableOpacity>
@@ -53,38 +41,18 @@ export default function Section_Header({
         </View>
       </View>
 
-      <View
-        style={{
-          backgroundColor: "#0F539C",
-          paddingBottom: 10,
-          paddingHorizontal: 10,
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-          gap: 10,
-        }}
-      >
+      <View style={Style_SectionHeader.ConatainerBottom_header}>
         <Text style={{ fontSize: 26, fontWeight: "500", color: "white" }}>
           Denuncias y reportes
         </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between",
-          }}
-        >
+        <View style={Style_SectionHeader.Container_btnDash_Historial}>
           <TouchableOpacity
             onPress={() => setStateSelect(false)}
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              width: "48%",
-              padding: 10,
-              borderRadius: 10,
-              gap: 5,
-              justifyContent: "center",
-              backgroundColor: StateSelect ? "#0F539C" : "white",
-            }}
+            style={
+              StateSelect
+                ? Style_SectionHeader.BtnDash_Historial_IN
+                : Style_SectionHeader.BtnDash_Historial_OUT
+            }
           >
             <Ionicons
               name="wallet-outline"
@@ -102,16 +70,11 @@ export default function Section_Header({
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setStateSelect(true)}
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              width: "48%",
-              padding: 10,
-              borderRadius: 10,
-              gap: 5,
-              justifyContent: "center",
-              backgroundColor: StateSelect ? "white" : "#0F539C",
-            }}
+            style={
+              StateSelect
+                ? Style_SectionHeader.BtnDash_Historial_IN
+                : Style_SectionHeader.BtnDash_Historial_OUT
+            }
           >
             <MaterialIcons
               name="access-time"
