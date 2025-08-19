@@ -88,6 +88,14 @@ export default function _layout() {
           animation: "slide_from_bottom",
         }}
       />
+      <Stack.Screen
+        name="Mod/Modal_ReportarAgente"
+        options={{
+          headerShown: false,
+          presentation: "transparentModal",
+          animation: "slide_from_bottom",
+        }}
+      />
       
     </Stack>
   );
