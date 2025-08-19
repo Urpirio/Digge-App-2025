@@ -11,6 +11,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useReportes } from "@/Components/Components_MapNavegacion/Hooks/useReportes";
 import Feather from "@expo/vector-icons/Feather";
+import { Data_Agentes } from "@/Components/Components_MapNavegacion/Data/Data_Agentes";
 
 export default function Modal_MapNavegacion() {
   const { ConseguirUbicacion } = useLocalizacion();
@@ -113,13 +114,16 @@ export default function Modal_MapNavegacion() {
             >
               <Ionicons name="search-outline" size={24} color="#ced4da" />
               <TextInput
+                placeholderTextColor={"gray"}
                 placeholder="A donde te diriges hoy?"
                 style={{
                   backgroundColor: "white",
                   width: "75%",
                 }}
               />
-              <TouchableOpacity onPress={()=>router.navigate("/Mod/Modal_Ruta")}>
+              <TouchableOpacity
+                onPress={() => router.navigate("/Mod/Modal_Ruta")}
+              >
                 <Ionicons name="filter-outline" size={20} color="#0F539C" />
               </TouchableOpacity>
             </View>
@@ -148,7 +152,7 @@ export default function Modal_MapNavegacion() {
           const { longitude, longitudeDelta, latitude, latitudeDelta } = event;
           // console.log(longitude + " " + latitude);
         }}
-        cameraZoomRange={{}}
+        // cameraZoomRange={{}}
         onPoiClick={(event) => {
           const { coordinate, name, placeId, position } = event.nativeEvent;
           // console.log(coordinate);
@@ -160,7 +164,7 @@ export default function Modal_MapNavegacion() {
         showsMyLocationButton={false}
         showsUserLocation={true}
         // userInterfaceStyle="dark"
-        userLocationPriority="high"
+        // userLocationPriority="high"
         showsTraffic={true}
         style={{ height: "94%", width: "100%" }}
       >
@@ -176,7 +180,7 @@ export default function Modal_MapNavegacion() {
           }) => {
             return (
               <Marker
-                icon={CategoriaMarker({ Status: D.Status })}
+                // icon={CategoriaMarker({ Status: D.Status })}
                 onPress={() =>
                   router.navigate({
                     pathname: "/Mod/Modal_InfoReporte",
@@ -192,6 +196,17 @@ export default function Modal_MapNavegacion() {
             );
           }
         )}
+
+        {Data_Agentes.map((Data) => {
+          return (
+            <Marker
+              onPress={()=>router.navigate({pathname:"/Mod/Modal_ReportarAgente",params:{
+                
+              }})}
+              coordinate={{ longitude: Data.longitud, latitude: Data.latitud }}
+            />
+          );
+        })}
       </MapView>
       <View
         style={{
