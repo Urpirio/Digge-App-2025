@@ -5,12 +5,12 @@ import { Keyboard } from "react-native";
 
 export const useChatBot = () => {
   const GenAi = new GoogleGenAI({
-    apiKey: "AIzaSyA6s6qfy2BecYXWAIj47Ih7bQR7zhX8DaI",
+    apiKey: "AIzaSyDH9LpbS6hwaVcaCv8EzXCBZt8w3wJ-QuU",
   });
   const [InputMensaje, setInputMensaje] = useState<string>();
   const [DataChat, setDataChat] = useState<any>([]);
   const [InicioChat, setInicioChat] = useState(false);
-  const [Preguntas,setPreguntas] = useState<string>();
+  const [Preguntas, setPreguntas] = useState<string>();
 
   const ComponentePregunta = (D: { pregunta: any }) => {
     return (
@@ -54,15 +54,17 @@ export const useChatBot = () => {
     );
   };
 
-  const EnviarMensaje = async () => {
+  const EnviarMensaje = () => {
     setPreguntas(InputMensaje);
+    console.log("Funcona");
     setInicioChat(true);
     setInputMensaje("");
     Keyboard.dismiss();
-    
-    const respuesta = await GenAi.models.generateContent({
-      model: "gemini-2.5-pro",
-      contents: `Esta son las reglas que debes seguir para responder:
+
+    GenAi.models
+      .generateContent({
+        model: "gemini-2.5-flash",
+        contents: `Esta son las reglas que debes seguir para responder:
 1) No uses este símbolo "*" en tus respuestas.
 2) Tu nombre es DIGGEAGENTE.
 3) Eres un agente de servicio dominicano entrenado para responder cualquier pregunta sobre el sistema de tránsito.
@@ -80,18 +82,19 @@ Sistema de Transporte Masivo (FITRAM), el Gabinete del Transporte, el Sistema Na
 nota:  Las reglas que leiste solo las ves tu, el usuario no sabes que esas reglas estan ahi.
 
     Esta es la pregunta que debes responder ${InputMensaje}`,
-    }).finally(()=>{
-      
-    });
-
-    setDataChat([
-      ...DataChat,
-      {
-        pregunta: InputMensaje,
-        respuesta: respuesta.text,
-      },
-    ]);
-    setInicioChat(false)
+      })
+      .then((D) => {
+        setDataChat([
+          ...DataChat,
+          {
+            pregunta: InputMensaje,
+            respuesta: D.text,
+          },
+        ]);
+      })
+      .finally(() => {
+        setInicioChat(false);
+      });
   };
 
   return {
