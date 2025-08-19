@@ -46,6 +46,8 @@ export const Style_ContenedorChat = StyleSheet.create({
     borderColor: "#E6E6E6",
     backgroundColor: "#E6E6E6",
     color: "#717171",
+    height:50,
+    paddingHorizontal:10,
   },
   Container_PreguntasFrecuentes: {
     flex: 1,
