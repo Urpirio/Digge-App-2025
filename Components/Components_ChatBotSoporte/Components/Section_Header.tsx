@@ -2,21 +2,11 @@ import { TouchableOpacity, View, Text } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import { router } from "expo-router";
+import { Style_SectionHeader } from "../Style/Style_SectionHeader";
 
 export default function Section_Header() {
   return (
-    <View
-      style={{
-        paddingHorizontal: 10,
-        paddingTop: 40,
-        paddingBottom: 10,
-        gap: 10,
-        backgroundColor: "#0F539C",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
+    <View style={Style_SectionHeader.Container_Header}>
       <TouchableOpacity
         onPress={() => router.back()}
         style={{ flexDirection: "row", alignItems: "center" }}
@@ -25,16 +15,14 @@ export default function Section_Header() {
       </TouchableOpacity>
 
       <View>
-        <Text style={{ fontSize: 18, fontWeight: "600", color: "white" }}>
-          Chat Atención
-        </Text>
-        <Text style={{ fontWeight: "400", color: "#f8f9fa77" }}>
+        <Text style={Style_SectionHeader.Text_HeaderTitulo}>Chat Atención</Text>
+        <Text style={Style_SectionHeader.Text_HeaderSubTitulo}>
           Soporte DIGESSET
         </Text>
       </View>
-        <TouchableOpacity style={{ paddingHorizontal: 10 }}>
-          <Fontisto name="more-v-a" size={24} color="white" />
-        </TouchableOpacity>
+      <TouchableOpacity style={{ paddingHorizontal: 10 }}>
+        <Fontisto name="more-v-a" size={24} color="white" />
+      </TouchableOpacity>
     </View>
   );
 }
