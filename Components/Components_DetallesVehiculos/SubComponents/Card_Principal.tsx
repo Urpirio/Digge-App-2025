@@ -3,68 +3,51 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { useDetallesVehiculos } from "../hooks/useDetallesVehiculos";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import { useCallback } from "react";
+import { Style_CardPrincipal } from "../Style/Style_CardPrincipal";
 
 export default function Card_Principal() {
-
   const DataLocal = useLocalSearchParams();
-  const {DetallesCarro,ConseguirDetalles} = useDetallesVehiculos();
+  const { DetallesCarro, ConseguirDetalles } = useDetallesVehiculos();
 
-  useFocusEffect(useCallback(()=>{
-    ConseguirDetalles({Matricula:DataLocal?.Matricula});
-  },[]))
+  useFocusEffect(
+    useCallback(() => {
+      ConseguirDetalles({ Matricula: DataLocal?.Matricula });
+    }, [])
+  );
 
-  if(!DetallesCarro){
-    return <View/>
-  };
+  if (!DetallesCarro) {
+    return <View />;
+  }
 
   return (
-    <View
-      style={{
-        padding: 15,
-        borderRadius: 15,
-        gap: 10,
-        backgroundColor: "#0F539C",
-      }}
-    >
-      <Text style={{ fontSize: 20, color: "white", fontWeight: "500" }}>
+    <View style={Style_CardPrincipal.Card}>
+      <Text style={Style_CardPrincipal.container_icon}>
         {DetallesCarro[0]?.Matricula}
       </Text>
-      <Text style={{ fontSize: 16, color: "white" }}>{DetallesCarro[0]?.Marca + ' '+ DetallesCarro[0]?.Modelo + ' ' + DetallesCarro[0]?.Ano}</Text>
+      <Text style={{ fontSize: 16, color: "white" }}>
+        {DetallesCarro[0]?.Marca +
+          " " +
+          DetallesCarro[0]?.Modelo +
+          " " +
+          DetallesCarro[0]?.Ano}
+      </Text>
 
       <View style={{ flexDirection: "row", gap: 10 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            padding: 5,
-            alignItems: "center",
-            borderRadius: 10,
-            backgroundColor: "white",
-            gap:5
-          }}
-        >
+        <View style={Style_CardPrincipal.container_icon}>
           <MaterialCommunityIcons
             name="file-document-outline"
             size={16}
             color="#22C55E"
           />
-          <Text style={{ fontSize: 12, color: "#22C55E" }}>Marbete</Text>
+          <Text style={Style_CardPrincipal.Text_Marbete}>Marbete</Text>
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            padding: 5,
-            alignItems: "center",
-            borderRadius: 10,
-            backgroundColor: "white",
-            gap:5
-          }}
-        >
+        <View style={Style_CardPrincipal.container_icon}>
           <MaterialCommunityIcons
             name="shield-check-outline"
             size={16}
             color="#1B95F4"
           />
-          <Text style={{ fontSize: 12, color: "#1B95F4" }}>Seguro</Text>
+          <Text style={Style_CardPrincipal.Text_Seguro}>Seguro</Text>
         </View>
       </View>
     </View>
