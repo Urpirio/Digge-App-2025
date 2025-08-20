@@ -24,6 +24,14 @@ export default function Section_Dashboard() {
         bgIconColor={"4A739C"}
         Link="SubScreens/ScreenReportarAveria"
       />
+
+      <Card_Varibles
+        Icon={<Ionicons name="car-outline" size={24} color="white"/>}
+        Titulo={"Vehiculo retenido"}
+        subTitulo={"Informar sobre un vehiculo"}
+        bgIconColor={"0F539C"}
+        Link="SubScreens/ScreenVehiculoRetenido"
+      />
     </View>
   );
 }
