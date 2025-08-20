@@ -1,17 +1,37 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Card_Score from "../SubComponents/Card_Score";
-import { router } from "expo-router";
-import { Link } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback } from "react";
+import Animated, {
+  useSharedValue,
+  withTiming,
+  useAnimatedStyle,
+  Easing,
+} from "react-native-reanimated";
 
 export default function Section_User() {
+
+  const  height = useSharedValue<string>("0%");
+
+
+  useFocusEffect(
+    useCallback(() => {
+      height.value = withTiming("18%", {  
+        duration: 500,
+        easing: Easing.inOut(Easing.ease),
+      });
+    }, []));
+
+
+
   return (
-    <View
+    <Animated.View
       style={{
-        paddingBottom: 20,
         backgroundColor: "#0F539C",
         borderBottomRightRadius: 30,
         borderBottomLeftRadius: 30,
+        height,
+        justifyContent:"flex-start"
       }}
     >
       <View
@@ -35,7 +55,7 @@ export default function Section_User() {
         </View>
 
         <TouchableOpacity
-          onPress={()=>router.navigate('/Screens/ScreenPerfil')}
+          onPress={() => router.navigate("/Screens/ScreenPerfil")}
           style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
         >
           <Image
@@ -44,14 +64,12 @@ export default function Section_User() {
               uri: "https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg",
             }}
           />
-          <View style={{paddingHorizontal:10}}>
+          <View style={{ paddingHorizontal: 10 }}>
             <Text style={{ fontSize: 24, color: "white" }}>Hola, Juan!</Text>
             <Text style={{ color: "#ffffffa2" }}>Ciudadano</Text>
           </View>
         </TouchableOpacity>
-
-        <Card_Score />
       </View>
-    </View>
+    </Animated.View>
   );
 }
