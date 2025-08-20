@@ -1,38 +1,26 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Image, TouchableOpacity, View, Text } from "react-native";
-import { useCallback, useState } from "react";
+import { BlurView } from "expo-blur";
 
 export default function Modal_InfoReporte() {
-  const [BgStatus, setBgStatus] = useState<boolean | null>(false);
   const DataLocal = useLocalSearchParams();
-
-  useFocusEffect(
-    useCallback(() => {
-      setTimeout(() => {
-        setBgStatus(true);
-      }, 400);
-      console.log(DataLocal);
-    }, [])
-  );
-
-  const CloseBg = () => {
-    router.back();
-    setTimeout(() => {
-      setBgStatus(false);
-    }, 400);
-  };
 
   return (
     <SafeAreaProvider style={{ justifyContent: "flex-end" }}>
-      <TouchableOpacity
-        onPress={CloseBg}
-        style={{
-          backgroundColor: BgStatus ? "#21252934" : "",
-          height: "100%",
-          width: "100%",
-        }}
-      ></TouchableOpacity>
+      <BlurView
+        style={{ height: "100%", width: "100%" }}
+        intensity={100}
+        tint="dark"
+      >
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+        ></TouchableOpacity>
+      </BlurView>
       <View
         style={{
           borderWidth: 1,
