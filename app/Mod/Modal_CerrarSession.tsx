@@ -1,26 +1,15 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { BlurView } from "expo-blur";
-import { router, useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
+import { router } from "expo-router";
+
 
 export default function Modal_CerrarSession() {
-  const [Intensidad_Blur, setIntensidad_Blur] = useState<number>(0);
-
-  useFocusEffect(
-    useCallback(() => {
-      setTimeout(() => {
-        setIntensidad_Blur(800);
-      }, 400);
-    }, [])
-  );
-
   return (
     <SafeAreaProvider style={{ justifyContent: "flex-end" }}>
-      <BlurView intensity={Intensidad_Blur} tint="dark">
+      <BlurView intensity={100} tint="dark">
         <TouchableOpacity
           onPress={() => {
-            setIntensidad_Blur(0);
             router.back();
           }}
           style={{ width: "100%", height: "100%" }}
