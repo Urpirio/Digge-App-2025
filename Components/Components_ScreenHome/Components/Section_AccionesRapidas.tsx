@@ -2,14 +2,13 @@ import { Text, View } from "react-native";
 import Card_Acciones from "../SubComponents/Card_Acciones";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import Fontisto from "@expo/vector-icons/Fontisto";
 
 export default function Section_AccionesRapidas() {
   return (
     <View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
       <Text style={{ fontSize: 20, fontWeight: "600" }}>Acciones Rapidas</Text>
-      <View style={{ paddingTop: 10 }}>
+      <View style={{ flexDirection:"row",justifyContent:"space-between",marginTop:10,alignItems:"center" }}>
         <Card_Acciones
           Icon={<MaterialIcons name="wb-twilight" size={24} color="white" />}
           Titulo={"Emergencias"}
