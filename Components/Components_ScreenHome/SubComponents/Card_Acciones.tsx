@@ -1,43 +1,68 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
+import Animated, {
+  useSharedValue,
+  withTiming,
+  useAnimatedStyle,
+  Easing,
+} from "react-native-reanimated";
+import { useCallback, useEffect } from "react";
 
-
-interface Content{
-  bgIconColor:String;
-  Icon:any;
+interface Content {
+  bgIconColor: String;
+  Icon: any;
   Titulo: String;
-  subTitulo:String;
-  Link: any,
+  subTitulo: String;
+  Link: any;
 }
 
-export default function Card_Acciones({bgIconColor,Icon,Titulo,subTitulo,Link}:Content) {
+export default function Card_Acciones({
+  bgIconColor,
+  Icon,
+  Titulo,
+  subTitulo,
+  Link,
+}: Content) {
+  const opacity = useSharedValue(0);
+  const height = useSharedValue(0);
+
+  useFocusEffect(
+    useCallback(() => {
+      opacity.value = withTiming(1, {
+        duration: 400,
+        easing: Easing.inOut(Easing.ease),
+      });
+
+      height.value = withTiming(65, {
+        duration: 400,
+        easing: Easing.inOut(Easing.ease),
+      });
+    }, [])
+  );
+
   return (
-    <TouchableOpacity
-      onPress={()=>router.navigate(Link)}
-      style={{
-        flexDirection: "row",
-        borderWidth: 1,
-        justifyContent: "space-between",
-        padding:10,
-        alignItems:'center',
-        backgroundColor:"#fcfcfcff",
-        borderRadius:10,
-        borderColor:'#dee2e651',
-        marginBottom:10,
-        height:80
-      }}
-    >
-      <View style={{flexDirection:'row',gap:10,alignItems:'center'}}>
-        <View style={{padding:15,borderRadius:10,backgroundColor:`#${bgIconColor}`}}>
+    <Animated.View style={{ opacity, height }}>
+      <TouchableOpacity
+        onPress={() => router.navigate(Link)}
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: `#${bgIconColor}`,
+          borderRadius: 10,
+          width: 60,
+          height: 60,
+        }}
+      >
+        <View
+          style={{
+            borderRadius: 10,
+            backgroundColor: `#${bgIconColor}`,
+          }}
+        >
           {Icon}
         </View>
-        <View >
-          <Text style={{fontSize:18}}>{Titulo}</Text>
-          <Text style={{fontSize:14,color:'#4A739C'}}>{subTitulo}</Text>
-        </View>
-      </View>
-      <Ionicons name="chevron-forward" size={24} color="#0D141C" />
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </Animated.View>
   );
 }
