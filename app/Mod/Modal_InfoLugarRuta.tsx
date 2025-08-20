@@ -5,32 +5,29 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import { router } from "expo-router";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
+import { BlurView } from "expo-blur";
 
 export default function Modal_InfoLugarRuta() {
-  const [bgBtnColor, setbgBtnColor] = useState<string>("");
-
-  useFocusEffect(
-    useCallback(() => {
-      setTimeout(() => {
-        setbgBtnColor("#0000002c");
-      }, 400);
-    }, [])
-  );
-
   return (
     <SafeAreaProvider
       style={{ justifyContent: "center", alignItems: "center" }}
     >
-      <TouchableOpacity
-        onPress={() => router.back()}
-        style={{
-          height: "100%",
-          width: "100%",
-          justifyContent: "center",
-          paddingHorizontal: 10,
-          backgroundColor: bgBtnColor,
-        }}
-      ></TouchableOpacity>
+      <BlurView
+        style={{ height: "100%", width: "100%" }}
+        intensity={100}
+        tint="dark"
+      >
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={{
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            paddingHorizontal: 10,
+          }}
+        ></TouchableOpacity>
+      </BlurView>
+
       <View
         style={{
           backgroundColor: "white",
