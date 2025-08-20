@@ -4,14 +4,39 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Feather from "@expo/vector-icons/Feather";
+import Card_AccionesRegistro from "../SubComponents/Card_AccionesRegistro";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Animated, {
+  useSharedValue,
+  withTiming,
+  useAnimatedStyle,
+  Easing,
+} from "react-native-reanimated";
+import { useFocusEffect } from "expo-router";
+import { useCallback } from "react";
 
 export default function Section_ResumenActividad() {
+  const opacity = useSharedValue(0);
+  useFocusEffect(
+    useCallback(() => {
+      opacity.value = withTiming(1, {
+        duration: 500,
+        easing: Easing.inOut(Easing.ease),
+      });
+
+    }, [])
+  );
   return (
-    <View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
+    <Animated.View style={{ paddingHorizontal: 10, paddingTop: 10 }}>
       <Text style={{ fontSize: 20, fontWeight: "600" }}>
         Resumen de tu actividad
       </Text>
-      <ScrollView horizontal style={{ paddingVertical: 10 }}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ paddingVertical: 10 }}
+      >
         <Card_Actividad
           Icon={<Fontisto name="star" size={24} color="#ffffffff" />}
           Color={"4CB050"}
@@ -62,6 +87,43 @@ export default function Section_ResumenActividad() {
           Link={""}
         />
       </ScrollView>
-    </View>
+      <View style={{ gap: 10 }}>
+        <Card_AccionesRegistro
+          Icon={
+            <MaterialCommunityIcons
+              name="checkbox-outline"
+              size={24}
+              color="#FF980E"
+            />
+          }
+          Titulo={"Multa pendiente"}
+          subTitulo={"Multa por RD$2,500 - Vence 23 Feb "}
+          bgIconColor={"FFF2DF"}
+          hora={"4h"}
+          Stat={"RD$2,500"}
+          ColorStat={"FF980E"}
+        />
+
+        <Card_AccionesRegistro
+          Icon={<Feather name="info" size={24} color="#4BB04D" />}
+          Titulo={"Denuncia procesada"}
+          subTitulo={"Denuncia #D020 procesada y validada"}
+          bgIconColor={"EAF4E9"}
+          hora={"4h"}
+          Stat={"+40 pts"}
+          ColorStat={"43B24B"}
+        />
+
+        <Card_AccionesRegistro
+          Icon={<MaterialIcons name="access-time" size={24} color="#1F96F5" />}
+          Titulo={"Renovación de marbete"}
+          subTitulo={"Marbete vence en 12 días "}
+          bgIconColor={"E4F2FD"}
+          hora={"4h"}
+          Stat={"Proximo"}
+          ColorStat={"8E98A0"}
+        />
+      </View>
+    </Animated.View>
   );
 }
