@@ -1,5 +1,4 @@
 import Section_AccionesRapidas from "@/Components/Components_ScreenHome/Components/Section_AccionesRapidas";
-import Section_ActividadReciente from "@/Components/Components_ScreenHome/Components/Section_ActividadReciente";
 import Section_ResumenActividad from "@/Components/Components_ScreenHome/Components/Section_ResumenActividad";
 import Section_User from "@/Components/Components_ScreenHome/Components/Section_User";
 import { ScrollView } from "react-native";
@@ -8,6 +7,7 @@ import { StatusBar } from "react-native";
 import { useFocusEffect } from "expo-router";
 import { useCallback } from "react";
 import { BackHandler } from "react-native";
+import Section_Actualidad from "@/Components/Components_ScreenHome/Components/Section_Novedades";
 
 export default function ScreenHome() {
   useFocusEffect(
@@ -21,9 +21,9 @@ export default function ScreenHome() {
     <SafeAreaProvider style={{ backgroundColor: "white" }}>
       <Section_User />
       <ScrollView>
-        <Section_ResumenActividad />
         <Section_AccionesRapidas />
-        <Section_ActividadReciente />
+        <Section_ResumenActividad />
+        <Section_Actualidad />
       </ScrollView>
       <StatusBar barStyle={"light-content"} />
     </SafeAreaProvider>
