@@ -54,6 +54,15 @@ export default function _layout() {
         name="ScreenVehiculoRetenido"
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="ScreenNovedades" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="ScreenDetallesNovedades"
+        options={{
+          header: () => {
+            return <View style={{ height: 30, backgroundColor: "#0F539C" }} />;
+          },
+        }}
+      />
     </Stack>
   );
 }
