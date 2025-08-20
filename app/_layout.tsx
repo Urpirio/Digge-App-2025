@@ -27,13 +27,13 @@ export default function _layout() {
         name="Mod/Modal_EnviarUbicacion"
         options={{
           presentation: "transparentModal",
-          animation: "slide_from_bottom",
+          animation: "fade",
         }}
       />
       <Stack.Screen
         name="Mod/Modal_InfoReporte"
         options={{
-          animation: "slide_from_bottom",
+          animation: "fade",
           presentation: "containedTransparentModal",
         }}
       />
@@ -61,15 +61,15 @@ export default function _layout() {
       <Stack.Screen
         name="Mod/Modal_Ruta"
         options={{
-          animation: "slide_from_bottom",
+          animation: "fade",
           presentation: "containedTransparentModal",
         }}
       />
       <Stack.Screen
         name="Mod/Modal_InfoLugarRuta"
         options={{
-          animation: "slide_from_bottom",
-          presentation: "containedTransparentModal",
+          animation: "fade",
+          presentation: "transparentModal",
         }}
       />
       <Stack.Screen
@@ -77,7 +77,7 @@ export default function _layout() {
         options={{
           headerShown: false,
           presentation: "transparentModal",
-          animation: "slide_from_bottom",
+          animation: "fade",
         }}
       />
       <Stack.Screen
@@ -85,7 +85,7 @@ export default function _layout() {
         options={{
           headerShown: false,
           presentation: "transparentModal",
-          animation: "slide_from_bottom",
+          animation: "fade",
         }}
       />
       <Stack.Screen
@@ -93,10 +93,17 @@ export default function _layout() {
         options={{
           headerShown: false,
           presentation: "transparentModal",
-          animation: "slide_from_bottom",
+          animation: "fade",
         }}
       />
-      
+      <Stack.Screen
+        name="Mod/Modal_RetenidoNoEncontrado"
+        options={{
+          headerShown: false,
+          presentation: "transparentModal",
+          animation: "fade",
+        }}
+      />
     </Stack>
   );
 }
