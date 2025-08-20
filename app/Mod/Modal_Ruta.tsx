@@ -3,31 +3,26 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image } from "react-native";
 import { router } from "expo-router";
-import { useCallback, useState } from "react";
-import { useFocusEffect } from "expo-router";
+
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { BlurView } from "expo-blur";
 
 export default function Modal_Ruta() {
-  const [bgBtnColor, setbgBtnColor] = useState<string>("transparente");
-
-  useFocusEffect(
-    useCallback(() => {
-      setTimeout(() => {
-        setbgBtnColor("#05050564");
-      }, 400);
-    }, [])
-  );
-
   return (
     <SafeAreaProvider style={{ justifyContent: "flex-end" }}>
-      <TouchableOpacity
-        onPress={() => router.back()}
-        style={{
-          backgroundColor: bgBtnColor,
-          height: "100%",
-          width: "100%",
-        }}
-      ></TouchableOpacity>
+      <BlurView
+        style={{ height: "100%", width: "100%" }}
+        intensity={100}
+        tint="dark"
+      >
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+        ></TouchableOpacity>
+      </BlurView>
       <View
         style={{
           position: "absolute",
@@ -35,7 +30,7 @@ export default function Modal_Ruta() {
           paddingBottom: 50,
           borderRadius: 30,
           paddingVertical: 20,
-          paddingHorizontal:15,
+          paddingHorizontal: 15,
           height: "50%",
           borderColor: "#e9ecef",
         }}
@@ -48,13 +43,17 @@ export default function Modal_Ruta() {
           }}
         >
           <View style={{ gap: 5 }}>
-            <View style={{flexDirection:'row',alignItems:'center',gap:5}}>
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
+            >
               <Text style={{ fontSize: 20, fontWeight: "500" }}>
                 INTRANT SEDE principal
               </Text>
-              <TouchableOpacity onPress={()=>{
-                router.navigate('/Mod/Modal_InfoLugarRuta')
-              }} >
+              <TouchableOpacity
+                onPress={() => {
+                  router.navigate("/Mod/Modal_InfoLugarRuta");
+                }}
+              >
                 <MaterialCommunityIcons
                   name="information"
                   size={24}
