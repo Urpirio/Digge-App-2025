@@ -1,33 +1,28 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TouchableOpacity, View, Text } from "react-native";
-import { router, useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
+import { router } from "expo-router";
+import { BlurView } from "expo-blur";
 
 export default function Modal_EnviarUbicacion() {
-  const [BgStatus, setBgStatus] = useState<boolean | null>(false);
-  useFocusEffect(
-    useCallback(() => {
-      setTimeout(() => {
-        setBgStatus(true);
-      }, 400);
-    }, [])
-  );
-
   return (
     <SafeAreaProvider
       style={{ justifyContent: "center", alignItems: "center" }}
     >
-      <TouchableOpacity
-        onPress={() => {
-          setBgStatus(false);
-          router.back();
-        }}
-        style={{
-          height: "100%",
-          width: "100%",
-          backgroundColor: BgStatus ? "#00000027" : "",
-        }}
-      ></TouchableOpacity>
+      <BlurView
+        tint="dark"
+        intensity={100}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            router.back();
+          }}
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
+        ></TouchableOpacity>
+      </BlurView>
       <View style={{ position: "absolute", paddingHorizontal: 10 }}>
         <View
           style={{
@@ -68,14 +63,13 @@ export default function Modal_EnviarUbicacion() {
                 alignItems: "center",
                 padding: 10,
                 borderRadius: 10,
-                backgroundColor:'red'
+                backgroundColor: "red",
               }}
             >
-              <Text style={{color:'white',fontWeight:'500'}}>Activar</Text>
+              <Text style={{ color: "white", fontWeight: "500" }}>Activar</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                setBgStatus(false);
                 router.back();
               }}
               style={{
@@ -84,10 +78,12 @@ export default function Modal_EnviarUbicacion() {
                 alignItems: "center",
                 padding: 10,
                 borderRadius: 10,
-                backgroundColor:'#adb5bd'
+                backgroundColor: "#adb5bd",
               }}
             >
-              <Text style={{color:'white',fontWeight:'500'}}>Cancelar</Text>
+              <Text style={{ color: "white", fontWeight: "500" }}>
+                Cancelar
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
