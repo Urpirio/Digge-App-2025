@@ -15,17 +15,14 @@ export default function ScreenEditarPerfil() {
     Input_Email,
     Input_NumeroT_primario,
     Input_NumeroT_secundario,
-    bgStatus,
     EstadoGuardar,
-    setbgStatus,
   } = useEditarPerfil();
 
   return (
     <SafeAreaProvider style={{ justifyContent: "flex-end" }}>
-      <BlurView intensity={bgStatus} tint="dark">
+      <BlurView intensity={100} tint="dark">
         <TouchableOpacity
           onPress={() => {
-            setbgStatus(0);
             router.back();
           }}
           style={{ height: "100%", width: "100%" }}
