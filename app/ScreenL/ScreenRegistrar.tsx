@@ -12,17 +12,10 @@ import { useStyleRegistro } from "@/Components/Components_Registro/hooks/useStyl
 import { useEnviarDatosR } from "@/Components/Components_Registro/hooks/useEnviarDatosR";
 import { KeyboardAvoidingView } from "react-native";
 import Feather from "@expo/vector-icons/Feather";
+import Section_Form1 from "@/Components/Components_Registro/Components/Section_Form1";
+import Section_Form2 from "@/Components/Components_Registro/Components/Section_Form2";
 
 export default function ScreenRegistrar() {
-  const {
-    IconPass_A,
-    IconPass_B,
-    setIconPass_A,
-    setIconPass_B,
-    BtnPass_A,
-    BtnPass_B,
-  } = useStyleRegistro();
-
   const {
     InputEmail,
     InputPassA,
@@ -32,6 +25,23 @@ export default function ScreenRegistrar() {
     setInputPassA,
     setInputPassB,
     setInputcedula,
+    IconPass_A,
+    IconPass_B,
+    setIconPass_A,
+    setIconPass_B,
+    BtnPass_A,
+    BtnPass_B,
+    Seguiente,
+    setSeguiente,
+    setInputNumero1,
+    setInputNumero2,
+    InputNumero1,
+    InputNumero2,
+    BtnSeguiente_Registro,
+    ErrorCedula,
+    Email_Valido,
+    Pass_NoIgual,
+    Send_Registrar
   } = useEnviarDatosR();
 
   return (
@@ -41,7 +51,7 @@ export default function ScreenRegistrar() {
         source={require("../../Assets/Backgrounds/Pagina de bienvenida.png")}
       />
       <KeyboardAvoidingView
-        behavior="padding"
+        behavior="height"
         style={{
           position: "absolute",
           flex: 1,
@@ -49,7 +59,9 @@ export default function ScreenRegistrar() {
           gap: 20,
         }}
       >
-        <View style={{ paddingTop: 40, width: "100%",alignItems:'flex-start' }}>
+        <View
+          style={{ paddingTop: 40, width: "100%", alignItems: "flex-start" }}
+        >
           <TouchableOpacity
             onPress={() => router.back()}
             style={{
@@ -104,108 +116,42 @@ export default function ScreenRegistrar() {
             borderColor: "#ced4da",
           }}
         />
-        <View style={{ justifyContent: "center", gap: 10 }}>
-          <View
-            style={{
-              backgroundColor: "#e9e9e97e",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              borderRadius: 10,
-              padding: 5,
-            }}
-          >
-            <TextInput
-              value={InputEmail}
-              onChangeText={setInputEmail}
-              placeholder="Correo electrónico "
-              placeholderTextColor={"#adb5bd"}
-              style={{
-                fontSize: 16,
-                width: "90%",
-              }}
-            />
-          </View>
-          <View
-            style={{
-              backgroundColor: "#e9e9e97e",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              borderRadius: 10,
-              padding: 5,
-            }}
-          >
-            <TextInput
-              value={Inputcedula}
-              onChangeText={setInputcedula}
-              placeholder="Cedula"
-              placeholderTextColor={"#adb5bd"}
-              style={{
-                fontSize: 16,
-                width: "90%",
-              }}
-            />
-          </View>
-          <View
-            style={{
-              backgroundColor: "#e9e9e97e",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              borderRadius: 10,
-              padding: 5,
-            }}
-          >
-            <TextInput
-              value={InputPassA}
-              onChangeText={setInputPassA}
-              showSoftInputOnFocus
-              secureTextEntry={IconPass_A}
-              placeholder="Contraseña"
-              placeholderTextColor={"#adb5bd"}
-              style={{ fontSize: 16, width: "90%" }}
-            />
-            <TouchableOpacity onPress={() => setIconPass_A(!IconPass_A)}>
-              <BtnPass_A />
-            </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              backgroundColor: "#e9e9e97e",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              borderRadius: 10,
-              alignItems: "center",
-              padding: 5,
-            }}
-          >
-            <TextInput
-              value={InputPassB}
-              onChangeText={setInputPassB}
-              showSoftInputOnFocus
-              secureTextEntry={IconPass_B}
-              placeholder="Contraseña"
-              placeholderTextColor={"#adb5bd"}
-              style={{ fontSize: 16, width: "90%" }}
-            />
-            <TouchableOpacity onPress={() => setIconPass_B(!IconPass_B)}>
-              <BtnPass_B />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <TouchableOpacity
-          onPress={() => router.navigate("/Screens/AScreenHome")}
-          style={{
-            padding: 12,
-            backgroundColor: "#0F539C",
-            borderRadius: 10,
+        {Seguiente ? (
+          <Section_Form2
+            InputNumero1={InputNumero1}
+            InputNumero2={InputNumero2}
+            setInputNumero1={setInputNumero1}
+            setInputNumero2={setInputNumero2}
+          />
+        ) : (
+          <Section_Form1
+            Pass_NoIgual={Pass_NoIgual}
+            Email_Valido={Email_Valido}
+            ErrorCedula={ErrorCedula}
+            IconPass_A={IconPass_A}
+            IconPass_B={IconPass_B}
+            InputEmail={InputEmail}
+            InputPassA={InputPassA}
+            InputPassB={InputPassB}
+            Inputcedula={Inputcedula}
+            setInputEmail={setInputEmail}
+            setIconPass_A={setIconPass_A}
+            setIconPass_B={setIconPass_B}
+            setInputPassA={setInputPassA}
+            setInputPassB={setInputPassB}
+            setInputcedula={setInputcedula}
+            BtnPass_A={BtnPass_A}
+            BtnPass_B={BtnPass_B}
+          />
+        )}
+        <BtnSeguiente_Registro
+          Inputcedula={Inputcedula}
+          SendRegistro={() => {
+            if (Seguiente) {
+              Send_Registrar();
+            }
           }}
-        >
-          <Text style={{ textAlign: "center", color: "white", fontSize: 18 }}>
-            Registrarte
-          </Text>
-        </TouchableOpacity>
+        />
       </KeyboardAvoidingView>
       <StatusBar barStyle={"dark-content"} />
     </SafeAreaProvider>
