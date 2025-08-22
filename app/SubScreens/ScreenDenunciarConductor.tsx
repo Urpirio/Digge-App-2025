@@ -8,7 +8,7 @@ export default function ScreenDenunciarConductor() {
   return (
     <SafeAreaProvider style={{ backgroundColor: "white" }}>
       <Section_Header />
-      <ScrollView >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Section_Descripcion />
         <Section_Formulario />
       </ScrollView>
