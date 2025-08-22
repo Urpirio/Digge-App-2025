@@ -105,7 +105,7 @@ export default function Section_Header({
                 fontWeight: "500",
               }}
             >
-              Dashboard
+              Panel de control
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
