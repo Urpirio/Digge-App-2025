@@ -7,12 +7,18 @@ import {
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import Caed_Actualidad from "../SubComponents/Caed_Actualidad";
-import { useEffect, useRef, useState } from "react";
-import { router } from "expo-router";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { router, useFocusEffect } from "expo-router";
+import { useGetActualidad } from "../Hooks/useGetActulidad";
 
 export default function Section_Actualidad() {
   const scrollRef = useRef<ScrollView>(null);
   const [ScrollX, setScrollX] = useState<number>(360);
+  const { GetNoticias } = useGetActualidad();
+
+  // useFocusEffect(useCallback(()=>{
+  //   GetNoticias();
+  // },[]))
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,7 +61,6 @@ export default function Section_Actualidad() {
         </TouchableOpacity>
       </View>
       <ScrollView
-       
         ref={scrollRef}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
