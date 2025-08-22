@@ -3,6 +3,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
 import { Style_SectionHeader } from "../Style/Style_SectionHeader";
+
 // import { Link } from "expo-router";
 
 interface Content {
@@ -63,7 +64,7 @@ export default function Section_Header({
             }
           >
             <Ionicons
-              name="wallet-outline"
+              name="stats-chart"
               size={16}
               color={StateSelect ? "white" : "#0F539C"}
             />
@@ -73,7 +74,7 @@ export default function Section_Header({
                 fontWeight: "500",
               }}
             >
-              Dashboard
+              Panel de control
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
