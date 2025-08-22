@@ -30,7 +30,7 @@ export default function ScreenCamaraFotos() {
   const GuardarFotos = () => {
     if (DataLocal?.Status == "2") {
       setDataDeFotos([
-        ...DataDeFotos,
+        ...DataDeFotos1,
         {
           ImageTrirada: ImageTrirada,
         },
@@ -38,7 +38,7 @@ export default function ScreenCamaraFotos() {
       setImageTrirada(null);
     } else if (DataLocal?.Status == "1") {
       setDataDeFotos1([
-        ...DataDeFotos,
+        ...DataDeFotos1,
         {
           ImageTrirada: ImageTrirada,
         },
