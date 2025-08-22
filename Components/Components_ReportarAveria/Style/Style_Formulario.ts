@@ -10,12 +10,12 @@ export const Style_Formulario = StyleSheet.create({
   },
   SubConteiner_General: {
     gap: 10,
-    borderWidth: 1,
+    // borderWidth: 1,
     padding: 10,
     borderRadius: 15,
-    borderColor: "#ced4da",
+    // borderColor: "#ced4da",
     backgroundColor: "white",
-    boxShadow: "0px 0px 10px 0px #ced4da35",
+    // boxShadow: "0px 0px 10px 0px #ced4da35",
   },
   BtnUbicacion: {
     borderWidth: 1,
