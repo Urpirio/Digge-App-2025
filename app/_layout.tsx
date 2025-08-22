@@ -104,6 +104,14 @@ export default function _layout() {
           animation: "fade",
         }}
       />
+      <Stack.Screen
+        name="Mod/Modal_DatosEnviados"
+        options={{
+          headerShown: false,
+          presentation: "transparentModal",
+          animation: "fade",
+        }}
+      />
     </Stack>
   );
 }
