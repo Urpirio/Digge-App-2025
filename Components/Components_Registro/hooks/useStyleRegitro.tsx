@@ -25,6 +25,7 @@ export const useStyleRegistro = () => {
       .then((respuesta) => respuesta.json())
       .then((Data) => {
         if (Data?.status == 200) {
+          setSeguiente(true)
           setErrorCedula(false);
         } else if (Data?.status == 404) {
           setErrorCedula(true);
@@ -110,10 +111,7 @@ export const useStyleRegistro = () => {
                 setEmail_Valido(false);
                 if (InputPassA == InputPassB) {
                   setPass_NoIgual(false);
-                  Validar_Cedula({ Inputcedula: Tools?.Inputcedula });
-                  if (ErrorCedula) {
-                    setSeguiente(true);
-                  }
+                  Validar_Cedula({ Inputcedula: Tools?.Inputcedula })
                 } else {
                   setPass_NoIgual(true);
                 }
