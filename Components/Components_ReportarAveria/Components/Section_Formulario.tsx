@@ -3,9 +3,9 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Picker } from "@react-native-picker/picker";
 import { useFormulario } from "../Hook/useFormulario";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Buttons_Evidencias from "../../Components_Globales/SubComponents/Buttons_Evidencias";
 import Contenedor_Evidencias from "@/Components/Components_Globales/SubComponents/Contenedor_Evidencias";
 import Buttons_EvidenciasMini from "../../Components_Globales/SubComponents/Buttons_EvidenciasMini";
@@ -24,19 +24,30 @@ export default function Section_Formulario() {
     setInputCarriles,
     TextTareaDescripcion,
     setTextTareaDescripcion,
+    GetDataUser,
+    DataFotos,
+    Dlocalizacion,
+    setDlocalizacion,
+    setDataFotos,
+    BtnEnviarReporte,
+    Send_Reporte,
+    ErrorSend,
   } = useFormulario();
 
-  const [Dlocalizacion, setDlocalizacion] = useState<any | null>([]);
+  useFocusEffect(
+    useCallback(() => {
+      GetDataUser();
+    }, [])
+  );
+
   setDataLocalizacion = setDlocalizacion;
   DataLocalizacion = Dlocalizacion;
-  const [DataFotos, setDataFotos] = useState<any | null>([]);
+
   setDataDeFotos = setDataFotos;
   DataDeFotos = DataFotos;
 
-  const DataLocal = useLocalSearchParams();
-
   return (
-    <View style={{ paddingHorizontal: 10, paddingBottom: 50 }}>
+    <View style={{ paddingHorizontal: 5, paddingBottom: 50 }}>
       <View style={Style_Formulario.SubConteiner_General}>
         <Text style={{ fontSize: 18, fontWeight: "600" }}>
           Información de la Avería
@@ -101,7 +112,7 @@ export default function Section_Formulario() {
             >
               <FontAwesome6 name="location-dot" size={24} color="#0F539C" />
               <Text style={{ color: "gray" }}>
-                {DataLocalizacion.length > 0
+                {DataLocalizacion?.length > 0
                   ? "Ubicacion seleccionada"
                   : "Selecciona la ubicacion (GPS)"}
               </Text>
@@ -114,6 +125,7 @@ export default function Section_Formulario() {
               <Text style={{ color: "red", fontWeight: "500" }}>*</Text>
             </View>
             <TextInput
+              keyboardType="numeric"
               value={InputCarriles}
               onChangeText={setInputCarriles}
               placeholder="Numero afectados"
@@ -169,13 +181,19 @@ export default function Section_Formulario() {
           )}
         </View>
 
-        <View style={{ paddingTop: 10 }}>
-          <TouchableOpacity style={Style_Formulario.BtnEnviarReporte}>
-            <FontAwesome5 name="tools" size={18} color="white" />
-            <Text style={{ fontWeight: "600", color: "white" }}>
-              Enviar Reporte
-            </Text>
+        <View style={{ paddingTop: 10, gap: 10 }}>
+          <TouchableOpacity
+            onPress={Send_Reporte}
+            style={Style_Formulario.BtnEnviarReporte}
+          >
+            <BtnEnviarReporte />
           </TouchableOpacity>
+          {ErrorSend && (
+            <Text style={{ color: "#d00000", textAlign: "center" }}>
+              Error: no se pudieron enviar los datos. Verifica que toda la
+              información del formulario sea correcta.
+            </Text>
+          )}
         </View>
       </View>
     </View>
