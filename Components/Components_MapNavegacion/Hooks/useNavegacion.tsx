@@ -1,5 +1,11 @@
+import { useGetReporte } from "./useGetReportes";
+
 export const useNavegacion = () => {
 
-    
-  return {};
+  const { GetReportes,Data_Reportes } = useGetReporte();
+
+  return {
+    GetReportes,
+    Data_Reportes,
+  };
 };
