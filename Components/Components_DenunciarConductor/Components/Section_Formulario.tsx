@@ -3,8 +3,8 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useFormulario } from "../Hooks/useFormulario";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { router } from "expo-router";
-import { useState } from "react";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import Buttons_Evidencias from "@/Components/Components_Globales/SubComponents/Buttons_Evidencias";
 import Buttons_EvidenciasMini from "@/Components/Components_Globales/SubComponents/Buttons_EvidenciasMini";
 import Contenedor_Evidencias from "@/Components/Components_Globales/SubComponents/Contenedor_Evidencias";
@@ -17,24 +17,39 @@ export let setDataLocalizacion: any;
 
 export default function Section_Formulario() {
   const {
-    InputColor,
     InputDescripcion,
     InputPlaca,
-    setInputColor,
     setInputPlaca,
     setInputDescripcion,
     setDropDownInfraccion,
     setDropDownVehiculos,
     DropDownInfraccion,
     DropDownVehiculos,
+    setDataLocaliza,
+    Send_Denuncia,
+    BtnEnviarDenuncia,
+    GetDataUser,
+    ErrorSend,
   } = useFormulario();
 
-  const [Dlocalizacion, setDlocalizacion] = useState<any | null>([]);
+  const [Dlocalizacion, setDlocalizacion] = useState<
+    Array<{
+      latitude: number;
+      longitude: number;
+    }>
+  >();
   setDataLocalizacion = setDlocalizacion;
   DataLocalizacion = Dlocalizacion;
   const [DataFotos, setDataFotos] = useState<any | null>([]);
   setDataDeFotos1 = setDataFotos;
   DataDeFotos1 = DataFotos;
+
+  useFocusEffect(
+    useCallback(() => {
+      setDataLocaliza(Dlocalizacion);
+      GetDataUser();
+    }, [])
+  );
 
   return (
     <View style={{ paddingHorizontal: 10, paddingBottom: 80, gap: 10 }}>
@@ -93,17 +108,6 @@ export default function Section_Formulario() {
         </View>
       </View>
 
-      {/* No lo veo necesario ya que eso podria ir en la descripcion del incidente */}
-      {/* <View style={{ gap: 5 }}>
-        <Text>Color del Vehículo *</Text>
-        <TextInput
-          placeholder="Ej: Blanco, Azul, Rojo"
-          value={InputColor}
-          onChangeText={setInputColor}
-          style={Style_SectionFormulario.Text_Input}
-        />
-      </View> */}
-
       {/* Tipo de Infraccion -> Picke */}
       <View style={{ gap: 5 }}>
         <Text>Tipo de Infracción</Text>
@@ -153,7 +157,7 @@ export default function Section_Formulario() {
         >
           <FontAwesome6 name="location-dot" size={18} color="#0F539C" />
           <Text style={{ color: "gray" }}>
-            {DataLocalizacion.length > 0
+            {DataLocalizacion?.length > 0
               ? "Ubicacion seleccionada"
               : "Selecciona la ubicacion (GPS)"}
           </Text>
@@ -197,13 +201,21 @@ export default function Section_Formulario() {
         )}
       </View>
 
-      <View>
-        <TouchableOpacity style={Style_SectionFormulario.Btn_EnviarDenuncia}>
-          <Ionicons name="warning-outline" size={20} color="white" />
-          <Text style={{ fontSize: 16, color: "white", fontWeight: "500" }}>
-            Enviar denuncia
-          </Text>
+      <View style={{ gap: 10 }}>
+        <TouchableOpacity
+          onPress={() => {
+            Send_Denuncia();
+          }}
+          style={Style_SectionFormulario.Btn_EnviarDenuncia}
+        >
+          <BtnEnviarDenuncia />
         </TouchableOpacity>
+        {ErrorSend && (
+          <Text style={{ color: "#d00000", textAlign: "center"}}>
+            Error: no se pudieron enviar los datos. Verifica que toda la
+            información del formulario sea correcta.
+          </Text>
+        )}
       </View>
     </View>
   );
