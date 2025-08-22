@@ -12,9 +12,12 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useReportes } from "@/Components/Components_MapNavegacion/Hooks/useReportes";
 import Feather from "@expo/vector-icons/Feather";
 import { Data_Agentes } from "@/Components/Components_MapNavegacion/Data/Data_Agentes";
+import { useNavegacion } from "@/Components/Components_MapNavegacion/Hooks/useNavegacion";
+import { ObjectReportes } from "@/Components/Components_MapNavegacion/Hooks/useGetReportes";
 
 export default function Modal_MapNavegacion() {
   const { ConseguirUbicacion } = useLocalizacion();
+  const { GetReportes, Data_Reportes } = useNavegacion();
   const [ZoomState, setZoomState] = useState<number>();
   const {
     CategoriaMarker,
@@ -27,6 +30,7 @@ export default function Modal_MapNavegacion() {
   useFocusEffect(
     useCallback(() => {
       ConseguirUbicacion();
+      GetReportes();
       ButtonNavegacion();
     }, [StatusNav])
   );
@@ -142,23 +146,16 @@ export default function Modal_MapNavegacion() {
         // moveOnMarkerPress={true}
         onMarkerSelect={(D) => {
           const { position } = D.nativeEvent;
-          // console.log(position);
         }}
         onKmlReady={(event) => {
           const {} = event.nativeEvent;
         }}
-        // onMagicTap={() => {}}
         onRegionChange={(event) => {
           const { longitude, longitudeDelta, latitude, latitudeDelta } = event;
-          // console.log(longitude + " " + latitude);
         }}
         // cameraZoomRange={{}}
         onPoiClick={(event) => {
           const { coordinate, name, placeId, position } = event.nativeEvent;
-          // console.log(coordinate);
-          console.log(name);
-          // console.log(placeId);
-          // console.log(position);
         }}
         showsBuildings={true}
         showsMyLocationButton={false}
@@ -169,44 +166,40 @@ export default function Modal_MapNavegacion() {
         style={{ height: "94%", width: "100%" }}
       >
         {/* Aqui tengo que agregar un Hook para que en base a los estados de la navegacion cambien los marcadores tambien */}
-        {DataPoints?.map(
-          (D: {
-            Status: string;
-            Descripcion: string;
-            Titulo: string;
-            Imagen: any;
-            longitud: any;
-            latitud: any;
-          }) => {
-            return (
-              <Marker
-                // icon={CategoriaMarker({ Status: D.Status })}
-                onPress={() =>
-                  router.navigate({
-                    pathname: "/Mod/Modal_InfoReporte",
-                    params: {
-                      Descripcion: D.Descripcion,
-                      Titulo: D.Titulo,
-                      Image: D.Imagen,
-                    },
-                  })
-                }
-                coordinate={{ longitude: D.longitud, latitude: D.latitud }}
-              />
-            );
-          }
-        )}
-
-        {Data_Agentes.map((Data) => {
+        {Data_Reportes?.map((D: ObjectReportes) => {
           return (
             <Marker
-              onPress={()=>router.navigate({pathname:"/Mod/Modal_ReportarAgente",params:{
-                
-              }})}
-              coordinate={{ longitude: Data.longitud, latitude: Data.latitud }}
+              onPress={() =>
+                router.navigate({
+                  pathname: "/Mod/Modal_InfoReporte",
+                  params: {
+                    Descripcion: D.descripcion,
+                    Titulo: D.tipo_dn,
+                  },
+                })
+              }
+              coordinate={{
+                longitude: D.ubicacion.long,
+                latitude: D.ubicacion.lg,
+              }}
             />
           );
         })}
+
+{/* Este el DataMap de los agentes cercanos */}
+        {/* {Data_Agentes.map((Data) => {
+          return (
+            <Marker
+              onPress={() =>
+                router.navigate({
+                  pathname: "/Mod/Modal_ReportarAgente",
+                  params: {},
+                })
+              }
+              coordinate={{ longitude: Data.longitud, latitude: Data.latitud }}
+            />
+          );
+        })} */}
       </MapView>
       <View
         style={{
