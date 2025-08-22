@@ -8,18 +8,28 @@ import { useFocusEffect } from "expo-router";
 import { useCallback } from "react";
 import { BackHandler } from "react-native";
 import Section_Actualidad from "@/Components/Components_ScreenHome/Components/Section_Novedades";
+import { useGetHome } from "@/Components/Components_ScreenHome/Hooks/useGetHome";
 
 export default function ScreenHome() {
+  const { GetDataUser, Datauser } = useGetHome();
   useFocusEffect(
     useCallback(() => {
       BackHandler.addEventListener("hardwareBackPress", () => {
         return true;
       });
-    }, [])
+
+      GetDataUser();
+    }, [Datauser])
   );
   return (
     <SafeAreaProvider style={{ backgroundColor: "white" }}>
-      <Section_User />
+      <Section_User
+        nombres={Datauser?.nombres}
+        foto_perfil={Datauser?.foto_perfil}
+        cedula={Datauser?.cedula}
+        apellidos={Datauser?.apellidos}
+        
+      />
       <ScrollView>
         <Section_AccionesRapidas />
         <Section_ResumenActividad />

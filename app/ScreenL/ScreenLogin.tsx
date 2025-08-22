@@ -13,11 +13,20 @@ import { useStyleLogin } from "@/Components/Components_Login/hooks/useStyleLogin
 import Feather from "@expo/vector-icons/Feather";
 import * as LocalAuthentication from "expo-local-authentication";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Style_Login } from "@/Components/Components_Login/Style/Style_Login";
 
 export default function ScreenLogin() {
-  const { InputEmail, setInputEmail, InputPass, setInputPass } =
-    useEnviarDatos();
-  const { IconPass, setIconPass, BtnIconPass } = useStyleLogin();
+  const {
+    InputEmail,
+    setInputEmail,
+    InputPass,
+    setInputPass,
+    BtnIconPass,
+    IconPass,
+    setIconPass,
+    BtnIniciarSesion,
+    IniciarSesion,
+  } = useEnviarDatos();
 
   const ValidarDatosBiometricos = async () => {
     LocalAuthentication.authenticateAsync().then((Tools) => {
@@ -33,38 +42,16 @@ export default function ScreenLogin() {
         style={{ objectFit: "contain", height: "100%", width: "100%" }}
         source={require("../../Assets/Backgrounds/Pagina de bienvenida.png")}
       />
-      <View
-        style={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          paddingTop: 40,
-          paddingHorizontal: 20,
-          gap: 20,
-        }}
-      >
+      <View style={Style_Login.container_principal}>
         <View style={{ width: "100%", alignItems: "flex-start" }}>
           <TouchableOpacity
             onPress={() => router.back()}
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              borderRadius: "100%",
-              padding: 5,
-              backgroundColor: "#0F539C",
-            }}
+            style={Style_Login.btnVolver}
           >
             <Feather name="arrow-left" size={28} color="white" />
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            width: "100%",
-            alignItems: "center",
-            gap: 20,
-            paddingHorizontal: 10,
-          }}
-        >
+        <View style={Style_Login.container_logo}>
           <Image
             style={{ objectFit: "contain", height: 100, width: 100 }}
             source={require("../../Assets/Image/Logo.png")}
@@ -73,47 +60,20 @@ export default function ScreenLogin() {
             Inicia sesión en tu cuenta
           </Text>
 
-          <TouchableOpacity
-            style={{
-              alignItems: "center",
-              borderWidth: 1,
-              flexDirection: "row",
-              gap: 10,
-              paddingHorizontal: 15,
-              paddingVertical: 10,
-              borderRadius: 10,
-              borderColor: "#ced4da",
-            }}
-          >
+          <TouchableOpacity style={Style_Login.btn_iniciarSession_CuentaUnica}>
             <Image source={require("../../Assets/icon/Social icon.png")} />
             <Text style={{ fontWeight: "500", color: "#6c757d" }}>
               Inicia con Cuenta Única
             </Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            borderWidth: 0.8,
-            width: "100%",
-            borderStyle: "dashed",
-            borderColor: "#ced4da",
-          }}
-        />
+        <View style={Style_Login.barraSeparadora} />
         <View style={{ gap: 10 }}>
-          <View
-            style={{
-              backgroundColor: "#e9e9e97e",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              borderRadius: 10,
-              alignItems: "center",
-              padding: 5,
-            }}
-          >
+          <View style={Style_Login.container_inputs}>
             <TextInput
               value={InputEmail}
               onChangeText={setInputEmail}
-              placeholder="Correo electrónico "
+              placeholder="Cedula"
               placeholderTextColor={"#adb5bd"}
               style={{
                 fontSize: 16,
@@ -122,16 +82,7 @@ export default function ScreenLogin() {
               }}
             />
           </View>
-          <View
-            style={{
-              backgroundColor: "#e9e9e97e",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              borderRadius: 10,
-              alignItems: "center",
-              padding: 5,
-            }}
-          >
+          <View style={Style_Login.container_inputs}>
             <TextInput
               value={InputPass}
               onChangeText={setInputPass}
@@ -146,46 +97,22 @@ export default function ScreenLogin() {
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={{
-            flexDirection: "row-reverse",
-            width: "100%",
-            gap: 5,
-            justifyContent: "space-between",
-          }}
-        >
+        <View style={Style_Login.container_btnIniciarSesion}>
           <TouchableOpacity
-            onPress={() => router.navigate("/Screens/AScreenHome")}
-            style={{
-              padding: 12,
-              backgroundColor: "#0F539C",
-              borderRadius: 10,
-              width: "83%",
-            }}
+            onPress={IniciarSesion}
+            style={Style_Login.btn_IniciarSesion}
           >
-            <Text style={{ textAlign: "center", color: "white", fontSize: 18 }}>
-              Iniciar sesion
-            </Text>
+            <BtnIniciarSesion />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => ValidarDatosBiometricos()}
-            style={{
-              padding: 12,
-              backgroundColor: "#0F539C",
-              borderRadius: 10,
-              alignItems: "center",
-            }}
+            style={Style_Login.btn_IniciarSesionHuella}
           >
             <Ionicons name="finger-print-outline" size={24} color="white" />
           </TouchableOpacity>
         </View>
         <Link
-          style={{
-            textAlign: "center",
-            fontSize: 15,
-            fontWeight: "600",
-            color: "#0F539C",
-          }}
+          style={Style_Login.LinkRecuperarCuenta}
           href={"/ScreenL/ScreenRecuperarP"}
         >
           Olvide mi Contraseña

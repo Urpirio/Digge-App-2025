@@ -16,8 +16,10 @@ export default function ScreenEditarPerfil() {
     Input_NumeroT_primario,
     Input_NumeroT_secundario,
     EstadoGuardar,
+    Datauser,
   } = useEditarPerfil();
 
+  console.log(Datauser);
   return (
     <SafeAreaProvider style={{ justifyContent: "flex-end" }}>
       <BlurView intensity={100} tint="dark">
@@ -55,7 +57,7 @@ export default function ScreenEditarPerfil() {
         </Text>
         <View style={{ gap: 10 }}>
           <TextInput
-            value={Input_Email}
+            value={Input_Email ? Input_Email : Datauser?.correo}
             onChangeText={setInput_Email}
             placeholder="Email"
             placeholderTextColor={"gray"}
@@ -68,7 +70,11 @@ export default function ScreenEditarPerfil() {
             }}
           />
           <TextInput
-            value={Input_NumeroT_primario}
+            value={
+              Input_NumeroT_primario
+                ? Input_NumeroT_primario
+                : Datauser?.numero_telefonico
+            }
             onChangeText={setInput_NumeroT_primario}
             keyboardType="numeric"
             placeholder="Numero Telefonico"
@@ -82,7 +88,11 @@ export default function ScreenEditarPerfil() {
             }}
           />
           <TextInput
-            value={Input_NumeroT_secundario}
+            value={
+              Input_NumeroT_secundario
+                ? Input_NumeroT_secundario
+                : Datauser?.numero_telefonico_s
+            }
             onChangeText={setInput_NumeroT_secundario}
             placeholder="Numero Secundario"
             placeholderTextColor={"gray"}
@@ -96,7 +106,11 @@ export default function ScreenEditarPerfil() {
             }}
           />
           <TextInput
-            value={Input_Direccion_Vivienda}
+            value={
+              Input_Direccion_Vivienda
+                ? Input_Direccion_Vivienda
+                : Datauser?.direccion_vivienda
+            }
             onChangeText={setInput_Direccion_Vivienda}
             placeholder="Direccion de vivienda"
             placeholderTextColor={"gray"}

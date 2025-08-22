@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { Switch } from "react-native";
 import { Text } from "react-native";
 
 export const useStyleScreenPerfil = () => {
-  const EstadoLicencia = (Tools: { Estado: string }) => {
+  const EstadoLicencia = (Tools: { Estado: string | undefined }) => {
     const { Estado } = Tools;
     switch (Estado) {
-      case " Licencia activa":
+      case "Licencia activa":
         return (
           <Text
             style={{
@@ -70,10 +68,26 @@ export const useStyleScreenPerfil = () => {
             Sin licencia
           </Text>
         );
+      default:
+        return (
+          <Text
+            style={{
+              paddingVertical: 5,
+              paddingHorizontal: 10,
+              borderRadius: 20,
+              backgroundColor: "#EE2A24",
+              color: "white",
+              fontWeight: "300",
+              fontSize: 12,
+            }}
+          >
+            Sin licencia
+          </Text>
+        );
     }
   };
 
   return {
-    EstadoLicencia
+    EstadoLicencia,
   };
 };

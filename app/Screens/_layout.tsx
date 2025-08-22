@@ -9,6 +9,7 @@ export default function _layout() {
   const BgColor_Btn = "#0F539C";
   const Pathname = usePathname();
 
+
   return (
     <Tabs
       screenOptions={{
@@ -287,7 +288,9 @@ export default function _layout() {
             tabBarButton: () => {
               return (
                 <TouchableOpacity
-                  onPress={() => router.navigate("/Screens/ScreenPerfil")}
+                  onPress={() => router.navigate({
+                    pathname:"/Screens/ScreenPerfil",
+                  })}
                   style={{
                     backgroundColor: "",
                     height: "100%",

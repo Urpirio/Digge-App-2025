@@ -1,7 +1,11 @@
 import { View, Text } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { ObjectosCars } from "../hooks/useGetVehiculos";
+interface Tools {
+  Data_Car: ObjectosCars | undefined;
+}
 
-export default function Card_Principanl() {
+export default function Card_Principanl({Data_Car}:Tools) {
   return (
     <View
       style={{
@@ -25,10 +29,10 @@ export default function Card_Principanl() {
       </View>
       <View>
         <Text style={{ fontSize: 26, fontWeight: "600", color: "white" }}>
-          ABC-1234
+          {Data_Car?.matricula}
         </Text>
         <Text style={{ color: "#ffffff9e", fontWeight: "500" }}>
-          Honda Civic 2023
+          {Data_Car?.modelo}{" "}{Data_Car?.year}
         </Text>
       </View>
       <View style={{ flexDirection: "row", gap: 10 }}>

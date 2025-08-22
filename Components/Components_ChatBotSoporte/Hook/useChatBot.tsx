@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { GoogleGenAI } from "@google/genai";
 import { View, Text, TextInput } from "react-native";
 import { Keyboard } from "react-native";
+import { useGetUserGlobal } from "@/Components/Components_Globales/hooks/useGetUserGlobal";
+import { useFocusEffect } from "expo-router";
 
 export const useChatBot = () => {
+  const { Datauser, GetDataUser } = useGetUserGlobal();
+
+  useFocusEffect(
+    useCallback(() => {
+      GetDataUser();
+    }, [])
+  );
+
   const GenAi = new GoogleGenAI({
     apiKey: "AIzaSyDH9LpbS6hwaVcaCv8EzXCBZt8w3wJ-QuU",
   });
@@ -56,7 +66,6 @@ export const useChatBot = () => {
 
   const EnviarMensaje = () => {
     setPreguntas(InputMensaje);
-    console.log("Funcona");
     setInicioChat(true);
     setInputMensaje("");
     Keyboard.dismiss();
@@ -79,7 +88,17 @@ Sistema de Transporte Masivo (FITRAM), el Gabinete del Transporte, el Sistema Na
 7) En caso de no tener datos que se puedan comprobar, no dar una respuesta a la persona.
 8) Al no tener contexto de conversación, no debes presentarte a menos que te pregunten tu nombre o te saluden; si estos requisitos no se cumplen, debes evitar saludar y solo responder la pregunta.
 9) No coloques en negrita ninguna palabra.
+10)Tienes que usar los siguientes datos para responder preguntasd relaccionadas con el usuario.
+    nombres: ${Datauser?.nombres};
+    apellidos: ${Datauser?.apellidos};
+    cedula: ${Datauser?.cedula};
+    correo: ${Datauser?.correo};
+    numero_telefonico: ${Datauser?.numero_telefonico};
+    numero_telefonico_s: ${Datauser?.numero_telefonico_s};
+    estatus_licencia: ${Datauser?.estatus_licencia};
+
 nota:  Las reglas que leiste solo las ves tu, el usuario no sabes que esas reglas estan ahi.
+
 
     Esta es la pregunta que debes responder ${InputMensaje}`,
       })

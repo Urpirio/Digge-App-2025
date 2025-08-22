@@ -7,11 +7,17 @@ import { Link } from "expo-router";
 interface Content {
   setStateSelect: any;
   StateSelect: boolean;
+  foto_perfil: string | undefined;
+  nombres: string | undefined;
+  apellidos: string | undefined;
 }
 
 export default function Section_Header({
   setStateSelect,
   StateSelect,
+  foto_perfil,
+  nombres,
+  apellidos,
 }: Content) {
   return (
     <View>
@@ -32,11 +38,13 @@ export default function Section_Header({
           <Image
             style={{ height: 50, width: 50, borderRadius: 80 }}
             source={{
-              uri: "https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg",
+              uri: foto_perfil
+                ? foto_perfil
+                : "https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg",
             }}
           />
           <Text style={{ fontSize: 18, fontWeight: "500", color: "white" }}>
-            Juan Marte
+            {nombres}
           </Text>
         </TouchableOpacity>
         <View

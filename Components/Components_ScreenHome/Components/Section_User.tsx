@@ -1,28 +1,30 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, useFocusEffect } from "expo-router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import Animated, {
   useSharedValue,
   withTiming,
-  useAnimatedStyle,
   Easing,
 } from "react-native-reanimated";
 
-export default function Section_User() {
-
-  const  height = useSharedValue<string>("0%");
-
+export default function Section_User(Tools: {
+  foto_perfil: string | undefined;
+  nombres: string | undefined;
+  apellidos: string | undefined;
+  cedula: string | undefined;
+}) {
+  const height = useSharedValue<string>("0%");
+  const { foto_perfil, nombres, apellidos, cedula } = Tools;
 
   useFocusEffect(
     useCallback(() => {
-      height.value = withTiming("18%", {  
+      height.value = withTiming("18%", {
         duration: 500,
         easing: Easing.inOut(Easing.ease),
       });
-    }, []));
-
-
+    }, [])
+  );
 
   return (
     <Animated.View
@@ -31,7 +33,7 @@ export default function Section_User() {
         borderBottomRightRadius: 30,
         borderBottomLeftRadius: 30,
         height,
-        justifyContent:"flex-start"
+        justifyContent: "flex-start",
       }}
     >
       <View
@@ -61,11 +63,13 @@ export default function Section_User() {
           <Image
             style={{ height: 60, width: 60, borderRadius: 80 }}
             source={{
-              uri: "https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg",
+              uri: foto_perfil
+                ? foto_perfil
+                : "https://i.pinimg.com/736x/68/3d/8f/683d8f58c98a715130b1251a9d59d1b9.jpg",
             }}
           />
           <View style={{ paddingHorizontal: 10 }}>
-            <Text style={{ fontSize: 24, color: "white" }}>Hola, Juan!</Text>
+            <Text style={{ fontSize: 24, color: "white" }}>{nombres}</Text>
             <Text style={{ color: "#ffffffa2" }}>Ciudadano</Text>
           </View>
         </TouchableOpacity>
