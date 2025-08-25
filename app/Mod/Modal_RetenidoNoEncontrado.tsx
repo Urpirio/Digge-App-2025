@@ -79,7 +79,10 @@ export default function Modal_RetenidoNoEncontrado() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => router.back()}
+              onPress={() => {
+                router.back();
+                router.back();
+              }}
               style={{
                 paddingHorizontal: 20,
                 padding: 10,
