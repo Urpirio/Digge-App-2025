@@ -1,13 +1,28 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { ObjectosCars } from "../hooks/useGetVehiculos";
+import { router } from "expo-router";
 interface Tools {
   Data_Car: ObjectosCars | undefined;
-}
+};
 
-export default function Card_Principanl({Data_Car}:Tools) {
+export default function Card_Principanl({ Data_Car }: Tools) {
   return (
-    <View
+    <TouchableOpacity
+      onPress={() =>
+        router.navigate({
+          pathname: "/SubScreens/ScreenDetallesVehiculos",
+          params: {
+            matricula: Data_Car?.matricula,
+            modelo: Data_Car?.modelo,
+            year: Data_Car?.year,
+            marca: Data_Car?.marca,
+            combustible: Data_Car?.tipo_combustible,
+            kilometraje: null,
+            color: Data_Car?.color,
+          },
+        })
+      }
       style={{
         padding: 15,
         alignItems: "flex-start",
@@ -32,7 +47,7 @@ export default function Card_Principanl({Data_Car}:Tools) {
           {Data_Car?.matricula}
         </Text>
         <Text style={{ color: "#ffffff9e", fontWeight: "500" }}>
-          {Data_Car?.modelo}{" "}{Data_Car?.year}
+          {Data_Car?.modelo} {Data_Car?.year}
         </Text>
       </View>
       <View style={{ flexDirection: "row", gap: 10 }}>
@@ -73,6 +88,6 @@ export default function Card_Principanl({Data_Car}:Tools) {
           <Text style={{ color: "#1B95F4", fontSize: 14 }}>Seguro</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
