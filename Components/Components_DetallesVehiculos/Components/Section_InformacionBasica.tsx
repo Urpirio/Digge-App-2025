@@ -12,16 +12,7 @@ export default function Section_InformacionBasica() {
 
 
   const DataLocal = useLocalSearchParams();
-  const {ConseguirDetalles,DetallesCarro} = useDetallesVehiculos();
-
-  useFocusEffect(useCallback(()=>{
-    ConseguirDetalles({Matricula:DataLocal?.Matricula})
-  },[]));
   
-
-  if(!DetallesCarro){
-    return <View/>
-  };
 
   return (
     <View style={{ paddingHorizontal: 10,gap:10 }}>
@@ -35,19 +26,19 @@ export default function Section_InformacionBasica() {
         <View style={{ width: "48%", gap: 10 }}>
           <Card_informacionBasica
             Icono={<Ionicons size={20} name="car-outline" color={"#0F539C"} />}
-            Subtitulo={DetallesCarro[0]?.Marca}
+            Subtitulo={DataLocal?.marca}
             Titulo="Marca"
           />
           <Card_informacionBasica
             Icono={<AntDesign name="calendar" size={20} color="#0F539C" />}
-            Subtitulo={DetallesCarro[0]?.Ano}
+            Subtitulo={DataLocal?.year}
             Titulo="Año"
           />
           <Card_informacionBasica
             Icono={
               <Ionicons name="location-outline" size={20} color="#0F539C" />
             }
-            Subtitulo={DetallesCarro[0]?.Kilometraje}
+            Subtitulo={DataLocal?.kilometraje ? DataLocal?.kilometraje : "no disponible"}
             Titulo="Kilometraje"
           />
         </View>
@@ -57,12 +48,12 @@ export default function Section_InformacionBasica() {
             Icono={
               <MaterialCommunityIcons name="steering" size={20} color="#0F539C" />
             }
-            Subtitulo={DetallesCarro[0]?.Modelo}
+            Subtitulo={DataLocal?.modelo}
             Titulo="Modelo"
           />
           <Card_informacionBasica
             Icono={<Octicons name="paintbrush" size={16} color="#0F539C" />}
-            Subtitulo={DetallesCarro[0]?.Color}
+            Subtitulo={DataLocal?.color}
             Titulo="Color"
           />
           <Card_informacionBasica
@@ -73,7 +64,7 @@ export default function Section_InformacionBasica() {
                 color="#0F539C"
               />
             }
-            Subtitulo={DetallesCarro[0]?.Combustible}
+            Subtitulo={DataLocal?.combustible}
             Titulo="Combustible"
           />
         </View>
