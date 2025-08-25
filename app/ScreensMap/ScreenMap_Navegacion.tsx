@@ -6,7 +6,7 @@ import { useFocusEffect } from "expo-router";
 import { TouchableOpacity, View, Image, TextInput } from "react-native";
 import { router } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
+import { Data_Reportes } from "@/Components/Components_MapNavegacion/Data/Data_Reportes";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useReportes } from "@/Components/Components_MapNavegacion/Hooks/useReportes";
@@ -17,7 +17,7 @@ import { ObjectReportes } from "@/Components/Components_MapNavegacion/Hooks/useG
 
 export default function Modal_MapNavegacion() {
   const { ConseguirUbicacion } = useLocalizacion();
-  const { GetReportes, Data_Reportes } = useNavegacion();
+  const { GetReportes } = useNavegacion();
   const [ZoomState, setZoomState] = useState<number>();
   const {
     CategoriaMarker,
@@ -166,40 +166,42 @@ export default function Modal_MapNavegacion() {
         style={{ height: "94%", width: "100%" }}
       >
         {/* Aqui tengo que agregar un Hook para que en base a los estados de la navegacion cambien los marcadores tambien */}
-        {Data_Reportes?.map((D: ObjectReportes) => {
+        {Data_Reportes?.map((D) => {
           return (
             <Marker
               onPress={() =>
                 router.navigate({
                   pathname: "/Mod/Modal_InfoReporte",
                   params: {
-                    Descripcion: D.descripcion,
-                    Titulo: D.tipo_dn,
+                    Descripcion: D.Descripcion,
+                    Titulo: D.Descripcion,
                   },
                 })
               }
               coordinate={{
-                longitude: D.ubicacion.long,
-                latitude: D.ubicacion.lg,
+                longitude: D.longitud,
+                latitude: D.longitud,
               }}
             />
           );
         })}
 
 {/* Este el DataMap de los agentes cercanos */}
-        {/* {Data_Agentes.map((Data) => {
+        {Data_Agentes.map((Data) => {
           return (
             <Marker
               onPress={() =>
                 router.navigate({
                   pathname: "/Mod/Modal_ReportarAgente",
-                  params: {},
+                  params: {
+
+                  },
                 })
               }
               coordinate={{ longitude: Data.longitud, latitude: Data.latitud }}
             />
           );
-        })} */}
+        })}
       </MapView>
       <View
         style={{
