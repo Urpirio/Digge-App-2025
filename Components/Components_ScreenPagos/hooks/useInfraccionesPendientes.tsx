@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 export const useInfraccionesPendientes = () => {
   const [StatusContainerPagar, setStatusContainerPagar] = useState(false);
 
-  const StatusInfracciones = (D: { Status: String }) => {
+  const StatusInfracciones = (D: { Status: String  | undefined }) => {
     switch (D.Status) {
       case "Media":
         return (
