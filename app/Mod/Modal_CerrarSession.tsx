@@ -41,6 +41,9 @@ export default function Modal_CerrarSession() {
               router.back();
               router.back();
               router.back();
+              router.back();
+              router.back();
+              router.back();
             }}
             style={{
               width: "100%",
