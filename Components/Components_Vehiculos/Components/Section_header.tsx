@@ -20,7 +20,7 @@ export default function Section_header(Tools: {
       }}
     >
       <TouchableOpacity
-        onPress={() => router.navigate("/Screens/ScreenPerfil")}
+        onPress={() => router.navigate("/SubScreens/ScreenPerfil")}
         style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
       >
         <Image
