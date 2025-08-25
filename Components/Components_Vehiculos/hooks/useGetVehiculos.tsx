@@ -5,6 +5,7 @@ import { useGetUserGlobal } from "@/Components/Components_Globales/hooks/useGetU
 export interface ObjectosCars {
   cedula: string | undefined;
   matricula: string | undefined;
+  marca: string | undefined;
   modelo: string | undefined;
   year: string | undefined;
   color: string | undefined;
