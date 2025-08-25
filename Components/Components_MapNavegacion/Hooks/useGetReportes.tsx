@@ -1,6 +1,6 @@
 import { useState } from "react";
 
- export interface ObjectReportes {
+export interface ObjectReportes {
   cedula: string;
   tipo_dn: string;
   ubicacion: {
@@ -9,16 +9,19 @@ import { useState } from "react";
   };
   descripcion: string;
   estado_reporte: string;
+  Carriles_afectados: "2";
 }
-
 export const useGetReporte = () => {
-  const [Data_Reportes, setData_Reportes] = useState<Array<ObjectReportes>>();
+  const [Data_Reportes, setData_Reportes] = useState<
+    Array<ObjectReportes> | undefined
+  >();
 
   const GetReportes = () => {
     fetch(`https://bk-digget-app.vercel.app/api/data_reportes`)
       .then((respuesta) => respuesta.json())
       .then((Data) => {
-        setData_Reportes(Data);
+        // setData_Reportes(Data);
+        console.log(Data);
       })
       .finally(() => {});
   };
