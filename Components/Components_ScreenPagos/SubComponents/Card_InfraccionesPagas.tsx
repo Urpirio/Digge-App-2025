@@ -5,6 +5,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function Card_InfraccionesPagas() {
+  
   const Cards = Data_InfraccionesPagas.map((D) => {
     return (
       <View
