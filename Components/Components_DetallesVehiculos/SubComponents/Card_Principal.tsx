@@ -7,29 +7,25 @@ import { Style_CardPrincipal } from "../Style/Style_CardPrincipal";
 
 export default function Card_Principal() {
   const DataLocal = useLocalSearchParams();
-  const { DetallesCarro, ConseguirDetalles } = useDetallesVehiculos();
+  // const { DetallesCarro, ConseguirDetalles } = useDetallesVehiculos();
 
-  useFocusEffect(
-    useCallback(() => {
-      ConseguirDetalles({ Matricula: DataLocal?.Matricula });
-    }, [])
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     ConseguirDetalles({ Matricula: DataLocal?.Matricula });
+  //   }, [])
+  // );
 
-  if (!DetallesCarro) {
-    return <View />;
-  }
+  // if (!DetallesCarro) {
+  //   return <View />;
+  // }
 
   return (
     <View style={Style_CardPrincipal.Card}>
       <Text style={Style_CardPrincipal.Text_Matricula}>
-        {DetallesCarro[0]?.Matricula}
+        {DataLocal?.matricula}
       </Text>
       <Text style={{ fontSize: 16, color: "white" }}>
-        {DetallesCarro[0]?.Marca +
-          " " +
-          DetallesCarro[0]?.Modelo +
-          " " +
-          DetallesCarro[0]?.Ano}
+        {DataLocal?.modelo + " " + DataLocal?.marca + " " + DataLocal?.year}
       </Text>
 
       <View style={{ flexDirection: "row", gap: 10 }}>
