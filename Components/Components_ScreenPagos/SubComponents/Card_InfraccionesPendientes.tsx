@@ -4,9 +4,14 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { useInfraccionesPendientes } from "../hooks/useInfraccionesPendientes";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Data_InfraccionesPendiente } from "../Data/Data_InfraccionesPendiente";
+import { Objectos_Infracciones } from "../hooks/useGet_Infracciones";
 
-export default function Card_InfraccionesPendientes() {
-  const Cards = Data_InfraccionesPendiente.map((D) => {
+export default function Card_InfraccionesPendientes(Tools: {
+  Data: Array<Objectos_Infracciones> | undefined;
+}) {
+
+  const {Data} = Tools
+  const Cards = Data?.map((D) => {
     const {
       StatusContainerPagar,
       setStatusContainerPagar,
@@ -41,18 +46,18 @@ export default function Card_InfraccionesPendientes() {
               style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
             >
               <Text style={{ fontSize: 18, fontWeight: "500" }}>
-                {D.num_infraccion}
+                IFR-2025-001
               </Text>
-              <StatusInfracciones Status={D.status} />
+              <StatusInfracciones Status={D.prioridad_pago} />
             </View>
             <Text style={{ fontWeight: "600", color: "#0F539C" }}>{}</Text>
           </View>
 
           <View style={{ paddingHorizontal: 20, paddingVertical: 10 }}>
             <Text style={{ color: "#0F539C", fontWeight: "600" }}>
-              {D.titulo}
+              {D.tipo_infraccion}
             </Text>
-            <Text style={{color:"#999999ff"}}>{D.subtitulo} </Text>
+            <Text style={{ color: "#999999ff" }}>{D.descripcion} </Text>
           </View>
 
           <View
@@ -66,23 +71,21 @@ export default function Card_InfraccionesPendientes() {
               style={{ flexDirection: "row", alignItems: "center", gap: 2 }}
             >
               <Ionicons size={16} name="car-outline" color={"#999999ff"} />
-              <Text style={{ fontSize: 12, color: "#999999ff" }}>
-                {D.matricula}
-              </Text>
+              <Text style={{ fontSize: 12, color: "#999999ff" }}>A122345</Text>
             </View>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 2 }}
             >
               <Ionicons name="location-outline" size={16} color="#999999ff" />
               <Text style={{ fontSize: 12, color: "#999999ff" }}>
-                {D.ubicacion}
+                No disponible
               </Text>
             </View>
             <View
               style={{ flexDirection: "row", alignItems: "center", gap: 2 }}
             >
               <MaterialIcons name="access-time" size={16} color="#999999ff" />
-              <Text style={{ fontSize: 12, color: "#989898ff" }}>{D.hora}</Text>
+              <Text style={{ fontSize: 12, color: "#989898ff" }}>{D.Hora}</Text>
             </View>
           </View>
 
@@ -92,10 +95,12 @@ export default function Card_InfraccionesPendientes() {
               justifyContent: "space-between",
               alignItems: "center",
               paddingHorizontal: 20,
-              paddingVertical:1
+              paddingVertical: 1,
             }}
           >
-            <Text style={{ fontSize: 12,color:"#6b6b6bff" }}>{D.fechaPago}</Text>
+            <Text style={{ fontSize: 12, color: "#6b6b6bff" }}>
+              {D.fecha_pago ? D.fecha_pago : "Pendiente"}
+            </Text>
             <Text style={{ color: "#0F539C", fontWeight: "600" }}>
               Vence en 12 días
             </Text>
