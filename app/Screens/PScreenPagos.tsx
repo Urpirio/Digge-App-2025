@@ -3,16 +3,22 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useCallback, useState } from "react";
 import Section_Dashboard from "@/Components/Components_ScreenPagos/Components/Section_Dashboard";
 import Section_Historial from "@/Components/Components_ScreenPagos/Components/Section_Historial";
-import { useGetUserGlobal } from "@/Components/Components_Globales/hooks/useGetUserGlobal";
 import { useFocusEffect } from "expo-router";
+import { useGet_Infracciones } from "@/Components/Components_ScreenPagos/hooks/useGet_Infracciones";
 
 export default function ScreenPagos() {
   const [StateSelect, setStateSelect] = useState(false);
-  const { Datauser, GetDataUser } = useGetUserGlobal();
+  const {
+    getDataUser,
+    Datauser,
+    Data_Infracciones,
+    // filtro_DataPagadas,
+    // filtro_DataPendiente,
+  } = useGet_Infracciones();
 
   useFocusEffect(
     useCallback(() => {
-      GetDataUser();
+      getDataUser();
     }, [])
   );
 
@@ -25,7 +31,15 @@ export default function ScreenPagos() {
         StateSelect={StateSelect}
         setStateSelect={setStateSelect}
       />
-      {StateSelect ? <Section_Historial /> : <Section_Dashboard />}
+      {StateSelect ? (
+        <Section_Historial />
+      ) : (
+        <Section_Dashboard
+          Data={Data_Infracciones}
+          // Data_Pagadas={filtro_DataPagadas}
+          // Data_Pendientes={filtro_DataPendiente}
+        />
+      )}
     </SafeAreaProvider>
   );
 }
