@@ -27,7 +27,7 @@ export default function Card_Actividad({
 }: ContentCard) {
   return (
     <TouchableOpacity 
-      onPress={()=>router.navigate(Link)}
+      onPress={()=>{}}
       style={{
         borderWidth: 1,
         borderColor: `#dee2e653`,
