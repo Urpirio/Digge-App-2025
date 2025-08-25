@@ -45,6 +45,7 @@ export const Style_Login = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     padding: 5,
+    height:55
   },
   container_btnIniciarSesion: {
     flexDirection: "row-reverse",
