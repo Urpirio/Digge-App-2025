@@ -36,7 +36,7 @@ export default function Modal_InfoReporte() {
       >
         <Image
           style={{ width: "100%", height: "50%", borderRadius: 20 }}
-          source={{ uri: `${DataLocal?.Image}` }}
+          source={{ uri: require("../../Assets/Image/Img_Prueba_Novedades.png") }}
         />
         <Text style={{ fontSize: 20, fontWeight: "600" }}>
           {DataLocal?.Titulo}
