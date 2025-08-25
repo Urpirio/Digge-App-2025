@@ -24,6 +24,7 @@ export default function Section_Form2({
           alignItems: "center",
           borderRadius: 10,
           padding: 5,
+          height: 55,
         }}
       >
         <TextInput
@@ -45,6 +46,7 @@ export default function Section_Form2({
           alignItems: "center",
           borderRadius: 10,
           padding: 5,
+          height: 55,
         }}
       >
         <TextInput
