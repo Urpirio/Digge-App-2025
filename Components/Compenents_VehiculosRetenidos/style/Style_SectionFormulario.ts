@@ -6,7 +6,7 @@ export const Style_SectionFormulario = StyleSheet.create({
     borderRadius: 10,
     height: 55,
     fontSize: 16,
-    borderColor: "#D1D0D0",
+    borderColor: "#d1d0d03c",
     backgroundColor: "#efeded44",
   },
   Container_Titulos: {
@@ -24,7 +24,7 @@ export const Style_SectionFormulario = StyleSheet.create({
     paddingHorizontal: 15,
     gap: 5,
     borderRadius: 10,
-    borderColor: "#D1D0D0",
+    borderColor: "#d1d0d03c",
     backgroundColor: "#efeded44",
   },
   Btn_Enviar: {
