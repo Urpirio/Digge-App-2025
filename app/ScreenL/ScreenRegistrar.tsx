@@ -41,7 +41,7 @@ export default function ScreenRegistrar() {
     ErrorCedula,
     Email_Valido,
     Pass_NoIgual,
-    Send_Registrar
+    Send_Registrar,
   } = useEnviarDatosR();
 
   return (
@@ -91,6 +91,18 @@ export default function ScreenRegistrar() {
             Crea tu cuenta usando
           </Text>
           <TouchableOpacity
+            onPress={() => {
+              router.navigate({
+                pathname: "/Mod/Modal_DatosEnviados",
+                params: {
+                  descripcion:
+                    "La función solicitada no se encuentra disponible en este momento. Estamos trabajando para habilitarla lo antes posible.",
+                  titulo: "Función actualmente no disponible",
+                  Error: "true",
+                  tipo_s: "otro reporte",
+                },
+              });
+            }}
             style={{
               alignItems: "center",
               borderWidth: 1,
