@@ -3,6 +3,7 @@ import { Data_CardMatriculasCarros } from "../Data/Data_CardMatriculasCarros";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { router } from "expo-router";
 import { ObjectosCars } from "../hooks/useGetVehiculos";
+import { color } from "@rneui/base";
 
 export default function Card_MatriculasTusCarros(Tools: {
   Data_Cars: Array<ObjectosCars> | undefined;
@@ -13,10 +14,24 @@ export default function Card_MatriculasTusCarros(Tools: {
     if (D.Estado_principal != true) {
       return (
         <TouchableOpacity
+          onLongPress={() =>
+            router.navigate({
+              pathname: "/Mod/Modal_CambiarPrincipalVehiculo",
+              params: { matricula: D.matricula },
+            })
+          }
           onPress={() =>
             router.navigate({
               pathname: "/SubScreens/ScreenDetallesVehiculos",
-              params: { Matricula: D.matricula },
+              params: {
+                matricula: D.matricula,
+                modelo: D.modelo,
+                year: D.year,
+                marca: D.marca,
+                combustible: D.tipo_combustible,
+                kilometraje: null,
+                color: D.color,
+              },
             })
           }
           key={D.matricula}
