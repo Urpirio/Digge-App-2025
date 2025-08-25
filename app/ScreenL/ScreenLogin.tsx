@@ -60,7 +60,21 @@ export default function ScreenLogin() {
             Inicia sesión en tu cuenta
           </Text>
 
-          <TouchableOpacity style={Style_Login.btn_iniciarSession_CuentaUnica}>
+          <TouchableOpacity
+            onPress={() => {
+              router.navigate({
+                pathname: "/Mod/Modal_DatosEnviados",
+                params: {
+                  descripcion:
+                    "La función solicitada no se encuentra disponible en este momento. Estamos trabajando para habilitarla lo antes posible.",
+                  titulo: "Función actualmente no disponible",
+                  Error: "true",
+                  tipo_s: "otro reporte",
+                },
+              });
+            }}
+            style={Style_Login.btn_iniciarSession_CuentaUnica}
+          >
             <Image source={require("../../Assets/icon/Social icon.png")} />
             <Text style={{ fontWeight: "500", color: "#6c757d" }}>
               Inicia con Cuenta Única
