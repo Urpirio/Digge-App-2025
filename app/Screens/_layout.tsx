@@ -277,7 +277,7 @@ export default function _layout() {
             animation: "fade",
           }}
         />
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="ScreenPerfil"
           options={{
             header: () => {
@@ -289,7 +289,7 @@ export default function _layout() {
               return (
                 <TouchableOpacity
                   onPress={() => router.navigate({
-                    pathname:"/Screens/ScreenPerfil",
+                    pathname:"/SubScreens/ScreenPerfil",
                   })}
                   style={{
                     backgroundColor: "",
@@ -329,7 +329,7 @@ export default function _layout() {
             tabBarLabel: "",
             animation: "fade",
           }}
-        />
+        /> */}
       </Tabs.Protected>
     </Tabs>
   );
