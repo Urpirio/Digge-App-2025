@@ -21,6 +21,7 @@ export default function Section_ContactosEmergencia() {
           }
           bgIconColor={"EE2A24"}
           Link="tel:911"
+          StatusLink_In={false}
         />
         <Card_Emergencias
           Titulo={"Cruz roja"}
@@ -28,6 +29,7 @@ export default function Section_ContactosEmergencia() {
           Icon={<FontAwesome name="plus" size={28} color="white" />}
           bgIconColor={"EE2A24"}
           Link="tel:8093344545"
+          StatusLink_In={false}
         />
         <Card_Emergencias
           Titulo={"Bomberos"}
@@ -35,6 +37,7 @@ export default function Section_ContactosEmergencia() {
           Icon={<MaterialIcons name="fire-truck" size={24} color="white" />}
           bgIconColor={"FF9900"}
           Link="tel:8096822000"
+          StatusLink_In={false}
         />
         <Card_Emergencias
           Titulo={"Asitencia Vial"}
@@ -48,7 +51,23 @@ export default function Section_ContactosEmergencia() {
           }
           bgIconColor={"2096F4"}
           Link="tel:8296881000"
+          StatusLink_In={false}
         />
+        <Card_Emergencias
+           Icon={
+            <MaterialCommunityIcons
+              name="chat-processing-outline"
+              size={24}
+              color="white"
+            />
+          }
+          Titulo={"Chat Atención"}
+          bgIconColor={"0FB9CB"}
+          subTitulo={"Soporte DIGESSET"}
+          Link={"/SubScreens/ScreenChatBotSoporte"}
+          StatusLink_In={true}
+        />
+        
       </View>
     </View>
   );
