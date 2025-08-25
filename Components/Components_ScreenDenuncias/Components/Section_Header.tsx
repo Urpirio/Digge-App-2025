@@ -25,7 +25,7 @@ export default function Section_Header({
     <View>
       <View style={Style_SectionHeader.ConatinerTop_header}>
         <TouchableOpacity
-          onPress={() => router.navigate("/Screens/ScreenPerfil")}
+          onPress={() => router.navigate("/SubScreens/ScreenPerfil")}
           style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
         >
           <Image
