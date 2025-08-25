@@ -63,6 +63,14 @@ export default function _layout() {
           },
         }}
       />
+      <Stack.Screen
+        name="ScreenPerfil"
+        options={{
+          header: () => {
+            return <View style={{ height: 30, backgroundColor: "#0F539C" }} />;
+          },
+        }}
+      />
     </Stack>
   );
 }
