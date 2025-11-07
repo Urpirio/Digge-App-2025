@@ -20,7 +20,7 @@ Esta documentación describe las APIs y servicios utilizados en DIGGEAPP.
   "android": {
     "config": {
       "googleMaps": {
-        "apiKey": "AIzaSyC9LPOPDJTJjjgmIfSzWzhrKaITkKtm_70"
+        "apiKey": "YOUR_GOOGLE_MAPS_API_KEY"
       }
     }
   }

@@ -280,6 +280,7 @@ const removeData = async (key: string) => {
 ### Trabajar con Mapas
 
 ```typescript
+import { useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 
 export default function MapExample() {
