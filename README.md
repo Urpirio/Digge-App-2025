@@ -4,6 +4,8 @@
 
 DIGGEAPP es una aplicación móvil desarrollada con React Native y Expo que facilita la gestión de vehículos, denuncias de tránsito, reportes de averías y servicios de emergencia en República Dominicana.
 
+> **📚 ¿Nuevo en el proyecto?** Consulta la [Guía de Navegación de Documentación](docs/NAVIGATION.md) para encontrar rápidamente lo que necesitas.
+
 ## 📱 Características Principales
 
 ### 🏠 Pantalla Principal (Home)
@@ -150,8 +152,27 @@ Digge-App-2025/
 ├── app.json                      # Configuración de Expo
 ├── eas.json                      # Configuración de EAS Build
 ├── package.json                  # Dependencias
-└── tsconfig.json                 # Configuración de TypeScript
+├── tsconfig.json                 # Configuración de TypeScript
+├── README.md                     # Este archivo
+├── CONTRIBUTING.md               # Guía para contribuidores
+├── CHANGELOG.md                  # Historial de versiones
+└── docs/                         # Documentación detallada
+    ├── NAVIGATION.md             # Guía de navegación de docs
+    ├── ARCHITECTURE.md           # Arquitectura técnica
+    ├── DEVELOPMENT.md            # Guía de desarrollo
+    ├── API.md                    # Referencia de APIs
+    └── DEPLOYMENT.md             # Guía de deployment
 ```
+
+## 📚 Documentación
+
+- **[Guía de Navegación](docs/NAVIGATION.md)** - Encuentra rápidamente lo que necesitas
+- **[Arquitectura](docs/ARCHITECTURE.md)** - Detalles técnicos de la arquitectura
+- **[Desarrollo](docs/DEVELOPMENT.md)** - Guía completa para desarrolladores
+- **[API Reference](docs/API.md)** - Documentación de APIs y modelos de datos
+- **[Deployment](docs/DEPLOYMENT.md)** - Guía para deployar en producción
+- **[Contribución](CONTRIBUTING.md)** - Cómo contribuir al proyecto
+- **[Changelog](CHANGELOG.md)** - Historial de cambios y versiones
 
 ## 🔑 Características Técnicas
 
